@@ -251,17 +251,17 @@ TrainerHill_Entrance_EventScript_Clerk::
 
 	.align 2
 TrainerHill_Entrance_Pokemart_Basic:
-	.2byte ITEM_SUPER_POTION
-	.2byte ITEM_ANTIDOTE
-	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_AWAKENING
-	.2byte ITEM_X_SPEED
-	.2byte ITEM_X_SP_ATK
-	.2byte ITEM_X_ATTACK
-	.2byte ITEM_X_DEFENSE
-	.2byte ITEM_DIRE_HIT
-	.2byte ITEM_GUARD_SPEC
-	.2byte ITEM_X_ACCURACY
+	.2byte ITEM_ABILITY_CAPSULE
+	.2byte ITEM_ABILITY_PATCH
+	.2byte ITEM_AIR_BALLOON
+	.2byte ITEM_RED_CARD
+	.2byte ITEM_WEAKNESS_POLICY
+	.2byte ITEM_THROAT_SPRAY
+	.2byte ITEM_POWER_HERB
+	.2byte ITEM_EJECT_BUTTON
+	.2byte ITEM_EJECT_PACK
+	.2byte ITEM_BLUNDER_POLICY
+	.2byte ITEM_UTILITY_UMBRELLA
 	pokemartlistend
 
 TrainerHill_Entrance_EventScript_ExpandedPokemart::

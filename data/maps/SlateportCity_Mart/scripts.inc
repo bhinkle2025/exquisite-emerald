@@ -19,9 +19,9 @@ SlateportCity_Mart_Pokemart:
 	.2byte ITEM_SUPER_POTION
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_REPEL
-	.2byte ITEM_HARBOR_MAIL
+	.2byte ITEM_SUN_STONE
+	.2byte ITEM_DUSK_STONE
 	pokemartlistend
 
 SlateportCity_Mart_EventScript_BlackBelt::
