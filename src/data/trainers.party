@@ -4828,32 +4828,36 @@ Class: Leader
 Pic: Leader Brawly
 Gender: Male
 Music: Male
-Items: Super Potion / Super Potion
 Double Battle: No
 AI: Basic Trainer
 
-Machop
-Level: 16
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Karate Chop
-- Low Kick
-- Seismic Toss
-- Bulk Up
-
-Meditite
-Level: 16
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Focus Punch
+Meditite @ Oran Berry
+Level: 17
+Ability: Pure Power
+IVs: 12 HP / 31 Atk / 12 Def / 31 SpA / 12 SpD / 31 Spe
+- Force Palm
 - Light Screen
 - Reflect
-- Bulk Up
+- Shadow Ball
 
 Makuhita @ Sitrus Berry
-Level: 19
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Arm Thrust
+Level: 18
+Ability: Thick Fat
+IVs: 31 HP / 31 Atk / 31 Def / 12 SpA / 12 SpD / 12 Spe
+Nature: Adamant
 - Vital Throw
-- Reversal
+- Knock Off
+- Thunderpunch
+- Bulk Up
+
+Breloom @ Sitrus Berry
+Level: 19
+Ability: Effect Spore
+IVs: 24 HP / 31 Atk / 24 Def / 31 SpA / 24 SpD / 31 Spe
+Nature: Docile
+- Mach Punch
+- Mega Drain
+- Spore
 - Bulk Up
 
 === TRAINER_WATTSON_1 ===
@@ -4862,41 +4866,43 @@ Class: Leader
 Pic: Leader Wattson
 Gender: Male
 Music: Male
-Items: Super Potion / Super Potion
-Double Battle: No
+Double Battle: Yes
 AI: Basic Trainer
 
-Voltorb
-Level: 20
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Rollout
-- Spark
-- Self Destruct
-- Shock Wave
-
-Electrike
-Level: 20
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Shock Wave
-- Leer
-- Quick Attack
-- Howl
-
-Magneton
+Plusle @ Sitrus Berry
 Level: 22
+IVs: 24 HP / 24 Atk / 24 Def / 31 SpA / 24 SpD / 31 Spe
+Nature: Modest
+- Shock Wave
+- Magical Leaf
+- Charm
+- Volt Switch
+
+Minun @ Sitrus Berry
+Level: 22
+IVs: 24 HP / 24 Atk / 24 Def / 31 SpA / 24 SpD / 31 Spe
+Nature: Modest
+- Shock Wave
+- Magical Leaf
+- Charm
+- Volt Switch
+
+Magneton @ Magnet
+Level: 23
 IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
-- Supersonic
+- Volt Switch
 - Shock Wave
 - Thunder Wave
 - Sonic Boom
 
 Manectric @ Sitrus Berry
 Level: 24
+Ability: Static
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Quick Attack
 - Thunder Wave
 - Shock Wave
-- Howl
+- Volt Switch
 
 === TRAINER_FLANNERY_1 ===
 Name: FLANNERY
@@ -4904,31 +4910,30 @@ Class: Leader
 Pic: Leader Flannery
 Gender: Female
 Music: Female
-Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Basic Trainer
 
-Numel
-Level: 24
+Magcargo @ Sitrus Berry
+Level: 26
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Overheat
-- Take Down
-- Magnitude
-- Sunny Day
-
-Slugma
-Level: 24
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Overheat
-- Smog
+- Yawn
 - Light Screen
 - Sunny Day
 
-Camerupt
-Level: 26
+Ninetales @ Charcoal
+Level: 27
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Overheat
+- Iron Tail
+- Confuse Ray
+- Sunny Day
+
+Camerupt @ Fire Gem
+Level: 28
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Overheat
-- Tackle
+- Magnitude
 - Sunny Day
 - Attract
 
@@ -4946,41 +4951,53 @@ Class: Leader
 Pic: Leader Norman
 Gender: Male
 Music: Male
-Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Basic Trainer
 
-Spinda
-Level: 27
+Spinda @ Liechi Berry
+Level: 28
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Nature: Adamant
 - Teeter Dance
-- Psybeam
-- Facade
-- Encore
+- Dizzy Punch
+- Victory Dance
+- Hypnosis
 
-Vigoroth
-Level: 27
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Slash
-- Facade
-- Encore
-- Feint Attack
-
-Linoone
+Ursaring @ Flame Orb
 Level: 29
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Slash
-- Belly Drum
+Nature: Adamant
+- Close Combat
+- Play Rough
 - Facade
-- Headbutt
+- Shadow Claw
+
+Vigoroth @ Eviolite
+Level: 29
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Nature: Careful
+- Bulk Up
+- Retaliate
+- Throat Chop
+- Low Kick
+
+Zangoose @ Salac Berry
+Level: 30
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Nature: Jolly
+- Slash
+- Shadow Claw
+- Swords Dance
+- Brick Break
 
 Slaking @ Sitrus Berry
 Level: 31
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Counter
+Nature: Adamant
+- Drain Punch
 - Yawn
-- Facade
-- Feint Attack
+- Retaliate
+- Sucker Punch
 
 === TRAINER_WINONA_1 ===
 Name: WINONA
@@ -4988,43 +5005,43 @@ Class: Leader
 Pic: Leader Winona
 Gender: Female
 Music: Female
-Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Basic Trainer / Risky
 
-Swablu
-Level: 29
+Ninjask @ Sitrus Berry
+Level: 31
 IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-- Perish Song
-- Mirror Move
-- Safeguard
+- Swords Dance
+- Leech Life
+- Baton Pass
 - Aerial Ace
 
-Tropius
-Level: 29
+Swellow @ Flame Orb
+Level: 31
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Facade
+- Aerial Ace
+- Steel Wing
+- Roost
+
+Skarmory @ Sharp Beak
+Level: 32
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Whirlwind
+- Spikes
+- Steel Wing
+- Aerial Ace
+
+Tropius @ Miracle Seed
+Level: 32
 IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Sunny Day
 - Aerial Ace
 - Solar Beam
 - Synthesis
 
-Pelipper
-Level: 30
-IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-- Water Gun
-- Supersonic
-- Protect
-- Aerial Ace
 
-Skarmory
-Level: 31
-IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
-- Sand Attack
-- Fury Attack
-- Steel Wing
-- Aerial Ace
-
-Altaria @ Oran Berry
+Altaria @ Altarianite
 Level: 33
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Earthquake
@@ -5038,20 +5055,19 @@ Class: Leader
 Pic: Leader Tate And Liza
 Gender: Male
 Music: Female
-Items: Hyper Potion / Hyper Potion / Hyper Potion / Hyper Potion
 Double Battle: Yes
 AI: Basic Trainer
 
-Claydol
-Level: 41
+Claydol @ Psychic Gem
+Level: 40
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Earthquake
 - Ancient Power
 - Psychic
 - Light Screen
 
-Xatu
-Level: 41
+Chimecho @ Salac Berry
+Level: 40
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Psychic
 - Sunny Day
@@ -5059,7 +5075,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Calm Mind
 
 Lunatone @ Sitrus Berry
-Level: 42
+Level: 41
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Light Screen
 - Psychic
@@ -5067,12 +5083,30 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Calm Mind
 
 Solrock @ Sitrus Berry
-Level: 42
+Level: 41
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Sunny Day
 - Solar Beam
 - Psychic
 - Flamethrower
+
+Grumpig @ Leftovers
+Level: 42
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Nature: Bold
+- Rest
+- Calm Mind
+- Psychic
+- Charge Beam
+
+Gardevoir @ Gardevoirite
+Level: 42
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Nature: Modest
+- Calm Mind
+- Psychic
+- Moonblast
+- Shadow Ball
 
 === TRAINER_JUAN_1 ===
 Name: JUAN
@@ -5080,49 +5114,56 @@ Class: Leader
 Pic: Leader Juan
 Gender: Male
 Music: Male
-Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Basic Trainer
 
-Luvdisc
-Level: 41
+Pelipper @ Damp Rock
+Level: 44
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Water Pulse
-- Attract
-- Sweet Kiss
-- Flail
+- Hurricane
+- Surf
+- Roost
+- U-Turn
 
-Whiscash
-Level: 41
+Crawdaunt @ Mystic Water
+Level: 44
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Swords Dance
+- Crabhammer
+- Knock Off
+- Brick Break
+
+Whiscash @ Leftovers
+Level: 45
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Rain Dance
-- Water Pulse
+- Muddy Water
 - Amnesia
 - Earthquake
 
-Sealeo
-Level: 43
+Ludicolo @ Water Gem
+Level: 45
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Encore
-- Body Slam
-- Aurora Beam
-- Water Pulse
+- Giga Drain
+- Rain Dance
+- Ice Beam
+- Hydro Pump
 
-Crawdaunt
-Level: 43
+Milotic @ Petaya Berry
+Level: 45
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Water Pulse
-- Crabhammer
-- Taunt
-- Leer
+- Recover
+- Dragon Tail
+- Ice Beam
+- Hydro Pump
 
-Kingdra @ Chesto Berry
+Gyarados @ Gyaradosite
 Level: 46
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Water Pulse
-- Double Team
-- Ice Beam
-- Rest
+- Waterfall
+- Dragon Dance
+- Earthquake
+- Crunch
 
 === TRAINER_JERRY_1 ===
 Name: JERRY

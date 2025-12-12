@@ -63,6 +63,7 @@
 #include "constants/heal_locations.h"
 #include "constants/mystery_gift.h"
 #include "constants/slot_machine.h"
+#include "constants/species.h"
 #include "constants/songs.h"
 #include "constants/moves.h"
 #include "constants/party_menu.h"
@@ -70,6 +71,7 @@
 #include "constants/weather.h"
 #include "constants/metatile_labels.h"
 #include "constants/rgb.h"
+#include "constants/vars.h"
 #include "palette.h"
 #include "battle_util.h"
 #include "naming_screen.h"
@@ -4368,4 +4370,34 @@ void SetHiddenNature(void)
     u32 hiddenNature = gSpecialVar_Result;
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HIDDEN_NATURE, &hiddenNature);
     CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
+}
+
+void Special_PickOldaleRandomStarter(void)
+{
+    static const u16 sOldaleStarters[] =
+    {
+        // Gen 1
+        SPECIES_BULBASAUR, SPECIES_CHARMANDER, SPECIES_SQUIRTLE,
+
+        // Gen 4
+        SPECIES_TURTWIG, SPECIES_CHIMCHAR, SPECIES_PIPLUP,
+
+        // Gen 5
+        SPECIES_SNIVY, SPECIES_TEPIG, SPECIES_OSHAWOTT,
+
+        // Gen 6
+        SPECIES_CHESPIN, SPECIES_FENNEKIN, SPECIES_FROAKIE,
+
+        // Gen 7
+        SPECIES_ROWLET, SPECIES_LITTEN, SPECIES_POPPLIO,
+
+        // Gen 8
+        SPECIES_GROOKEY, SPECIES_SCORBUNNY, SPECIES_SOBBLE,
+
+        // Gen 9
+        SPECIES_SPRIGATITO, SPECIES_FUECOCO, SPECIES_QUAXLY,
+    };
+
+    u16 idx = Random() % (u16)ARRAY_COUNT(sOldaleStarters);
+    VarSet(VAR_OLDALE_STARTER_SPECIES, sOldaleStarters[idx]);
 }
