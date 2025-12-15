@@ -4794,32 +4794,31 @@ Class: Leader
 Pic: Leader Roxanne
 Gender: Female
 Music: Female
-Items: Potion / Potion
 Double Battle: No
 AI: Basic Trainer
 
-Geodude
-Level: 12
+Anorith @ Oran Berry
+Level: 13
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Tackle
-- Defense Curl
-- Rock Throw
+- Stealth Rock
+- Fury Cutter
+- Harden
 - Rock Tomb
 
-Geodude
-Level: 12
+Lileep @ Oran Berry
+Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Tackle
-- Defense Curl
-- Rock Throw
+- Bullet Seed
+- Ingrain
+- Sandstorm
 - Rock Tomb
 
 Nosepass @ Oran Berry
 Level: 15
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Block
-- Harden
-- Tackle
+- Thunder Wave
+- Rock Smash
 - Rock Tomb
 
 === TRAINER_BRAWLY_1 ===
@@ -4887,8 +4886,9 @@ Nature: Modest
 - Charm
 - Volt Switch
 
-Magneton @ Magnet
+Magneton @ Air Balloon
 Level: 23
+Ability: Sturdy
 IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 - Volt Switch
 - Shock Wave
@@ -4897,7 +4897,7 @@ IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 
 Manectric @ Sitrus Berry
 Level: 24
-Ability: Static
+Ability: Minus
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Quick Attack
 - Thunder Wave
@@ -4939,6 +4939,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
 Torkoal @ White Herb
 Level: 29
+Ability: White Smoke
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Overheat
 - Sunny Day
@@ -9674,17 +9675,42 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Lombre
-Level: 18
+Loudred @ Oran Berry
+Level: 22
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-Slugma
-Level: 18
+Swellow @ Oran Berry
+Level: 22
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-Marshtomp
-Level: 20
+Beautifly @ Oran Berry
+Level: 22
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Mega Drain
+- Air Cutter
+- Bug Bite
+- Stun Spore
+
+Shiftry @ Oran Berry
+Level: 22
+Ability: Wind Rider
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Razor Leaf
+- Air Cutter
+- Payback
+- Growth
+
+Mawile @ Oran Berry
+Level: 22
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+Marshtomp @ Oran Berry
+Level: 22
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Mud Shot
+- Water Pulse
+- Rock Tomb
+- Rock Smash
 
 === TRAINER_BRENDAN_ROUTE_119_TORCHIC ===
 Name: BRENDAN
@@ -11016,12 +11042,28 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Slugma
-Level: 13
+Zigzagoon @ Oran Berry
+Level: 15 
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
-Mudkip
+Beautifly @ Oran Berry
+Level: 15 
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Whismur @ Oran Berry
+Level: 15 
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Taillow @ Oran Berry
 Level: 15
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Nuzleaf @ Oran Berry
+Level: 15 
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Mudkip @ Oran Berry
+Level: 15 
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_MAY_RUSTBORO_MUDKIP ===
@@ -11033,8 +11075,24 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
 
-Wingull
-Level: 13
+Zigzagoon @ Oran Berry
+Level: 15 
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Beautifly @ Oran Berry
+Level: 15 
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Whismur @ Oran Berry
+Level: 15 
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Taillow @ Oran Berry
+Level: 15
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Marill @ Oran Berry
+Level: 15
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 Treecko
@@ -12082,9 +12140,37 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Ralts
-Level: 16
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Kirlia @ Oran Berry
+Level: 20
+IVs: 15 HP / 3 Atk / 15 Def / 20 SpA / 20 SpD / 3 Spe
+- Psybeam
+- Draining Kiss
+- Hypnosis
+- Double Team
+
+Delcatty @ Oran Berry
+Level: 20
+IVs: 28 HP / 30 Atk / 28 Def / 3 SpA / 18 SpD / 25 Spe
+- Sing
+- Fury Swipes
+- Disarming Voice
+- Fake Out
+
+Budew @ Oran Berry
+Level: 20
+IVs: 30 HP / 3 Atk / 25 Def / 31 SpA / 22 SpD / 31 Spe
+- Absorb
+- Growth
+- Stun Spore
+- Charm
+
+Azurill @ Oran Berry
+Level: 20
+IVs: 31 HP / 20 Atk / 22 Def / 20 SpA / 24 SpD / 22 Spe
+- Bubblebeam
+- Charm
+- Slam
+- Bounce
 
 === TRAINER_WALLY_VR_2 ===
 Name: WALLY
@@ -14592,7 +14678,6 @@ Class: Leader
 Pic: Leader Wattson
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
 AI: Basic Trainer
 

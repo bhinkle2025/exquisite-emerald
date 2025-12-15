@@ -4401,3 +4401,39 @@ void Special_PickOldaleRandomStarter(void)
     u16 idx = Random() % (u16)ARRAY_COUNT(sOldaleStarters);
     VarSet(VAR_OLDALE_STARTER_SPECIES, sOldaleStarters[idx]);
 }
+
+void Special_PickRandomBabyEggSpecies(void)
+{ 
+    static const u16 sBabyEggSpecies[] =
+    {
+        // Gen 2 babies
+        SPECIES_PICHU,
+        SPECIES_CLEFFA,
+        SPECIES_IGGLYBUFF,
+        SPECIES_TOGEPI,
+        SPECIES_TYROGUE,
+        SPECIES_SMOOCHUM,
+        SPECIES_ELEKID,
+        SPECIES_MAGBY,
+
+        // Gen 3 babies
+        SPECIES_AZURILL,
+        SPECIES_WYNAUT,
+
+        // Gen 4 babies
+        SPECIES_BUDEW,
+        SPECIES_CHINGLING,
+        SPECIES_BONSLY,
+        SPECIES_MIME_JR,
+        SPECIES_HAPPINY,
+        SPECIES_MUNCHLAX,
+        SPECIES_RIOLU,
+        SPECIES_MANTYKE,
+
+        // Gen 8 babies
+        SPECIES_TOXEL,
+    };
+
+    u16 r = Random() % ARRAY_COUNT(sBabyEggSpecies);
+    VarSet(VAR_DAYCARE_EGG_SPECIES, sBabyEggSpecies[r]);
+}

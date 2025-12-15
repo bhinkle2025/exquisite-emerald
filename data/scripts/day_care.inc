@@ -1,6 +1,15 @@
 Route117_EventScript_DaycareMan::
 	lock
 	faceplayer
+
+	@ --- One-time custom gift: random baby egg ---
+	checkflag FLAG_GOT_DAYCARE_BABY_EGG
+	goto_if TRUE, Route117_EventScript_DaycareMan_Vanilla
+
+	goto Route117_EventScript_DaycareMan_GiveRandomBabyEgg
+
+Route117_EventScript_DaycareMan_Vanilla:
+	@ --- Vanilla Emerald behavior below ---
 	special GetDaycareMonNicknames
 	specialvar VAR_RESULT, GetDaycareState
 	goto_if_eq VAR_RESULT, DAYCARE_EGG_WAITING, Route117_EventScript_DaycareEggWaiting
@@ -9,6 +18,45 @@ Route117_EventScript_DaycareMan::
 	msgbox Route117_Text_SeeWifeIfYoudLikeMeToRaiseMon, MSGBOX_DEFAULT
 	release
 	end
+
+Route117_EventScript_DaycareMan_GiveRandomBabyEgg:
+	@ Keep it feeling like vanilla: ask first (optional).
+	msgbox Route117_Text_DaycareMan_OneTimeEggOffer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route117_EventScript_DaycareMan_OneTimeEggDecline
+
+	@ Pick baby species into VAR_DAYCARE_EGG_SPECIES
+	special Special_PickRandomBabyEggSpecies
+
+	@ Try to give egg (party or PC)
+	giveegg VAR_DAYCARE_EGG_SPECIES
+	goto_if_eq VAR_RESULT, MON_CANT_GIVE, Route117_EventScript_DaycareMan_OneTimeNoRoom
+
+	@ Vanilla-style egg receive message + fanfare
+	msgbox Route117_Text_DaycareMan_OneTimeEggReceived, MSGBOX_DEFAULT
+
+	@ If it went to PC, show the standard transfer message
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, Route117_EventScript_DaycareMan_OneTimeToPC
+
+Route117_EventScript_DaycareMan_OneTimeAfter:
+	setflag FLAG_GOT_DAYCARE_BABY_EGG
+	msgbox Route117_Text_DaycareMan_OneTimeAfter, MSGBOX_DEFAULT
+	release
+	end
+
+Route117_EventScript_DaycareMan_OneTimeToPC:
+	call Common_EventScript_TransferredToPC
+	goto Route117_EventScript_DaycareMan_OneTimeAfter
+
+Route117_EventScript_DaycareMan_OneTimeNoRoom:
+	msgbox Route117_Text_YouHaveNoRoomForIt, MSGBOX_DEFAULT
+	release
+	end
+
+Route117_EventScript_DaycareMan_OneTimeEggDecline:
+	msgbox Route117_Text_DaycareMan_OneTimeEggKeep, MSGBOX_DEFAULT
+	release
+	end
+
 
 Route117_EventScript_DaycareEggWaiting::
 	msgbox Route117_Text_DoYouWantEgg, MSGBOX_YESNO
@@ -413,3 +461,21 @@ Route117_PokemonDayCare_Text_YoullBeLeftWithJustOne:
 	.string "me, you'll be left with just one.\p"
 	.string "You will be better off if you catch\n"
 	.string "some more, I dare say.$"
+
+Route117_Text_DaycareMan_OneTimeEggOffer:
+	.string "Ah, it's you!\p"
+	.string "Before we get to business...\n"
+	.string "Would you like a special EGG?$"
+
+Route117_Text_DaycareMan_OneTimeEggReceived:
+	.string "{PLAYER} received an EGG from\n"
+	.string "the DAY-CARE MAN!$"
+
+Route117_Text_DaycareMan_OneTimeAfter:
+	.string "Take good care of it.\p"
+	.string "Now then...\n"
+	.string "How may we help you today?$"
+
+Route117_Text_DaycareMan_OneTimeEggKeep:
+	.string "Very well.\n"
+	.string "Come see me if you change your mind.$"

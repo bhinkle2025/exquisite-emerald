@@ -565,3 +565,4 @@ gSpecials::
 	def_special GetCodeFeedback
 	def_special SetHiddenNature
 	def_special Special_PickOldaleRandomStarter
+	def_special Special_PickRandomBabyEggSpecies

@@ -80,6 +80,16 @@ static void SetDistanceOfClosestHiddenItem(u8, s16, s16);
 static void CB2_OpenPokeblockFromBag(void);
 static void ItemUseOnFieldCB_Honey(u8 taskId);
 static bool32 IsValidLocationForVsSeeker(void);
+static u8 sRepelToggleMsg;           // REPEL_MSG_ON / REPEL_MSG_OFF
+static bool8 sRepelMsgInPyramid;     // which close function to use
+
+#define REPEL_MSG_ON  0
+#define REPEL_MSG_OFF 1
+
+static void Task_RepelWaitForDismiss(u8 taskId);
+
+
+
 
 static const u8 sText_CantDismountBike[] = _("You can't dismount your BIKE here.{PAUSE_UNTIL_PRESS}");
 static const u8 sText_ItemFinderNearby[] = _("Huh?\nThe ITEMFINDER's responding!\pThere's an item buried around here!{PAUSE_UNTIL_PRESS}");
@@ -95,6 +105,9 @@ static const u8 sText_UsedVar2WildRepelled[] = _("{PLAYER} used the\n{STR_VAR_2}
 static const u8 sText_PlayedPokeFluteCatchy[] = _("Played the POKé FLUTE.\pNow, that's a catchy tune!{PAUSE_UNTIL_PRESS}");
 static const u8 sText_PlayedPokeFlute[] = _("Played the POKé FLUTE.");
 static const u8 sText_PokeFluteAwakenedMon[] = _("The POKé FLUTE awakened sleeping\nPOKéMON.{PAUSE_UNTIL_PRESS}");
+static const u8 sText_RepelActivated[] = _("REPEL activated.");
+static const u8 sText_RepelDeactivated[] = _("REPEL deactivated.");
+
 
 // EWRAM variables
 EWRAM_DATA static TaskFunc sItemUseOnFieldCB = NULL;
@@ -955,15 +968,61 @@ static void RemoveUsedItem(void)
     }
 }
 
+
+static void Task_RepelWaitForDismiss(u8 taskId)
+{
+    // Step 0: wait for release (prevents carry-over “instant close”)
+    if (gTasks[taskId].data[15] == 0)
+    {
+        if (gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+            return;
+
+        gTasks[taskId].data[15] = 1;
+        return;
+    }
+
+    // Step 1: require a fresh A press to dismiss
+    if (gMain.newKeys & A_BUTTON)
+    {
+        gTasks[taskId].data[15] = 0; // clean up our one slot
+
+        if (!sRepelMsgInPyramid)
+            CloseItemMessage(taskId);
+        else
+            Task_CloseBattlePyramidBagMessage(taskId);
+    }
+}
+
+
 void ItemUseOutOfBattle_Repel(u8 taskId)
 {
-    if (REPEL_STEP_COUNT == 0)
-        gTasks[taskId].func = Task_StartUseRepel;
-    else if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE)
-        DisplayItemMessage(taskId, FONT_NORMAL, gText_RepelEffectsLingered, CloseItemMessage);
+    if (FlagGet(FLAG_INFINITE_REPEL))
+    {
+        FlagClear(FLAG_INFINITE_REPEL);
+        VarSet(VAR_REPEL_STEP_COUNT, 0);
+
+        PlaySE(SE_PC_OFF); // OFF click sound
+
+        sRepelToggleMsg = REPEL_MSG_OFF;
+        sRepelMsgInPyramid = (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE);
+
+        const u8* msg = sText_RepelDeactivated;
+        gTasks[taskId].data[15] = 0;
+
+        if (!sRepelMsgInPyramid)
+            DisplayItemMessage(taskId, FONT_NORMAL, msg, Task_RepelWaitForDismiss);
+        else
+            DisplayItemMessageInBattlePyramid(taskId, msg, Task_RepelWaitForDismiss);
+    }
     else
-        DisplayItemMessageInBattlePyramid(taskId, gText_RepelEffectsLingered, Task_CloseBattlePyramidBagMessage);
+    {
+        FlagSet(FLAG_INFINITE_REPEL);
+        gTasks[taskId].func = Task_StartUseRepel;
+    }
 }
+
+
+
 
 static void Task_StartUseRepel(u8 taskId)
 {
@@ -981,17 +1040,34 @@ static void Task_UseRepel(u8 taskId)
 {
     if (!IsSEPlaying())
     {
-        VarSet(VAR_REPEL_STEP_COUNT, GetItemHoldEffectParam(gSpecialVar_ItemId));
-    #if VAR_LAST_REPEL_LURE_USED != 0
+        // Infinite repel: large step count
+        VarSet(VAR_REPEL_STEP_COUNT, 0x7FFF);
+
+#if VAR_LAST_REPEL_LURE_USED != 0
         VarSet(VAR_LAST_REPEL_LURE_USED, gSpecialVar_ItemId);
-    #endif
-        RemoveUsedItem();
-        if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE)
-            DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, CloseItemMessage);
+#endif
+
+        // Don't consume the item
+        // RemoveUsedItem();
+
+        // Emerald-style ON click
+        PlaySE(SE_PC_ON);
+
+        // Show "activated" and require a fresh A-press to dismiss (Exp. Share feel)
+        sRepelToggleMsg = REPEL_MSG_ON;
+        sRepelMsgInPyramid = (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE);
+
+        gTasks[taskId].data[15] = 0; // our private state: 0=wait release, 1=wait A press
+
+        if (!sRepelMsgInPyramid)
+            DisplayItemMessage(taskId, FONT_NORMAL, sText_RepelActivated, Task_RepelWaitForDismiss);
         else
-            DisplayItemMessageInBattlePyramid(taskId, gStringVar4, Task_CloseBattlePyramidBagMessage);
+            DisplayItemMessageInBattlePyramid(taskId, sText_RepelActivated, Task_RepelWaitForDismiss);
     }
 }
+
+
+
 void HandleUseExpiredRepel(struct ScriptContext *ctx)
 {
 #if VAR_LAST_REPEL_LURE_USED != 0
