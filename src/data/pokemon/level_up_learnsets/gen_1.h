@@ -643,10 +643,12 @@ static const struct LevelUpMove sWigglytuffLevelUpLearnset[] = {
 #if P_FAMILY_ZUBAT
 static const struct LevelUpMove sZubatLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_LEECH_LIFE),
+    LEVEL_UP_MOVE(1, MOVE_GUST),
+    LEVEL_UP_MOVE(1, MOVE_ABSORB),
     LEVEL_UP_MOVE(10, MOVE_SUPERSONIC),
     LEVEL_UP_MOVE(15, MOVE_BITE),
     LEVEL_UP_MOVE(21, MOVE_CONFUSE_RAY),
-    LEVEL_UP_MOVE(28, MOVE_WING_ATTACK),
+    LEVEL_UP_MOVE(21, MOVE_WING_ATTACK),
     LEVEL_UP_MOVE(36, MOVE_HAZE),
     LEVEL_UP_END
 };

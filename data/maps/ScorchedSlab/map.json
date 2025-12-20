@@ -30,11 +30,13 @@
   ],
   "warp_events": [
     {
+      "warp_id": "ROUTE112",
       "x": 7,
       "y": 16,
       "elevation": 1,
-      "dest_map": "MAP_ROUTE120",
-      "dest_warp_id": "1"
+      "dest_map": "MAP_ROUTE112",
+      "dest_warp_id": "1",
+      "ScorchedSlabB1F": ""
     }
   ],
   "coord_events": [],

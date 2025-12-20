@@ -8,6 +8,7 @@
 
 enum WildPokemonArea {
     WILD_AREA_LAND,
+    WILD_AREA_SAND,
     WILD_AREA_WATER,
     WILD_AREA_ROCKS,
     WILD_AREA_FISHING,
@@ -30,6 +31,7 @@ struct WildPokemonInfo
 struct WildEncounterTypes
 {
     const struct WildPokemonInfo *landMonsInfo;
+    const struct WildPokemonInfo *sandMonsInfo;
     const struct WildPokemonInfo *waterMonsInfo;
     const struct WildPokemonInfo *rockSmashMonsInfo;
     const struct WildPokemonInfo *fishingMonsInfo;
@@ -64,6 +66,7 @@ u32 CalculateChainFishingShinyRolls(void);
 void CreateWildMon(u16 species, u8 level);
 u16 GetCurrentMapWildMonHeaderId(void);
 u32 ChooseWildMonIndex_Land(void);
+u32 ChooseWildMonIndex_Sand(void);
 u32 ChooseWildMonIndex_Water(void);
 u32 ChooseWildMonIndex_Rocks(void);
 u32 ChooseHiddenMonIndex(void);

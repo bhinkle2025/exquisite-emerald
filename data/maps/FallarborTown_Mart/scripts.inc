@@ -17,14 +17,14 @@ FallarborTown_Mart_Pokemart:
 	.2byte ITEM_SUPER_POTION
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_SUPER_REPEL
 	.2byte ITEM_FIRE_STONE
 	.2byte ITEM_MAGMARIZER
 	.2byte ITEM_FLAME_ORB
 	.2byte ITEM_TOXIC_ORB
 	.2byte ITEM_HEAT_ROCK
-	.2byte ITEM_FIRE_GEM
-	.2byte ITEM_POISON_GEM
+	.2byte ITEM_EXP_CANDY_M
+	.2byte ITEM_EXP_CANDY_L
+	.2byte ITEM_EXP_CANDY_XL
 	pokemartlistend
 
 FallarborTown_Mart_EventScript_Woman::
