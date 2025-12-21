@@ -566,3 +566,4 @@ gSpecials::
 	def_special SetHiddenNature
 	def_special Special_PickOldaleRandomStarter
 	def_special Special_PickRandomBabyEggSpecies
+	def_special PerfectSelectedMonIV

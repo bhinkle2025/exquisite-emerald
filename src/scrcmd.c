@@ -3255,3 +3255,53 @@ void Script_EndTrainerCanSeeIf(struct ScriptContext *ctx)
     if (ctx->breakOnTrainerBattle && sScriptConditionTable[condition][ctx->comparisonResult] == 1)
         StopScript(ctx);
 }
+
+static u8 GetIvShiftByChoice(u8 choice)
+{
+    // Your menu order: HP, Atk, Def, SpAtk, SpDef, Speed
+    // Gen 3 packed IV order in MON_DATA_IVS:
+    // HP(0), Atk(5), Def(10), Spe(15), SpA(20), SpD(25)
+    switch (choice)
+    {
+    case 0: return 0;   // HP
+    case 1: return 5;   // Attack
+    case 2: return 10;  // Defense
+    case 3: return 20;  // Sp. Atk
+    case 4: return 25;  // Sp. Def
+    case 5: return 15;  // Speed
+    default: return 0xFF;
+    }
+}
+
+// Return value:
+// 1 = IV was changed to 31
+// 0 = already 31 OR invalid selection
+u16 PerfectSelectedMonIV(void)
+{
+    u8 choice = gSpecialVar_Result;        // stat choice (0-5)
+    u8 partySlot = gSpecialVar_0x8004;     // selected mon slot
+    u8 shift = GetIvShiftByChoice(choice);
+    struct Pokemon* mon;
+    u32 ivs, curIv, mask;
+
+    if (shift == 0xFF || partySlot >= PARTY_SIZE)
+        return 0;
+
+    mon = &gPlayerParty[partySlot];
+
+    if (GetMonData(mon, MON_DATA_SANITY_IS_EGG))
+        return 0;
+
+    ivs = GetMonData(mon, MON_DATA_IVS);
+    mask = (0x1Fu << shift);
+    curIv = (ivs & mask) >> shift;
+
+    if (curIv == 31)
+        return 0; // already perfect, don't change anything
+
+    ivs = (ivs & ~mask) | (31u << shift);
+    SetMonData(mon, MON_DATA_IVS, &ivs);
+    CalculateMonStats(mon);
+
+    return 1;
+}

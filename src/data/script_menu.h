@@ -789,6 +789,25 @@ struct MultichoiceListStruct
     u8 count;
 };
 
+static const u8 sText_IvHP[] = _("HP");
+static const u8 sText_IvAtk[] = _("ATTACK");
+static const u8 sText_IvDef[] = _("DEFENSE");
+static const u8 sText_IvSpAtk[] = _("SP. ATK");
+static const u8 sText_IvSpDef[] = _("SP. DEF");
+static const u8 sText_IvSpeed[] = _("SPEED");
+
+static const struct MenuAction sMultichoiceText_IvStat[] =
+{
+    { sText_IvHP },
+    { sText_IvAtk },
+    { sText_IvDef },
+    { sText_IvSpAtk },
+    { sText_IvSpDef },
+    { sText_IvSpeed },
+};
+
+
+
 static const struct MultichoiceListStruct sMultichoiceLists[] =
 {
     [MULTI_BRINEY_ON_DEWFORD]          = MULTICHOICE(MultichoiceList_BrineyOnDewford),
@@ -906,6 +925,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FALLARBOR_TENT_RULES]       = MULTICHOICE(MultichoiceList_FallarborTentRules),
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
+    [MULTI_IV_STAT]                    = MULTICHOICE(sMultichoiceText_IvStat),
+
 };
 
 const u8 *const gStdStrings[] =
