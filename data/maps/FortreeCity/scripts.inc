@@ -40,10 +40,6 @@ FortreeCity_EventScript_Boy::
 	msgbox FortreeCity_Text_BugPokemonComeThroughWindow, MSGBOX_NPC
 	end
 
-FortreeCity_EventScript_GameboyKid::
-	msgbox FortreeCity_Text_PokemonThatEvolveWhenTraded, MSGBOX_NPC
-	end
-
 FortreeCity_EventScript_CitySign::
 	msgbox FortreeCity_Text_CitySign, MSGBOX_SIGN
 	end
@@ -125,10 +121,6 @@ FortreeCity_Text_BugPokemonComeThroughWindow:
 	.string "But sometimes BUG POKéMON come in\n"
 	.string "through windows.\l"
 	.string "It can be really startling.$"
-
-FortreeCity_Text_PokemonThatEvolveWhenTraded:
-	.string "There are POKéMON that evolve when\n"
-	.string "you trade them! That's what I heard.$"
 
 FortreeCity_Text_SomethingUnseeable:
 	.string "Something unseeable is in the way.$"
