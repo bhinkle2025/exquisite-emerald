@@ -13,6 +13,7 @@ Route114_FossilManiacsTunnel_EventScript_MoveFossilManiac::
 	return
 
 Route114_FossilManiacsTunnel_OnLoad:
+	clearflag FLAG_FOSSIL_MANIAC_OFFERED_SALE
 	call_if_unset FLAG_SYS_GAME_CLEAR, Route114_FossilManiacsTunnel_EventScript_CloseDesertUnderpass
 	end
 
@@ -32,21 +33,142 @@ Route114_FossilManiacsTunnel_EventScript_ManiacMentionCaveIn::
 	end
 
 Route114_FossilManiacsTunnel_EventScript_FossilManiac::
-	lock
-	faceplayer
+    lock
+    faceplayer
+
+    // If sale already offered this visit, just do vanilla behavior
+    goto_if_set FLAG_FOSSIL_MANIAC_OFFERED_SALE, Route114_FossilManiacsTunnel_EventScript_FossilManiac_NormalOnly
+
+    // --- VANILLA BEHAVIOR, but instead of ending, we fall through to OfferSale ---
+    goto_if_set FLAG_RECEIVED_REVIVED_FOSSIL_MON, Route114_FossilManiacsTunnel_EventScript_PlayerRevivedFossil
+
+    checkitem ITEM_ROOT_FOSSIL
+    goto_if_eq VAR_RESULT, TRUE, Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil_ThenOffer
+    checkitem ITEM_CLAW_FOSSIL
+    goto_if_eq VAR_RESULT, TRUE, Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil_ThenOffer
+
+    msgbox Route114_FossilManiacsTunnel_Text_LookInDesertForFossils, MSGBOX_DEFAULT
+    goto Route114_FossilManiacsTunnel_EventScript_FossilManiac_OfferSaleAfter
+
+Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil_ThenOffer:
+    msgbox Route114_FossilManiacsTunnel_Text_DevonCorpRevivingFossils, MSGBOX_DEFAULT
+    goto Route114_FossilManiacsTunnel_EventScript_FossilManiac_OfferSaleAfter
+
+
+Route114_FossilManiacsTunnel_EventScript_FossilManiac_NormalOnly:
+	// This is literally your original logic, but without the sales continuation.
 	goto_if_set FLAG_RECEIVED_REVIVED_FOSSIL_MON, Route114_FossilManiacsTunnel_EventScript_PlayerRevivedFossil
+
 	checkitem ITEM_ROOT_FOSSIL
-	goto_if_eq VAR_RESULT, TRUE, Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil
+	goto_if_eq VAR_RESULT, TRUE, Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil_Normal
 	checkitem ITEM_CLAW_FOSSIL
-	goto_if_eq VAR_RESULT, TRUE, Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil
+	goto_if_eq VAR_RESULT, TRUE, Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil_Normal
+
 	msgbox Route114_FossilManiacsTunnel_Text_LookInDesertForFossils, MSGBOX_DEFAULT
 	release
 	end
 
-Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil::
+Route114_FossilManiacsTunnel_EventScript_FossilManiac_OfferSaleAfter:
+	// Mark that we've offered this visit (resets on re-enter)
+	setflag FLAG_FOSSIL_MANIAC_OFFERED_SALE
+
+	// Continuation: feels bad, offers sale
+	msgbox Route114_FossilManiacsTunnel_Text_FossilManiac_FeelsBadOffer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route114_FossilManiacsTunnel_EventScript_FossilManiac_Decline
+
+	checkmoney 2000
+	goto_if_eq VAR_RESULT, FALSE, Route114_FossilManiacsTunnel_EventScript_FossilManiac_NoMoney
+
+	removemoney 2000
+	playse SE_SHOP
+	waitse
+
+	call Route114_FossilManiacsTunnel_EventScript_GiveRandomImportedFossil
+	goto_if_eq VAR_RESULT, FALSE, Route114_FossilManiacsTunnel_EventScript_FossilManiac_BagFullRefund
+
+	msgbox Route114_FossilManiacsTunnel_Text_FossilManiac_Thanks, MSGBOX_DEFAULT
+	release
+	end
+
+Route114_FossilManiacsTunnel_EventScript_FossilManiac_Decline:
+	msgbox Route114_FossilManiacsTunnel_Text_FossilManiac_Decline, MSGBOX_DEFAULT
+	release
+	end
+
+Route114_FossilManiacsTunnel_EventScript_FossilManiac_NoMoney:
+	msgbox Route114_FossilManiacsTunnel_Text_FossilManiac_NoMoney, MSGBOX_DEFAULT
+	release
+	end
+
+Route114_FossilManiacsTunnel_EventScript_FossilManiac_BagFullRefund:
+	addmoney 2000
+	msgbox Route114_FossilManiacsTunnel_Text_FossilManiac_BagFull, MSGBOX_DEFAULT
+	release
+	end
+
+
+Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil_Normal::
 	msgbox Route114_FossilManiacsTunnel_Text_DevonCorpRevivingFossils, MSGBOX_DEFAULT
 	release
 	end
+
+
+Route114_FossilManiacsTunnel_EventScript_GiveRandomImportedFossil:
+	random 9
+	goto_if_eq VAR_RESULT, 0, Route114_FossilManiacsTunnel_EventScript_GiveHelix
+	goto_if_eq VAR_RESULT, 1, Route114_FossilManiacsTunnel_EventScript_GiveDome
+	goto_if_eq VAR_RESULT, 2, Route114_FossilManiacsTunnel_EventScript_GiveOldAmber
+	goto_if_eq VAR_RESULT, 3, Route114_FossilManiacsTunnel_EventScript_GiveSkull
+	goto_if_eq VAR_RESULT, 4, Route114_FossilManiacsTunnel_EventScript_GiveArmor
+	goto_if_eq VAR_RESULT, 5, Route114_FossilManiacsTunnel_EventScript_GiveCover
+	goto_if_eq VAR_RESULT, 6, Route114_FossilManiacsTunnel_EventScript_GivePlume
+	goto_if_eq VAR_RESULT, 7, Route114_FossilManiacsTunnel_EventScript_GiveJaw
+	goto Route114_FossilManiacsTunnel_EventScript_GiveSail
+
+Route114_FossilManiacsTunnel_EventScript_GiveHelix:
+	giveitem ITEM_HELIX_FOSSIL, 1
+	waitmessage
+	return
+
+Route114_FossilManiacsTunnel_EventScript_GiveDome:
+	giveitem ITEM_DOME_FOSSIL, 1
+	waitmessage
+	return
+
+Route114_FossilManiacsTunnel_EventScript_GiveOldAmber:
+	giveitem ITEM_OLD_AMBER, 1
+	waitmessage
+	return
+
+Route114_FossilManiacsTunnel_EventScript_GiveSkull:
+	giveitem ITEM_SKULL_FOSSIL, 1
+	waitmessage
+	return
+
+Route114_FossilManiacsTunnel_EventScript_GiveArmor:
+	giveitem ITEM_ARMOR_FOSSIL, 1
+	waitmessage
+	return
+
+Route114_FossilManiacsTunnel_EventScript_GiveCover:
+	giveitem ITEM_COVER_FOSSIL, 1
+	waitmessage
+	return
+
+Route114_FossilManiacsTunnel_EventScript_GivePlume:
+	giveitem ITEM_PLUME_FOSSIL, 1
+	waitmessage
+	return
+
+Route114_FossilManiacsTunnel_EventScript_GiveJaw:
+	giveitem ITEM_JAW_FOSSIL, 1
+	waitmessage
+	return
+
+Route114_FossilManiacsTunnel_EventScript_GiveSail:
+	giveitem ITEM_SAIL_FOSSIL, 1
+	waitmessage
+	return
 
 Route114_FossilManiacsTunnel_EventScript_PlayerRevivedFossil::
 	msgbox Route114_FossilManiacsTunnel_Text_FossilsAreWonderful, MSGBOX_DEFAULT
@@ -89,3 +211,28 @@ Route114_FossilManiacsTunnel_Text_NotSafeThatWay:
 	.string "But I've left it alone because I don't\n"
 	.string "think there are any FOSSILS there…$"
 
+Route114_FossilManiacsTunnel_Text_FossilManiac_FeelsBadOffer:
+	.string "…Wait.\n"
+	.string "That came out kinda harsh.\p"
+	.string "Look, I really do love FOSSILS…\p"
+	.string "If you want, I'll sell you a random\n"
+	.string "FOSSIL for ¥2000.\p"
+	.string "Want one?$"
+
+Route114_FossilManiacsTunnel_Text_FossilManiac_Thanks:
+	.string "Heh… Take good care of it.\n"
+	.string "FOSSILS are… so dreamy…$"
+
+Route114_FossilManiacsTunnel_Text_FossilManiac_Decline:
+	.string "Yeah… I get it.\n"
+	.string "Maybe another time…$"
+
+Route114_FossilManiacsTunnel_Text_FossilManiac_NoMoney:
+	.string "¥2000…\n"
+	.string "Sorry, you don't have enough…$"
+
+Route114_FossilManiacsTunnel_Text_FossilManiac_BagFull:
+	.string "Whoa!\n"
+	.string "Your BAG is full!\p"
+	.string "I refunded your money.\n"
+	.string "Make some room and come back.$"

@@ -48,7 +48,7 @@
 #define FLAG_GOT_DAYCARE_BABY_EGG     0x22 // Gift Egg
 #define FLAG_INFINITE_REPEL           0x23 // Infinite Repel
 #define FLAG_RECEIVED_LINKING_CABLE   0x24 // Linking Cable
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
+#define FLAG_FOSSIL_MANIAC_OFFERED_SALE   0x25 // Fossil Maniac
 #define FLAG_UNUSED_0x026    0x26 // Unused Flag
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag
