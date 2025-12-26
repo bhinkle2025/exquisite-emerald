@@ -10693,7 +10693,8 @@
       "MOVE_TEMPER_FLARE",
       "MOVE_WHIRLPOOL",
       "MOVE_MUDDY_WATER",
-      "MOVE_DRAGON_CHEER"
+      "MOVE_DRAGON_CHEER",
+      "MOVE_FLY"
     ],
     "EggMoves": [],
     "TutorMoves": []

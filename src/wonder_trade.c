@@ -1,0 +1,237 @@
+#include "global.h"
+#include "script.h"
+#include "pokemon.h"
+#include "random.h"
+#include "string_util.h"
+#include "constants/species.h"
+#include "event_data.h"
+
+extern u16 gSpecialVar_0x8004;
+extern u16 gSpecialVar_Result;
+
+#define WONDER_OT_ID 0x57544F4EU
+#define NAME_EOS 0xFF
+
+static const u8 sWonderOtName[] = _("WONDER");
+
+// 0 = success
+// 1 = generic fail
+// 2 = egg blocked
+
+static bool8 IsValidLZ77Data(const void* ptr)
+{
+    const u8* p = (const u8*)ptr;
+    return (p != NULL && p[0] == 0x10);
+}
+
+static bool8 HasValidSpeciesGfx(u16 species)
+{
+    // Front/back pics must exist and be LZ77
+    if (!IsValidLZ77Data(gSpeciesInfo[species].frontPic))
+        return FALSE;
+    if (!IsValidLZ77Data(gSpeciesInfo[species].backPic))
+        return FALSE;
+
+    // Required palettes must exist (not LZ, just non-null)
+    if (gSpeciesInfo[species].palette == NULL)
+        return FALSE;
+
+    // Female variants optional, but if present must be valid too
+    if (gSpeciesInfo[species].frontPicFemale != NULL
+        && !IsValidLZ77Data(gSpeciesInfo[species].frontPicFemale))
+        return FALSE;
+
+    if (gSpeciesInfo[species].backPicFemale != NULL
+        && !IsValidLZ77Data(gSpeciesInfo[species].backPicFemale))
+        return FALSE;
+
+    if (gSpeciesInfo[species].paletteFemale != NULL
+        && gSpeciesInfo[species].paletteFemale[0] == 0) // weak sanity check; optional
+        return FALSE;
+
+    // Icons aren’t LZ — just require a pointer
+    if (gSpeciesInfo[species].iconSprite == NULL)
+        return FALSE;
+
+    return TRUE;
+}
+
+
+
+static bool8 IsBannedWonderTradeSpecies(u16 species)
+{
+    switch (species)
+    {
+    case SPECIES_MEW:
+    case SPECIES_KYOGRE:
+    case SPECIES_GROUDON:
+    case SPECIES_RAYQUAZA:
+    case SPECIES_LATIAS:
+    case SPECIES_LATIOS:
+    case SPECIES_REGIROCK:
+    case SPECIES_REGICE:
+    case SPECIES_REGISTEEL:
+    case SPECIES_JIRACHI:
+    case SPECIES_DEOXYS:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
+static bool8 IsRecvMonBad(struct Pokemon* mon)
+{
+    u16 s = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
+
+    if (s == SPECIES_NONE || s == SPECIES_EGG)
+        return TRUE;
+
+#ifdef MON_DATA_SANITY_IS_EGG
+    if (GetMonData(mon, MON_DATA_SANITY_IS_EGG))
+        return TRUE;
+#endif
+
+#ifdef MON_DATA_SANITY_IS_BAD_EGG
+    if (GetMonData(mon, MON_DATA_SANITY_IS_BAD_EGG))
+        return TRUE;
+#endif
+
+    return FALSE;
+}
+
+
+static bool8 IsValidWonderTradeSpecies(u16 species)
+{
+    if (species == SPECIES_NONE || species == SPECIES_EGG)
+        return FALSE;
+
+#ifdef SPECIES_BAD_EGG
+    if (species == SPECIES_BAD_EGG)
+        return FALSE;
+#endif
+
+    if (IsBannedWonderTradeSpecies(species))
+        return FALSE;
+
+   // if (!IsSpeciesEnabled(species))
+   //     return FALSE;
+
+   //if (gSpeciesInfo[species].frontPicSize == 0)
+   //     return FALSE;
+
+    //if (!HasValidSpeciesGfx(species))
+    //    return FALSE;
+
+    // Extra safety: reject unimplemented species entries
+    if (gSpeciesInfo[species].baseHP == 0
+        && gSpeciesInfo[species].baseAttack == 0
+        && gSpeciesInfo[species].baseDefense == 0
+        && gSpeciesInfo[species].baseSpeed == 0
+        && gSpeciesInfo[species].baseSpAttack == 0
+        && gSpeciesInfo[species].baseSpDefense == 0)
+        return FALSE;
+
+    return TRUE;
+}
+
+// Rolls until it finds a species that is enabled + not banned + actually creates a non-egg/non-bad mon.
+static u16 GetRandomSafeWonderTradeSpecies(u8 level)
+{
+    u32 tries;
+    u16 species;
+    struct Pokemon testMon;
+
+    for (tries = 0; tries < 10000; tries++)
+    {
+        species = 1 + (Random() % (NUM_SPECIES - 1));
+
+        if (!IsValidWonderTradeSpecies(species))
+            continue;
+
+        CreateMon(&testMon, species, level, USE_RANDOM_IVS, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
+
+        if (IsRecvMonBad(&testMon))
+            continue;
+
+        return species;
+    }
+
+    return SPECIES_MAGIKARP;
+}
+
+void WonderTrade(void)
+{
+    u8 slot = (u8)gSpecialVar_0x8004;
+    u8 partyCount = CalculatePlayerPartyCount();
+    struct Pokemon* giveMon;
+    struct Pokemon recvMon;
+    u8 level;
+    u16 species;
+    u32 i;
+
+    if (partyCount == 0 || slot >= partyCount)
+    {
+        gSpecialVar_Result = 1;
+        return;
+    }
+
+    giveMon = &gPlayerParty[slot];
+
+    // Block trading eggs
+    if (GetMonData(giveMon, MON_DATA_SANITY_IS_EGG)
+        || GetMonData(giveMon, MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+    {
+        gSpecialVar_Result = 2;
+        return;
+    }
+
+    level = (u8)GetMonData(giveMon, MON_DATA_LEVEL);
+    if (level == 0)
+    {
+        gSpecialVar_Result = 1;
+        return;
+    }
+
+    // Create a safe received mon (reroll a few times as a final guard)
+    for (i = 0; i < 50; i++)
+    {
+        species = GetRandomSafeWonderTradeSpecies(level);
+        CreateMon(&recvMon, species, level, USE_RANDOM_IVS, FALSE, 0, OT_ID_PRESET, WONDER_OT_ID);
+
+
+
+
+        if (!IsRecvMonBad(&recvMon))
+            break;
+    }
+
+    if (IsRecvMonBad(&recvMon))
+    {
+        gSpecialVar_Result = 1;
+        return;
+    }
+
+    gPlayerParty[slot] = recvMon;
+
+    // OT name: "WONDER"
+    {
+        u32 otId = WONDER_OT_ID;
+        u8 otGender = MALE;
+        u16 metLoc = METLOC_WONDER_TRADE;
+        u8 metLevel = level;
+
+        SetMonData(&gPlayerParty[slot], MON_DATA_OT_ID, &otId);
+        SetMonData(&gPlayerParty[slot], MON_DATA_OT_NAME, sWonderOtName);
+        SetMonData(&gPlayerParty[slot], MON_DATA_OT_GENDER, &otGender);
+
+        SetMonData(&gPlayerParty[slot], MON_DATA_MET_LOCATION, &metLoc);
+        SetMonData(&gPlayerParty[slot], MON_DATA_MET_LEVEL, &metLevel);
+
+        CalculateMonStats(&gPlayerParty[slot]);
+    }
+
+
+    CalculatePlayerPartyCount();
+    gSpecialVar_Result = 0;
+}
+

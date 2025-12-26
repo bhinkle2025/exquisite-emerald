@@ -567,3 +567,4 @@ gSpecials::
 	def_special Special_PickOldaleRandomStarter
 	def_special Special_PickRandomBabyEggSpecies
 	def_special PerfectSelectedMonIV
+	def_special WonderTrade

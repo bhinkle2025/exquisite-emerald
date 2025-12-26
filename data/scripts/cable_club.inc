@@ -413,24 +413,92 @@ CableClub_EventScript_ConfirmNumberAndRestart::
 	end
 
 CableClub_EventScript_TradeCenter::
-	copyvar VAR_0x8007, VAR_LAST_TALKED
-	call CableClub_EventScript_CheckPartyTradeRequirements
-	goto_if_eq VAR_RESULT, 0, CableClub_EventScript_AbortLink
-	call Common_EventScript_SaveGame
-	goto_if_eq VAR_RESULT, 0, CableClub_EventScript_AbortLink
-	message gText_PleaseWaitForLink
-	waitmessage
-	special TryTradeLinkup
-	waitstate
-	goto_if_eq VAR_RESULT, LINKUP_SUCCESS, CableClub_EventScript_EnterTradeCenter
-	goto_if_eq VAR_RESULT, LINKUP_SOMEONE_NOT_READY, CableClub_EventScript_AbortLinkSomeoneNotReady
-	goto_if_eq VAR_RESULT, LINKUP_DIFF_SELECTIONS, CableClub_EventScript_AbortLinkDifferentSelections
-	goto_if_eq VAR_RESULT, LINKUP_WRONG_NUM_PLAYERS, CableClub_EventScript_AbortLinkIncorrectNumberOfParticipants
-	goto_if_eq VAR_RESULT, LINKUP_FAILED, CableClub_EventScript_AbortLink
-	goto_if_eq VAR_RESULT, LINKUP_CONNECTION_ERROR, CableClub_EventScript_AbortLinkConnectionError
-	goto_if_eq VAR_RESULT, LINKUP_PLAYER_NOT_READY, CableClub_EventScript_AbortLinkPlayerNotReady
-	goto_if_eq VAR_RESULT, LINKUP_PARTNER_NOT_READY, CableClub_EventScript_AbortLinkOtherTrainerNotReady
+	@ We are replacing real trades with single-player Wonder Trade.
+	@ No link-up. No warp to MAP_TRADE_CENTER.
+
+	msgbox CableClub_Text_WonderTradeIntro, MSGBOX_DEFAULT
+
+	@ --- Pick a POKEMON from party ---
+	@ One of these two specials will exist in your base.
+	@ If "ChoosePartyMon" exists, use that.
+	@ If not, swap it to "ChooseMonForWirelessMinigame" or your project's party picker special.
+	special ChoosePartyMon
+
+	@ Many party pickers store the chosen slot in VAR_RESULT.
+	@ If your picker uses a different var, we'll adjust after your first compile/test.
+	copyvar VAR_0x8004, VAR_RESULT
+
+	@ Cancel handling (commonly PARTY_SIZE or MULTI_B_PRESSED; PARTY_SIZE is safest)
+	goto_if_eq VAR_0x8004, PARTY_SIZE, CableClub_EventScript_WonderTradeCancel
+
+	msgbox CableClub_Text_WonderTradeConnecting, MSGBOX_DEFAULT
+
+	@ --- Do the Wonder Trade ---
+	@ This calls your C special: WonderTrade
+	special WonderTrade
+
+	@ Return codes (we'll match these to your C implementation)
+	@ 0 = success
+	@ 1 = generic fail
+	@ 2 = egg blocked
+	@ 3 = box/party full or give failed
+	goto_if_eq VAR_RESULT, 0, CableClub_EventScript_WonderTradeSuccess
+	goto_if_eq VAR_RESULT, 2, CableClub_EventScript_WonderTradeEggBlocked
+	goto_if_eq VAR_RESULT, 3, CableClub_EventScript_WonderTradeStorageFull
+
+	msgbox CableClub_Text_WonderTradeFailed, MSGBOX_DEFAULT
+	release
 	end
+
+CableClub_EventScript_WonderTradeSuccess::
+	msgbox CableClub_Text_WonderTradeDone, MSGBOX_DEFAULT
+	release
+	end
+
+CableClub_EventScript_WonderTradeEggBlocked::
+	msgbox CableClub_Text_WonderTradeNoEggs, MSGBOX_DEFAULT
+	release
+	end
+
+CableClub_EventScript_WonderTradeStorageFull::
+	msgbox CableClub_Text_WonderTradeNoSpace, MSGBOX_DEFAULT
+	release
+	end
+
+CableClub_EventScript_WonderTradeCancel::
+	msgbox CableClub_Text_WonderTradeComeBack, MSGBOX_DEFAULT
+	release
+	end
+
+CableClub_Text_WonderTradeIntro:
+	.string "Welcome to WONDER TRADE!\p"
+	.string "Choose a POKEMON to send,\n"
+	.string "and you'll receive one at random.$"
+
+CableClub_Text_WonderTradeConnecting:
+	.string "Connecting to WONDER TRADE...\p"
+	.string "Please wait...$"
+
+CableClub_Text_WonderTradeDone:
+	.string "Trade complete!\p"
+	.string "Take good care of your new\n"
+	.string "POKEMON!$"
+
+CableClub_Text_WonderTradeFailed:
+	.string "The WONDER TRADE failed.\p"
+	.string "Please try again later.$"
+
+CableClub_Text_WonderTradeNoEggs:
+	.string "An EGG can't be WONDER\n"
+	.string "TRADED.$"
+
+CableClub_Text_WonderTradeNoSpace:
+	.string "You don't have room for the\n"
+	.string "received POKEMON.$"
+
+CableClub_Text_WonderTradeComeBack:
+	.string "Come back anytime!$"
+
 
 CableClub_EventScript_EnterTradeCenter::
 	setvar VAR_0x8004, USING_TRADE_CENTER

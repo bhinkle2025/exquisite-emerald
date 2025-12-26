@@ -3521,6 +3521,10 @@ static void BufferMonTrainerMemo(void)
         {
             text = gText_XNatureFatefulEncounter;
         }
+        else if (sum->metLocation == METLOC_WONDER_TRADE)
+        {
+            text = gText_XNatureObtainedInWonderTrade;
+        }
         else if (sum->metLocation != METLOC_IN_GAME_TRADE && DidMonComeFromGBAGames())
         {
             text = (sum->metLocation >= MAPSEC_NONE) ? gText_XNatureObtainedInTrade : gText_XNatureProbablyMetAt;

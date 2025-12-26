@@ -40,7 +40,7 @@
 #define P_PALDEAN_FORMS                  P_REGIONAL_FORMS
 
 // Big groups of forms that aren't always desired when choosing families.
-#define P_PIKACHU_EXTRA_FORMS            TRUE
+#define P_PIKACHU_EXTRA_FORMS            FALSE
 #define P_COSPLAY_PIKACHU_FORMS          P_PIKACHU_EXTRA_FORMS
 #define P_CAP_PIKACHU_FORMS              P_PIKACHU_EXTRA_FORMS
 
@@ -308,14 +308,14 @@
 #define P_FAMILY_SNIVY                   P_GEN_5_POKEMON
 #define P_FAMILY_TEPIG                   P_GEN_5_POKEMON
 #define P_FAMILY_OSHAWOTT                P_GEN_5_POKEMON
-#define P_FAMILY_PATRAT                  FALSE
+#define P_FAMILY_PATRAT                  P_GEN_6_POKEMON
 #define P_FAMILY_LILLIPUP                P_GEN_5_POKEMON
 #define P_FAMILY_PURRLOIN                P_GEN_5_POKEMON
 #define P_FAMILY_PANSAGE                 FALSE
 #define P_FAMILY_PANSEAR                 FALSE
 #define P_FAMILY_PANPOUR                 FALSE
 #define P_FAMILY_MUNNA                   P_GEN_5_POKEMON
-#define P_FAMILY_PIDOVE                  FALSE
+#define P_FAMILY_PIDOVE                  P_GEN_6_POKEMON
 #define P_FAMILY_BLITZLE                 P_GEN_5_POKEMON
 #define P_FAMILY_ROGGENROLA              P_GEN_5_POKEMON
 #define P_FAMILY_WOOBAT                  FALSE
@@ -397,11 +397,11 @@
 #define P_FAMILY_FLABEBE                 P_GEN_6_POKEMON
 #define P_FAMILY_SKIDDO                  P_GEN_6_POKEMON
 #define P_FAMILY_PANCHAM                 P_GEN_6_POKEMON
-#define P_FAMILY_FURFROU                 FALSE
+#define P_FAMILY_FURFROU                 P_GEN_6_POKEMON
 #define P_FAMILY_ESPURR                  P_GEN_6_POKEMON
 #define P_FAMILY_HONEDGE                 P_GEN_6_POKEMON
-#define P_FAMILY_SPRITZEE                FALSE
-#define P_FAMILY_SWIRLIX                 FALSE
+#define P_FAMILY_SPRITZEE                P_GEN_6_POKEMON
+#define P_FAMILY_SWIRLIX                 P_GEN_6_POKEMON
 #define P_FAMILY_INKAY                   P_GEN_6_POKEMON
 #define P_FAMILY_BINACLE                 P_GEN_6_POKEMON
 #define P_FAMILY_SKRELP                  P_GEN_6_POKEMON
@@ -558,7 +558,7 @@
 #define P_FAMILY_BOMBIRDIER              P_GEN_9_POKEMON
 #define P_FAMILY_FINIZEN                 P_GEN_9_POKEMON
 #define P_FAMILY_VAROOM                  P_GEN_9_POKEMON
-#define P_FAMILY_CYCLIZAR                FALSE
+#define P_FAMILY_CYCLIZAR                P_GEN_6_POKEMON
 #define P_FAMILY_ORTHWORM                P_GEN_9_POKEMON
 #define P_FAMILY_GLIMMET                 P_GEN_9_POKEMON
 #define P_FAMILY_GREAVARD                P_GEN_9_POKEMON
