@@ -244,11 +244,8 @@ CableClub_Movement_PlayerApproachCounter:
 	step_end
 
 CableClub_EventScript_WelcomeToCableClub::
-	message CableClub_Text_WelcomeWhichCableClubService
-	waitmessage
-	delay 28
-	goto CableClub_EventScript_SelectCableClubRoom
-	end
+    goto CableClub_EventScript_TradeCenter
+    end
 
 CableClub_EventScript_UnusedWelcomeToCableClub::
 	msgbox CableClub_Text_WhichService, MSGBOX_DEFAULT
@@ -417,6 +414,7 @@ CableClub_EventScript_TradeCenter::
 	@ No link-up. No warp to MAP_TRADE_CENTER.
 
 	msgbox CableClub_Text_WonderTradeIntro, MSGBOX_DEFAULT
+	setflag FLAG_DISABLE_FOLLOWERS
 
 	@ --- Pick a POKEMON from party ---
 	@ One of these two specials will exist in your base.
@@ -437,14 +435,16 @@ CableClub_EventScript_TradeCenter::
 	@ This calls your C special: WonderTrade
 	special WonderTrade
 
+	clearflag FLAG_DISABLE_FOLLOWERS
+
 	@ Return codes (we'll match these to your C implementation)
 	@ 0 = success
 	@ 1 = generic fail
 	@ 2 = egg blocked
-	@ 3 = box/party full or give failed
+	@ 3 = already wonder traded (new)
 	goto_if_eq VAR_RESULT, 0, CableClub_EventScript_WonderTradeSuccess
 	goto_if_eq VAR_RESULT, 2, CableClub_EventScript_WonderTradeEggBlocked
-	goto_if_eq VAR_RESULT, 3, CableClub_EventScript_WonderTradeStorageFull
+	goto_if_eq VAR_RESULT, 3, CableClub_EventScript_WonderTradeAlreadyWonder
 
 	msgbox CableClub_Text_WonderTradeFailed, MSGBOX_DEFAULT
 	release
@@ -460,8 +460,8 @@ CableClub_EventScript_WonderTradeEggBlocked::
 	release
 	end
 
-CableClub_EventScript_WonderTradeStorageFull::
-	msgbox CableClub_Text_WonderTradeNoSpace, MSGBOX_DEFAULT
+CableClub_EventScript_WonderTradeAlreadyWonder::
+	msgbox CableClub_Text_WonderTradeNoRetrade, MSGBOX_DEFAULT
 	release
 	end
 
@@ -491,6 +491,11 @@ CableClub_Text_WonderTradeFailed:
 CableClub_Text_WonderTradeNoEggs:
 	.string "An EGG can't be WONDER\n"
 	.string "TRADED.$"
+
+CableClub_Text_WonderTradeNoRetrade:
+	.string "That POKEMON already came from\n"
+	.string "a WONDER TRADE.\p"
+	.string "It can't be WONDER TRADED again.$"
 
 CableClub_Text_WonderTradeNoSpace:
 	.string "You don't have room for the\n"
@@ -921,17 +926,27 @@ EventScript_DoLinkRoomExit::
 CableClub_EventScript_UnionRoomAttendant::
 	lock
 	faceplayer
-	setvar VAR_FRONTIER_FACILITY, FACILITY_UNION_ROOM
-	goto_if_unset FLAG_SYS_POKEDEX_GET, CableClub_EventScript_WirelessClubAdjustements
-	specialvar VAR_RESULT, IsBadEggInParty
-	goto_if_eq VAR_RESULT, TRUE, CableClub_EventScript_AbortLinkPlayerHasBadEgg
-	copyvar VAR_0x8007, VAR_LAST_TALKED
-	specialvar VAR_RESULT, IsWirelessAdapterConnected
-	goto_if_eq VAR_RESULT, FALSE, CableClub_EventScript_UnionRoomAdapterNotConnected
-	message CableClub_Text_WelcomeUnionRoomEnter
+	message gText_HowMayIServeYou
 	waitmessage
-	goto CableClub_EventScript_UnionRoomSelect
+	pokemart CableClub_TradeEvoMerchant_Pokemart
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
 	end
+
+	.align 2
+CableClub_TradeEvoMerchant_Pokemart:
+	.2byte ITEM_METAL_COAT
+	.2byte ITEM_KINGS_ROCK
+	.2byte ITEM_DRAGON_SCALE
+	.2byte ITEM_UP_GRADE
+	.2byte ITEM_DUBIOUS_DISC
+	.2byte ITEM_ELECTIRIZER
+	.2byte ITEM_MAGMARIZER
+	.2byte ITEM_PROTECTOR
+	.2byte ITEM_REAPER_CLOTH
+	.2byte ITEM_PRISM_SCALE
+	pokemartlistend
+
 
 CableClub_EventScript_UnionRoomSelect::
 	multichoice 17, 6, MULTI_YESNOINFO, FALSE

@@ -43,13 +43,13 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
-#define FLAG_GOT_EVIOLITE_RUSTBORO    0x20 // Eviolite
-#define FLAG_GOT_OLDALE_STARTER       0x21 // 2nd Starter
-#define FLAG_GOT_DAYCARE_BABY_EGG     0x22 // Gift Egg
-#define FLAG_INFINITE_REPEL           0x23 // Infinite Repel
-#define FLAG_RECEIVED_LINKING_CABLE   0x24 // Linking Cable
+#define FLAG_GOT_EVIOLITE_RUSTBORO        0x20 // Eviolite
+#define FLAG_GOT_OLDALE_STARTER           0x21 // 2nd Starter
+#define FLAG_GOT_DAYCARE_BABY_EGG         0x22 // Gift Egg
+#define FLAG_INFINITE_REPEL               0x23 // Infinite Repel
+#define FLAG_RECEIVED_LINKING_CABLE       0x24 // Linking Cable
 #define FLAG_FOSSIL_MANIAC_OFFERED_SALE   0x25 // Fossil Maniac
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
+#define FLAG_DISABLE_FOLLOWERS            0x26 // Disables Pokemon Followers
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag

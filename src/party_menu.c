@@ -334,7 +334,6 @@ static bool16 IsMonAllowedInDodrioBerryPicking(struct Pokemon *);
 static void Task_CancelParticipationYesNo(u8);
 static void Task_HandleCancelParticipationYesNoInput(u8);
 static bool8 ShouldUseChooseMonText(void);
-static void SetPartyMonFieldSelectionActions(struct Pokemon *, u8);
 static u8 GetPartyMenuActionsTypeInBattle(struct Pokemon *);
 static u8 GetPartySlotEntryStatus(s8);
 static void Task_UpdateHeldItemSprite(u8);
@@ -491,6 +490,8 @@ static void ShowMoveSelectWindow(u8 slot);
 static void Task_HandleWhichMoveInput(u8 taskId);
 static void Task_HideFollowerNPCForTeleport(u8);
 static void FieldCallback_RockClimb(void);
+static void TryAppendHmFieldAction(struct Pokemon* mon, u16 hmItem, u16 move);
+
 
 // static const data
 #include "data/party_menu.h"
@@ -2819,13 +2820,184 @@ static void RemoveLevelUpStatsWindow(void)
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
 }
 
-static void SetPartyMonSelectionActions(struct Pokemon *mons, u8 slotId, u8 action)
+static bool32 SpeciesCanBeTaughtMove(u16 species, u16 move)
+{
+    const u16* learnset;
+    u32 i;
+
+    species = SanitizeSpeciesId(species);
+
+    // Species explicitly blocked from TMs/HMs
+    if (gSpeciesInfo[species].tmIlliterate)
+        return FALSE;
+
+    learnset = gSpeciesInfo[species].teachableLearnset;
+    if (learnset == NULL)
+        return FALSE;
+
+    // Teach sets are MOVE_NONE terminated
+    for (i = 0; learnset[i] != MOVE_NONE; i++)
+    {
+        if (learnset[i] == move)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool32 MonCanBeTaughtMove(struct Pokemon* mon, u16 move)
+{
+    return SpeciesCanBeTaughtMove(GetMonData(mon, MON_DATA_SPECIES), move);
+}
+
+// Put these near the top of the file (static so they don't leak outside)
+static s32 FindFieldMoveIndex(u16 moveId)
+{
+    u32 j;
+    for (j = 0; j < FIELD_MOVES_COUNT; j++)
+    {
+        if (FieldMove_GetMoveId(j) == moveId)
+            return j;
+    }
+    return -1;
+}
+
+static bool32 ActionAlreadyInList(const u8* actions, u32 numActions, u8 actionId)
+{
+    u32 k;
+    for (k = 0; k < numActions; k++)
+    {
+        if (actions[k] == actionId)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+static bool32 HasBadgeForHm(u16 hmItemId)
+{
+    switch (hmItemId)
+    {
+    case ITEM_HM01: // Cut
+        return FlagGet(FLAG_BADGE01_GET); // Stone
+    case ITEM_HM02: // Fly
+        return FlagGet(FLAG_BADGE06_GET); // Feather
+    case ITEM_HM03: // Surf
+        return FlagGet(FLAG_BADGE05_GET); // Balance
+    case ITEM_HM04: // Strength
+        return FlagGet(FLAG_BADGE04_GET); // Heat
+    case ITEM_HM05: // Flash
+        return FlagGet(FLAG_BADGE02_GET); // Knuckle
+    case ITEM_HM06: // Rock Smash
+        return FlagGet(FLAG_BADGE03_GET); // Dynamo
+    case ITEM_HM07: // Waterfall
+        return FlagGet(FLAG_BADGE08_GET); // Rain
+    case ITEM_HM08: // Dive
+        return FlagGet(FLAG_BADGE07_GET); // Mind
+    default:
+        return FALSE;
+    }
+}
+
+struct HmFieldAction
+{
+    u16 hmItem;
+    u16 move;
+};
+
+static const struct HmFieldAction sHmFieldActions[] =
+{
+    { ITEM_HM01, MOVE_CUT       },
+    { ITEM_HM02, MOVE_FLY       },
+    { ITEM_HM03, MOVE_SURF      },
+    { ITEM_HM04, MOVE_STRENGTH  },
+    { ITEM_HM05, MOVE_FLASH     },
+    { ITEM_HM06, MOVE_ROCK_SMASH},
+    { ITEM_HM07, MOVE_WATERFALL },
+    { ITEM_HM08, MOVE_DIVE      },
+};
+
+static void TryAppendHmFieldAction(struct Pokemon* mon, u16 hmItem, u16 move)
+{
+    s32 idx;
+    u8 actionId;
+
+    // Must be a recognized field move in your field move table
+    idx = FindFieldMoveIndex(move);
+    if (idx < 0)
+        return;
+
+    // Must own the HM + have the badge + species must be teachable that move
+    if (!CheckBagHasItem(hmItem, 1))
+        return;
+    if (!HasBadgeForHm(hmItem))
+        return;
+    if (!MonCanBeTaughtMove(mon, move))
+        return;
+
+    actionId = idx + MENU_FIELD_MOVES;
+
+    if (!ActionAlreadyInList(sPartyMenuInternal->actions,
+        sPartyMenuInternal->numActions,
+        actionId))
+    {
+        AppendToList(sPartyMenuInternal->actions,
+            &sPartyMenuInternal->numActions,
+            actionId);
+    }
+}
+
+static void SetPartyMonSelectionActions(struct Pokemon* mons, u8 slotId, u8 action)
 {
     u8 i;
 
     if (action == ACTIONS_NONE)
     {
-        SetPartyMonFieldSelectionActions(mons, slotId);
+        u8 j;
+
+        sPartyMenuInternal->numActions = 0;
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUMMARY);
+
+        // Add known field moves (excluding Fly/Flash if you want them HM-only)
+        for (i = 0; i < MAX_MON_MOVES; i++)
+        {
+            u16 move = GetMonData(&mons[slotId], MON_DATA_MOVE1 + i);
+
+            for (j = 0; j < FIELD_MOVES_COUNT; j++)
+            {
+                if (move == FieldMove_GetMoveId(j))
+                {
+                    if (move != MOVE_FLY && move != MOVE_FLASH)
+                    {
+                        u8 actionId = j + MENU_FIELD_MOVES;
+                        if (!ActionAlreadyInList(sPartyMenuInternal->actions,
+                            sPartyMenuInternal->numActions,
+                            actionId))
+                        {
+                            AppendToList(sPartyMenuInternal->actions,
+                                &sPartyMenuInternal->numActions,
+                                actionId);
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        // Add HM field actions (HM in bag + badge + teachableLearnset)
+        {
+            u32 k;
+            for (k = 0; k < ARRAY_COUNT(sHmFieldActions) && sPartyMenuInternal->numActions < 5; k++)
+            {
+                TryAppendHmFieldAction(&mons[slotId],
+                    sHmFieldActions[k].hmItem,
+                    sHmFieldActions[k].move);
+            }
+        }
+
+        if (!InBattlePike())
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SWITCH);
+
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_CANCEL1);
     }
     else
     {
@@ -2833,38 +3005,6 @@ static void SetPartyMonSelectionActions(struct Pokemon *mons, u8 slotId, u8 acti
         for (i = 0; i < sPartyMenuInternal->numActions; i++)
             sPartyMenuInternal->actions[i] = sPartyMenuActions[action][i];
     }
-}
-
-static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
-{
-    u8 i, j;
-
-    sPartyMenuInternal->numActions = 0;
-    AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUMMARY);
-
-    // Add field moves to action list
-    for (i = 0; i < MAX_MON_MOVES; i++)
-    {
-        for (j = 0; j != FIELD_MOVES_COUNT; j++)
-        {
-            if (GetMonData(&mons[slotId], i + MON_DATA_MOVE1) == FieldMove_GetMoveId(j))
-            {
-                AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + MENU_FIELD_MOVES);
-                break;
-            }
-        }
-    }
-
-    if (!InBattlePike())
-    {
-        if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE)
-            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SWITCH);
-        if (ItemIsMail(GetMonData(&mons[slotId], MON_DATA_HELD_ITEM)))
-            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_MAIL);
-        else
-            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_ITEM);
-    }
-    AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_CANCEL1);
 }
 
 static u8 GetPartyMenuActionsType(struct Pokemon *mon)

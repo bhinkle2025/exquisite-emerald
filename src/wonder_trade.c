@@ -24,39 +24,21 @@ static bool8 IsValidLZ77Data(const void* ptr)
     return (p != NULL && p[0] == 0x10);
 }
 
-static bool8 HasValidSpeciesGfx(u16 species)
+static bool8 IsAlreadyWonderTraded(struct Pokemon* mon)
 {
-    // Front/back pics must exist and be LZ77
-    if (!IsValidLZ77Data(gSpeciesInfo[species].frontPic))
-        return FALSE;
-    if (!IsValidLZ77Data(gSpeciesInfo[species].backPic))
-        return FALSE;
+    u32 otId = GetMonData(mon, MON_DATA_OT_ID);
+    u8 otName[PLAYER_NAME_LENGTH + 1];
 
-    // Required palettes must exist (not LZ, just non-null)
-    if (gSpeciesInfo[species].palette == NULL)
-        return FALSE;
+    if (otId == WONDER_OT_ID)
+        return TRUE;
 
-    // Female variants optional, but if present must be valid too
-    if (gSpeciesInfo[species].frontPicFemale != NULL
-        && !IsValidLZ77Data(gSpeciesInfo[species].frontPicFemale))
-        return FALSE;
+    GetMonData(mon, MON_DATA_OT_NAME, otName);
+    // Compare in game encoding (since sWonderOtName is encoded)
+    if (StringCompare(otName, sWonderOtName) == 0)
+        return TRUE;
 
-    if (gSpeciesInfo[species].backPicFemale != NULL
-        && !IsValidLZ77Data(gSpeciesInfo[species].backPicFemale))
-        return FALSE;
-
-    if (gSpeciesInfo[species].paletteFemale != NULL
-        && gSpeciesInfo[species].paletteFemale[0] == 0) // weak sanity check; optional
-        return FALSE;
-
-    // Icons aren’t LZ — just require a pointer
-    if (gSpeciesInfo[species].iconSprite == NULL)
-        return FALSE;
-
-    return TRUE;
+    return FALSE;
 }
-
-
 
 static bool8 IsBannedWonderTradeSpecies(u16 species)
 {
@@ -182,6 +164,13 @@ void WonderTrade(void)
         || GetMonData(giveMon, MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
     {
         gSpecialVar_Result = 2;
+        return;
+    }
+
+    // Block re-trading Wonder Trade Pokémon
+    if (IsAlreadyWonderTraded(giveMon))
+    {
+        gSpecialVar_Result = 3;
         return;
     }
 
