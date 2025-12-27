@@ -7,23 +7,42 @@
 #include "overworld.h"
 #include "task.h"
 #include "constants/field_effects.h"
+#include "constants/moves.h"
 
 static void FieldCallback_Teleport(void);
 static void StartTeleportFieldEffect(void);
 
+static bool32 MonIsEligibleForFieldMove(struct Pokemon* mon, u16 move)
+{
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
+    if (species == SPECIES_NONE)
+        return FALSE;
+    if (GetMonData(mon, MON_DATA_IS_EGG))
+        return FALSE;
+
+    // Eligible if it knows it OR could be taught it (teachable learnset)
+    return MonKnowsMove(mon, move) || CanLearnTeachableMove(species, move);
+}
+
 bool32 SetUpFieldMove_Teleport(void)
 {
+    struct Pokemon* mon = &gPlayerParty[GetCursorSelectionMonId()];
+
     if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_LEAVE_ROUTE))
         return FALSE;
 
-    if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
-    {
-        gFieldCallback2 = FieldCallback_PrepareFadeInForTeleport;
-        gPostMenuFieldCallback = FieldCallback_Teleport;
-        return TRUE;
-    }
-    return FALSE;
+    if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) != TRUE)
+        return FALSE;
+
+    // NEW: must know it OR be capable of learning it
+    if (!MonIsEligibleForFieldMove(mon, MOVE_TELEPORT))
+        return FALSE;
+
+    gFieldCallback2 = FieldCallback_PrepareFadeInForTeleport;
+    gPostMenuFieldCallback = FieldCallback_Teleport;
+    return TRUE;
 }
+
 
 static void FieldCallback_Teleport(void)
 {

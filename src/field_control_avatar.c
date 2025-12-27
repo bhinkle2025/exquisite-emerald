@@ -561,24 +561,46 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
     return NULL;
 }
 
-static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metatileBehavior, u8 direction)
+static bool8 PartyHasMonThatCanLearnMove(u16 move)
 {
-    if (IsFieldMoveUnlocked(FIELD_MOVE_SURF) && PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE
-     && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_SURF)
-     )
+    for (u32 i = 0; i < PARTY_SIZE; i++)
+    {
+        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);
+        if (!species)
+            break;
+
+        if (GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG))
+            continue;
+
+        if (CanLearnTeachableMove(species, move))
+            return TRUE;
+    }
+    return FALSE;
+}
+
+static const u8* GetInteractedWaterScript(struct MapPosition* unused1, u8 metatileBehavior, u8 direction)
+{
+    if (IsFieldMoveUnlocked(FIELD_MOVE_SURF)
+        && CheckBagHasItem(ITEM_HM03, 1)
+        && PartyHasMonThatCanLearnMove(MOVE_SURF)
+        && IsPlayerFacingSurfableFishableWater() == TRUE
+        && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_SURF))
+    {
         return EventScript_UseSurf;
+    } // ? close Surf if
 
     if (MetatileBehavior_IsWaterfall(metatileBehavior) == TRUE
-     && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_WATERFALL)
-     )
+        && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_WATERFALL))
     {
         if (IsFieldMoveUnlocked(FIELD_MOVE_WATERFALL) && IsPlayerSurfingNorth() == TRUE)
             return EventScript_UseWaterfall;
         else
             return EventScript_CannotUseWaterfall;
     }
+
     return NULL;
-}
+} // ? close function
+
 
 static bool32 TrySetupDiveDownScript(void)
 {

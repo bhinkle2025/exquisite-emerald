@@ -10,6 +10,7 @@
 #include "script.h"
 #include "sprite.h"
 #include "constants/field_effects.h"
+#include "item.h"
 
 // static functions
 static void FieldCallback_Dig(void);
@@ -18,17 +19,32 @@ static void StartDigFieldEffect(void);
 // text
 bool32 SetUpFieldMove_Dig(void)
 {
-    if (CanUseDigOrEscapeRopeOnCurMap() == TRUE)
-    {
-        gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
-        gPostMenuFieldCallback = FieldCallback_Dig;
-        return TRUE;
-    }
-    else
-    {
+    struct Pokemon* mon = &gPlayerParty[GetCursorSelectionMonId()];
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
+    bool32 knowsDig = MonKnowsMove(mon, MOVE_DIG);
+
+    // Safety (cheap, correct, future-proof)
+    if (species == SPECIES_NONE || GetMonData(mon, MON_DATA_IS_EGG))
         return FALSE;
-    }
+
+    // 1) Map restriction (DO NOT REMOVE)
+    if (!CanUseDigOrEscapeRopeOnCurMap())
+        return FALSE;
+
+    // 2) Eligible if knows OR can learn
+    if (!knowsDig && !CanLearnTeachableMove(species, MOVE_DIG))
+        return FALSE;
+
+    // 3) TM required only if not already known
+    if (!knowsDig && !CheckBagHasItem(ITEM_TM_DIG, 1))
+        return FALSE;
+
+    gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
+    gPostMenuFieldCallback = FieldCallback_Dig;
+    return TRUE;
 }
+
+
 
 static void FieldCallback_Dig(void)
 {

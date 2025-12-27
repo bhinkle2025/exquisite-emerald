@@ -2898,6 +2898,60 @@ static bool32 HasBadgeForHm(u16 hmItemId)
     }
 }
 
+struct UtilityFieldAction
+{
+    u16 move;
+    u16 tmItem;          // ITEM_NONE if no TM requirement
+    bool8 tmOnlyIfNotKnown;
+};
+
+static const struct UtilityFieldAction sUtilityFieldActions[] =
+{
+    { MOVE_DIG,          ITEM_TM28, TRUE  },  // adjust TM item id to your project
+    { MOVE_SECRET_POWER, ITEM_TM43, TRUE  },  // adjust TM item id to your project
+    { MOVE_TELEPORT,     ITEM_NONE, FALSE },
+    { MOVE_SWEET_SCENT,  ITEM_NONE, FALSE },
+};
+
+static void TryAppendUtilityFieldAction(struct Pokemon* mon, u16 move, u16 tmItem, bool8 tmOnlyIfNotKnown)
+{
+    s32 idx;
+    u8 actionId;
+    u16 species;
+    bool32 knows;
+    bool32 learnable;
+
+    idx = FindFieldMoveIndex(move);
+    if (idx < 0)
+        return;
+
+    species = GetMonData(mon, MON_DATA_SPECIES);
+    if (species == SPECIES_NONE || GetMonData(mon, MON_DATA_IS_EGG))
+        return;
+
+    knows = MonKnowsMove(mon, move);
+    learnable = CanLearnTeachableMove(species, move);
+
+    // Must know it OR be capable of learning it
+    if (!knows && !learnable)
+        return;
+
+    // TM rule (Dig/Secret Power): require TM only if it isn't already known
+    if (tmItem != ITEM_NONE)
+    {
+        if (!knows)
+        {
+            if (!CheckBagHasItem(tmItem, 1))
+                return;
+        }
+    }
+
+    actionId = idx + MENU_FIELD_MOVES;
+
+    if (!ActionAlreadyInList(sPartyMenuInternal->actions, sPartyMenuInternal->numActions, actionId))
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, actionId);
+}
+
 struct HmFieldAction
 {
     u16 hmItem;
@@ -2991,6 +3045,18 @@ static void SetPartyMonSelectionActions(struct Pokemon* mons, u8 slotId, u8 acti
                 TryAppendHmFieldAction(&mons[slotId],
                     sHmFieldActions[k].hmItem,
                     sHmFieldActions[k].move);
+            }
+        }
+
+        // ✅ Add utility field actions (no badges)
+        {
+            u32 k;
+            for (k = 0; k < ARRAY_COUNT(sUtilityFieldActions) && sPartyMenuInternal->numActions < 5; k++)
+            {
+                TryAppendUtilityFieldAction(&mons[slotId],
+                    sUtilityFieldActions[k].move,
+                    sUtilityFieldActions[k].tmItem,
+                    sUtilityFieldActions[k].tmOnlyIfNotKnown);
             }
         }
 
@@ -4285,19 +4351,51 @@ static void FieldCallback_Surf(void)
     FieldEffectStart(FLDEFF_USE_SURF);
 }
 
+static bool8 PartyHasMonThatCanLearnMove(u16 move)
+{
+    for (u32 i = 0; i < PARTY_SIZE; i++)
+    {
+        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);
+        if (!species)
+            break;
+
+        if (GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG))
+            continue;
+
+        if (CanLearnTeachableMove(species, move))
+            return TRUE;
+    }
+    return FALSE;
+}
+
 bool32 SetUpFieldMove_Surf(void)
 {
     if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_SURF))
         return FALSE;
 
-    if (PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)
-    {
-        gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
-        gPostMenuFieldCallback = FieldCallback_Surf;
-        return TRUE;
-    }
-    return FALSE;
+    if (!IsFieldMoveUnlocked(FIELD_MOVE_SURF))
+        return FALSE;
+
+    if (!CheckBagHasItem(ITEM_HM03, 1))
+        return FALSE;
+
+    if (!PartyHasMonThatCanLearnMove(MOVE_SURF))
+        return FALSE;
+
+    // IMPORTANT: party menu path can have stale facing coords.
+    // Refresh the tile in front of the player before checking water.
+    PlayerGetDestCoords(&gPlayerFacingPosition.x, &gPlayerFacingPosition.y);
+    gPlayerFacingPosition.elevation = gObjectEvents[gPlayerAvatar.objectEventId].currentElevation;
+
+    if (!IsPlayerFacingSurfableFishableWater())
+        return FALSE;
+
+    gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
+    gPostMenuFieldCallback = FieldCallback_Surf;
+    return TRUE;
 }
+
+
 
 static void DisplayCantUseSurfMessage(void)
 {

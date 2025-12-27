@@ -22,6 +22,7 @@
 #include "constants/metatile_behaviors.h"
 #include "constants/metatile_labels.h"
 #include "constants/songs.h"
+#include "item.h"
 
 
 EWRAM_DATA struct MapPosition gPlayerFacingPosition = {0};
@@ -547,11 +548,27 @@ static void AdjustSecretPowerSpritePixelOffsets(void)
 bool32 SetUpFieldMove_SecretPower(void)
 {
     u8 mb;
+    struct Pokemon* mon = &gPlayerParty[GetCursorSelectionMonId()];
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
+    bool32 knows = MonKnowsMove(mon, MOVE_SECRET_POWER);
 
     CheckPlayerHasSecretBase();
 
     if (gSpecialVar_Result == 1 || GetPlayerFacingDirection() != DIR_NORTH)
         return FALSE;
+
+    // --- NEW: eligibility rules (no badges) ---
+    if (species == SPECIES_NONE || GetMonData(mon, MON_DATA_IS_EGG))
+        return FALSE;
+
+    // must know OR be able to learn
+    if (!knows && !CanLearnTeachableMove(species, MOVE_SECRET_POWER))
+        return FALSE;
+
+    // TM required only if not already known
+    if (!knows && !CheckBagHasItem(ITEM_TM_SECRET_POWER, 1))
+        return FALSE;
+    // -----------------------------------------
 
     GetXYCoordsOneStepInFrontOfPlayer(&gPlayerFacingPosition.x, &gPlayerFacingPosition.y);
     mb = MapGridGetMetatileBehaviorAt(gPlayerFacingPosition.x, gPlayerFacingPosition.y);

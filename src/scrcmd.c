@@ -2286,25 +2286,54 @@ bool8 ScrCmd_setmonmove(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_checkfieldmove(struct ScriptContext *ctx)
+static u16 FieldMoveToHmItem(enum FieldMove fieldMove)
+{
+    switch (fieldMove)
+    {
+    case FIELD_MOVE_CUT:        return ITEM_HM01;
+    case FIELD_MOVE_FLY:        return ITEM_HM02;
+    case FIELD_MOVE_SURF:       return ITEM_HM03;
+    case FIELD_MOVE_STRENGTH:   return ITEM_HM04;
+    case FIELD_MOVE_FLASH:      return ITEM_HM05;
+    case FIELD_MOVE_ROCK_SMASH: return ITEM_HM06;
+    case FIELD_MOVE_WATERFALL:  return ITEM_HM07;
+    case FIELD_MOVE_DIVE:       return ITEM_HM08;
+    default:                    return ITEM_NONE; // for non-HM field moves if you have any
+    }
+}
+
+bool8 ScrCmd_checkfieldmove(struct ScriptContext* ctx)
 {
     enum FieldMove fieldMove = ScriptReadByte(ctx);
     bool32 doUnlockedCheck = ScriptReadByte(ctx);
-    u16 move;
+    u16 move = FieldMove_GetMoveId(fieldMove);
 
     Script_RequestEffects(SCREFF_V1);
 
     gSpecialVar_Result = PARTY_SIZE;
+    gSpecialVar_0x8004 = SPECIES_NONE;
+
     if (doUnlockedCheck && !IsFieldMoveUnlocked(fieldMove))
         return FALSE;
 
-    move = FieldMove_GetMoveId(fieldMove);
+    // HM item gate (only if this field move maps to an HM)
+    {
+        u16 hmItem = FieldMoveToHmItem(fieldMove);
+        if (hmItem != ITEM_NONE && !CheckBagHasItem(hmItem, 1))
+            return FALSE;
+    }
+
+    // Can-learn check
     for (u32 i = 0; i < PARTY_SIZE; i++)
     {
         u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);
         if (!species)
             break;
-        if (!GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) && MonKnowsMove(&gPlayerParty[i], move) == TRUE)
+
+        if (GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG))
+            continue;
+
+        if (CanLearnTeachableMove(species, move))
         {
             gSpecialVar_Result = i;
             gSpecialVar_0x8004 = species;
@@ -2314,6 +2343,7 @@ bool8 ScrCmd_checkfieldmove(struct ScriptContext *ctx)
 
     return FALSE;
 }
+
 
 bool8 ScrCmd_addmoney(struct ScriptContext *ctx)
 {
