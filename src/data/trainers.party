@@ -12483,21 +12483,59 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Tropius
-Level: 31
+Beautifly @ Sitrus Berry
+Level: 40
+Ability: Swarm
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Bug Buzz
+- Quiver Dance
+- Giga Drain
+- Air Cutter
 
-Ludicolo
-Level: 32
+Exploud @ Sitrus Berry
+Level: 40
+Ability: Soundproof
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Crunch
+- Roar
+- Stomp
+- Howl
 
-Slugma
-Level: 32
+Mawile @ Leftovers
+Level: 40
+Ability: Intimidate
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Crunch
+- Iron Defense
+- Draining Kiss
+- Charm
 
-Marshtomp
-Level: 34
+Lampent @ Spell Tag
+Level: 41
+Ability: Infiltrator
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Shadow Ball
+- Flamethrower
+- Energy Ball
+- Will-O-Wisp
+
+Shiftry @ Blackglasses
+Level: 41
+Ability: Wind Rider
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Sucker Punch
+- Tailwind
+- Leaf Blade
+- Swords Dance
+
+Swampert @ Mystic Water
+Level: 42
+Ability: Torrent
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Hammer Arm
+- Earthquake
+- Surf
+- Rock Slide
 
 === TRAINER_MAY_LILYCOVE_MUDKIP ===
 Name: MAY

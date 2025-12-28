@@ -21,7 +21,7 @@ FortreeCity_Mart_Pokemart:
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_AWAKENING
 	.2byte ITEM_REVIVE
-	.2byte ITEM_SUPER_REPEL
+	.2byte ITEM_TM_ACROBATICS
 	.2byte ITEM_FLYING_GEM
 	pokemartlistend
 
