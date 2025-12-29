@@ -594,7 +594,6 @@ Class: Aqua Leader
 Pic: Aqua Leader Archie
 Gender: Male
 Music: Aqua
-Items: Super Potion / Super Potion
 Double Battle: No
 AI: Basic Trainer
 
@@ -602,13 +601,25 @@ Mightyena
 Level: 41
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
+Gyarados
+Level: 41
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+
 Crobat
 Level: 41
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
-Sharpedo
+Barraskewda @ Mystic Water
+Level: 41
+IVs: 18 HP / 31 Atk / 18 Def / 18 SpA / 18 SpD / 31 Spe
+- Aqua Jet
+- Crunch
+- Agility
+- Dive
+
+Sharpedo @ Sharpedonite
 Level: 43
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+IVs: 18 HP / 31 Atk / 18 Def / 18 SpA / 18 SpD / 31 Spe
 
 === TRAINER_LEAH ===
 Name: LEAH
@@ -1465,12 +1476,25 @@ Items: Full Restore
 Double Battle: No
 AI: Basic Trainer
 
-Magneton
-Level: 43
+Magnezone @ Air Balloon
+Level: 44
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Muk
-Level: 43
+Muk Alola @ Leftovers
+Level: 45
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Drednaw
+Level: 45
+Ability: Shell Armor
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Shell Smash
+- Waterfall
+- Stone Edge
+- Jaw Lock
+
+Venusaur @ Venusaurite
+Level: 46
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_SAMUEL ===
@@ -1491,9 +1515,9 @@ Mawile
 Level: 42
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Kadabra
+Alakazam @Alakazite
 Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 12 HP / 12 Atk / 12 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_VITO ===
 Name: VITO
@@ -1535,13 +1559,17 @@ Kecleon
 Level: 42
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Graveler
+Golem
 Level: 42
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Wailord
 Level: 42
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Charizard @ Charizardite X
+Level: 42
+IVs: 12 HP / 31 Atk / 12 Def / 12 SpA / 12 SpD / 31 Spe
 
 === TRAINER_WILTON_2 ===
 Name: WILTON
@@ -1873,6 +1901,10 @@ Level: 42
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Tropius
+Level: 42
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Blastoise @ Blastoisinite
 Level: 42
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -5158,9 +5190,9 @@ Nature: Modest
 - Shadow Ball
 
 === TRAINER_JUAN_1 ===
-Name: JUAN
+Name: WALLACE
 Class: Leader
-Pic: Leader Juan
+Pic: Champion Wallace
 Gender: Male
 Music: Male
 Double Battle: No
@@ -5168,6 +5200,7 @@ AI: Basic Trainer
 
 Pelipper @ Damp Rock
 Level: 44
+Ability: Drizzle
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Hurricane
 - Surf
@@ -5176,6 +5209,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 Crawdaunt @ Mystic Water
 Level: 44
+Ability: Adaptability
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Swords Dance
 - Crabhammer
@@ -5184,6 +5218,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 Whiscash @ Leftovers
 Level: 45
+Ability: Hydration
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Rain Dance
 - Muddy Water
@@ -5192,6 +5227,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 Ludicolo @ Water Gem
 Level: 45
+Ability: Swift Swim
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Giga Drain
 - Rain Dance
@@ -5200,6 +5236,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 Milotic @ Petaya Berry
 Level: 45
+Ability: Competitive
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Recover
 - Dragon Tail
@@ -9551,49 +9588,61 @@ Class: Rival
 Pic: Wally
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore
 Double Battle: No
 AI: Basic Trainer
 
-Altaria
+Roserade @ Black Sludge
 Level: 44
+Ability: Poison Point
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Aerial Ace
-- Safeguard
-- Dragon Breath
-- Dragon Dance
-
-Delcatty
-Level: 43
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sing
-- Assist
-- Charm
-- Feint Attack
-
-Roselia
-Level: 44
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Magical Leaf
+- Shadow Ball
 - Leech Seed
-- Giga Drain
-- Toxic
+- Leaf Storm
+- Toxic Spikes
 
-Magneton
-Level: 41
+Talonflame @ Life Orb
+Level: 44
+Ability: Gale Wings
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Supersonic
-- Thunderbolt
-- Tri Attack
-- Screech
+- Brave Bird
+- Flare Blitz
+- Steel Wing
+- Tailwind
 
-Gardevoir
+Azumarill @ Assault Vest
+Level: 43
+Ability: Huge Power
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Aqua Jet
+- Play Rough
+- Aqua Tail
+- Iron Tail
+
+Magnezone @ Air Balloon
+Level: 41
+Ability: Sturdy
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Thunder Wave
+- Thunderbolt
+- Reflect
+- Flash Cannon
+
+Garchomp @ Rocky Helmet
+Level: 41
+Ability: Rough Skin
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Dragon Claw
+- Crunch
+- Earthquake
+- Stone Edge
+
+Gallade @ Galladite
 Level: 45
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Team
-- Calm Mind
-- Psychic
-- Future Sight
+- Psycho Cut
+- Sacred Sword
+- Leaf Blade
+- Swords Dance
 
 === TRAINER_BRENDAN_ROUTE_103_MUDKIP ===
 Name: BRENDAN
@@ -15818,9 +15867,9 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Flamethrower
 
 === TRAINER_JUAN_2 ===
-Name: JUAN
+Name: WALLACE
 Class: Leader
-Pic: Leader Juan
+Pic: Champion Wallace
 Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
@@ -15868,12 +15917,11 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Rest
 
 === TRAINER_JUAN_3 ===
-Name: JUAN
+Name: WALLACE
 Class: Leader
-Pic: Leader Juan
+Pic: Champion Wallace
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
 AI: Basic Trainer
 
@@ -15918,12 +15966,11 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Rest
 
 === TRAINER_JUAN_4 ===
-Name: JUAN
+Name: WALLACE
 Class: Leader
-Pic: Leader Juan
+Pic: Champion Wallace
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
 AI: Basic Trainer
 
@@ -15976,12 +16023,11 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Rest
 
 === TRAINER_JUAN_5 ===
-Name: JUAN
+Name: WALLACE
 Class: Leader
-Pic: Leader Juan
+Pic: Champion Wallace
 Gender: Male
 Music: Male
-Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
 AI: Basic Trainer
 

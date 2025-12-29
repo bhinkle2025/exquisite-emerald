@@ -19,9 +19,9 @@ MossdeepCity_Mart_Pokemart:
 	.2byte ITEM_HYPER_POTION
 	.2byte ITEM_FULL_HEAL
 	.2byte ITEM_REVIVE
-	.2byte ITEM_MAX_REPEL
-	.2byte ITEM_X_ATTACK
-	.2byte ITEM_X_DEFENSE
+	.2byte ITEM_EXP_CANDY_M
+	.2byte ITEM_EXP_CANDY_L
+	.2byte ITEM_EXP_CANDY_XL
 	pokemartlistend
 
 MossdeepCity_Mart_EventScript_Woman::
@@ -44,9 +44,10 @@ MossdeepCity_Mart_Text_ReviveIsFantastic:
 	.string "the used-up PP of moves.$"
 
 MossdeepCity_Mart_Text_MaxRepelLastsLongest:
-	.string "MAX REPEL keeps all weak POKéMON away.\p"
-	.string "Out of all the REPEL sprays, it lasts\n"
-	.string "the longest.$"
+	.string "EXP CANDY XL gives a huge boost\n"
+	.string "to a POKeMON's experience.\p"
+	.string "It is the fastest way to help\n"
+	.string "a strong POKeMON grow.$"
 
 MossdeepCity_Mart_Text_NetAndDiveBallsRare:
 	.string "The NET and DIVE BALLS are rare POKé\n"
