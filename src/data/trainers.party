@@ -529,17 +529,52 @@ Class: Aqua Admin
 Pic: Aqua Admin M
 Gender: Male
 Music: Aqua
-Items: Super Potion
 Double Battle: No
 AI: Basic Trainer
 
-Mightyena
-Level: 34
+Muk Alola @ Assault Vest
+Level: 40
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Toxic Spikes
+- Gunk Shot
+- Knock Off
+- Rain Dance
 
-Golbat
-Level: 34
+Tentacruel @ Water Gem
+Level: 40
+Ability: Rain Dish
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Bubblebeam
+- Toxic
+- Hex
+- Acid Armor
+
+Raticate Alola @ Wide Lens
+Level: 40
+Ability: Hustle
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Swords Dance
+- Double-Edge
+- Quick Attack
+- Sucker Punch
+
+Mabosstiff @ Dark Gem
+Level: 41
+Ability: Stakeout
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Crunch
+- Retaliate
+- Roar
+- Rain Dance
+
+Golduck @ Life Orb
+Level: 41
+Ability: Swift Swim
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Rain Dance
+- Hydro Pump
+- Ice Beam
+- Scald
 
 === TRAINER_ZANDER ===
 Name: ZANDER
@@ -563,13 +598,41 @@ Music: Aqua
 Double Battle: No
 AI: Basic Trainer
 
-Carvanha
+Frillish @ Mystic Water
 Level: 28
+Ability: Water Absorb
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Recover
+- Brine
+- Hex
+- Rain Dance
 
-Mightyena
+Overqwil @ Life Orb
 Level: 28
+Ability: Swift Swim
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Barb Barrage
+- Brine
+- Spikes
+- Fell Stinger
+
+Bergmite @ Sitrus Berry
+Level: 28
+Ability: Sturdy
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Chilling Water
+- Rain Dance
+- Ice Fang
+- Iron Defense
+
+Slowpoke @ Water Gem
+Level: 28
+Ability: Oblivious
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Zen Headbutt
+- Amnesia
+- Water Pulse
+- Headbutt
 
 === TRAINER_SHELLY_SEAFLOOR_CAVERN ===
 Name: SHELLY
@@ -580,13 +643,31 @@ Music: Aqua
 Double Battle: No
 AI: Basic Trainer
 
-Sharpedo
+Jellicent @ Mystic Water
 Level: 37
+Ability: Water Absorb
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Recover
+- Surf
+- Shadow Ball
+- Rain Dance
 
-Mightyena
+Overqwil @ Life Orb
+Level: 37
+Ability: Swift Swim
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Barb Barrage
+- Brine
+- Toxic Spikes
+- Fell Stinger
+
+Slowbro @ Slowbronite
 Level: 37
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Rain Dance
+- Amnesia
+- Scald
+- Stored Power
 
 === TRAINER_ARCHIE ===
 Name: ARCHIE
@@ -597,29 +678,56 @@ Music: Aqua
 Double Battle: No
 AI: Basic Trainer
 
-Mightyena
+Mightyena @ Sitrus Berry
 Level: 41
+Ability: Intimidate
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Gyarados
-Level: 41
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Ice Fang
+- Roar
+- Snarl
+- Crunch
 
 Crobat
 Level: 41
+Ability: Inner Focus
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Tailwind
+- Cross Poison
+- Acrobatics
+- Leech Life
 
-Barraskewda @ Mystic Water
+Gyarados @ Liechi Berry
 Level: 41
+Ability: Moxie
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Aqua Tail
+- Ice Fang
+- Crunch
+- Rain Dance
+
+Barraskewda @ Water Gem
+Level: 42
 IVs: 18 HP / 31 Atk / 18 Def / 18 SpA / 18 SpD / 31 Spe
 - Aqua Jet
 - Crunch
 - Agility
 - Dive
 
+Dhelmise @ Mystic Water
+Level: 41
+IVs: 18 HP / 31 Atk / 18 Def / 18 SpA / 18 SpD / 31 Spe
+- Whirlpool
+- Giga Drain
+- Heavy Slam
+- Surf
+
 Sharpedo @ Sharpedonite
 Level: 43
 IVs: 18 HP / 31 Atk / 18 Def / 18 SpA / 18 SpD / 31 Spe
+- Aqua Jet
+- Crunch
+- Liquidation
+- Ice Fang
 
 === TRAINER_LEAH ===
 Name: LEAH
@@ -9502,17 +9610,31 @@ Music: Magma
 Double Battle: No
 AI: Check Bad Move
 
-Camerupt
-Level: 36
+Grimmsnarl @ Dark Gem
+Level: 42
+Ability: Prankster
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Fake Out
+- Sucker Punch
+- Reflect
+- Light Screen
 
-Mightyena
-Level: 38
+Arcanine Hisui @ Rock Gem
+Level: 43
+Ability: Intimidate
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Extreme Speed
+- Rock Slide
+- Flare Blitz
+- Retaliate
 
-Golbat
-Level: 40
+Banette @ Banettite
+Level: 44
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Shadow Claw
+- Retaliate
+- Sucker Punch
+- Shadow Sneak
 
 === TRAINER_EDWIN_2 ===
 Name: EDWIN
@@ -11100,21 +11222,37 @@ Music: Magma
 Double Battle: No
 AI: Basic Trainer
 
-Numel
-Level: 18
+Impidimp @ Dark Gem
+Level: 24
+Ability: Prankster
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Sucker Punch
+- Swagger
+- Fake Out
+- Flatter
+
+Growlithe Hisui @ Rock Gem
+Level: 24
+Ability: Intimidate
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-Poochyena
-Level: 20
+Vileplume @ Grass Gem
+Level: 24
+Ability: Effect Spore
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Grassy Terrain
+- Grassy Glide
+- Petal Dance
+- Petal Blizzard
 
-Numel
-Level: 22
+Shuppet @ Ghost Gem
+Level: 24
+Ability: Insomnia
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Zubat
-Level: 22
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Shadow Sneak
+- Hex
+- Will-O-Wisp
+- Night Shade
 
 === TRAINER_JONATHAN ===
 Name: JONATHAN
@@ -11206,21 +11344,60 @@ Class: Magma Leader
 Pic: Magma Leader Maxie
 Gender: Male
 Music: Magma
-Items: Super Potion / Super Potion
 Double Battle: No
 AI: Basic Trainer
 
-Mightyena
+Mightyena @ Sitrus Berry
 Level: 37
+Ability: Intimidate
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Thunder Fang
+- Crunch
+- Thief
+- Snarl
 
-Crobat
+Coalossal @ Charcoal
+Level: 37
+Ability: Steam Engine
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Tar Shot
+- Incinerate
+- Stealth Rock
+- Ancient Power
+
+Crobat 
 Level: 38
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Cross Poison
+- Tailwind
+- Acrobatics
+- Thief
 
-Camerupt
+Magmortar @ Fire Gem
+Level: 38
+Ability: Flame Body
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Lava Plume
+- Smokescreen
+- Bulldoze
+- Sunny Day
+
+Torterra @ Grass Gem
+Level: 39
+Ability: Shell Armor
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Wood Hammer
+- Synthesis
+- Mega Drain
+- Earthquake
+
+Camerupt @ Cameruptite
 Level: 39
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Eruption
+- Amnesia
+- Lava Plume
+- Earth Power
 
 === TRAINER_MAXIE_MT_CHIMNEY ===
 Name: MAXIE
@@ -11228,21 +11405,60 @@ Class: Magma Leader
 Pic: Magma Leader Maxie
 Gender: Male
 Music: Magma
-Items: Super Potion / Super Potion
 Double Battle: No
 AI: Basic Trainer
 
-Mightyena
+Mightyena @ Sitrus Berry
 Level: 24
+Ability: Intimidate
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Thunder Fang
+- Crunch
+- Thief
+- Snarl
 
-Zubat
+Carkol @ Charcoal
 Level: 24
+Ability: Steam Engine
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Smokescreen
+- Flame Charge
+- Ancient Power
+- Rock Polish
 
-Camerupt
+Golbat @ Sitrus Berry
 Level: 25
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Poison Fang
+- Wing Attack
+- Bite
+- Screech
+
+Magmar @ Eviolite
+Level: 24
+Ability: Flame Body
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Flame Wheel
+- Smokescreen
+- Confuse Ray
+- Clear Smog
+
+Grotle @ Grass Gem
+Level: 24
+Ability: Shell Armor
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Razor Leaf
+- Curse
+- Bite
+- Mud-Slap
+
+Camerupt @ Fire Gem
+Level: 25
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Eruption
+- Fissure
+- Lava Plume
+- Bulldoze
 
 === TRAINER_TIANA ===
 Name: TIANA
@@ -13801,17 +14017,29 @@ Music: Magma
 Double Battle: No
 AI: Basic Trainer
 
-Mightyena
+Magmortar @ Charcoal
 Level: 42
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Smokescreen
+- Lava Plume
+- Bulldoze
+- Sunny Day
 
-Crobat
+Torterra @ Miracle Seed
 Level: 43
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Wood Hammer
+- Synthesis
+- Giga Drain
+- Earthquake
 
-Camerupt
+Camerupt @ Cameruptite
 Level: 44
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Earth Power
+- Amnesia
+- Lava Plume
+- Eruption
 
 === TRAINER_PETE ===
 Name: PETE
