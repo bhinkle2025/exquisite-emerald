@@ -10,12 +10,87 @@ Route103_OnTransition:
 
 Route103_OnLoad:
 	call_if_set FLAG_SYS_GAME_CLEAR, Route103_EventScript_OpenAlteringCave
+	call_if_set FLAG_POSTGAME_RIVAL, Route103_EventScript_SetupPostGameRival
 	end
 
 Route103_EventScript_OpenAlteringCave::
 	setmetatile 45, 5, METATILE_General_CaveEntrance_Top, TRUE
 	setmetatile 45, 6, METATILE_General_CaveEntrance_Bottom, FALSE
 	return
+
+Route103_EventScript_SetupPostGameRival::
+	goto_if_set FLAG_DEFEATED_POSTGAME_RIVAL, Route103_EventScript_HidePostGameRival
+	return
+
+Route103_EventScript_HidePostGameRival::
+	setflag FLAG_HIDE_POSTGAME_RIVAL
+	return
+
+Route103_EventScript_PostGameRival::
+	lockall
+	faceplayer
+	checkplayergender
+	goto_if_eq VAR_RESULT, MALE, Route103_EventScript_PostGameMay
+	goto_if_eq VAR_RESULT, FEMALE, Route103_EventScript_PostGameBrendan
+	end
+
+Route103_EventScript_PostGameMay::
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	msgbox Route103_Text_PostGameMayIntro, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartMayPostGameBattleTreecko
+	case 1, Route103_EventScript_StartMayPostGameBattleTorchic
+	case 2, Route103_EventScript_StartMayPostGameBattleMudkip
+	end
+
+Route103_EventScript_PostGameBrendan::
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	msgbox Route103_Text_PostGameBrendanIntro, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartBrendanPostGameBattleTreecko
+	case 1, Route103_EventScript_StartBrendanPostGameBattleTorchic
+	case 2, Route103_EventScript_StartBrendanPostGameBattleMudkip
+	end
+
+Route103_EventScript_PostGameMayEnd::
+	msgbox Route103_Text_PostGameBrendanAfter, MSGBOX_DEFAULT
+	goto Route103_EventScript_PostGameRivalExit
+	end
+
+Route103_EventScript_PostGameBrendanEnd::
+	msgbox Route103_Text_PostGameBrendanAfter, MSGBOX_DEFAULT
+	goto Route103_EventScript_PostGameRivalExit
+	end
+
+Route103_EventScript_StartMayPostGameBattleTreecko::
+	trainerbattle_no_intro TRAINER_MAY_POSTGAME_TREECKO, Route103_Text_MayDefeated
+	goto Route103_EventScript_PostGameMayEnd
+	end
+
+Route103_EventScript_StartMayPostGameBattleTorchic::
+	trainerbattle_no_intro TRAINER_MAY_POSTGAME_TORCHIC, Route103_Text_MayDefeated
+	goto Route103_EventScript_PostGameMayEnd
+	end
+
+Route103_EventScript_StartMayPostGameBattleMudkip::
+	trainerbattle_no_intro TRAINER_BRENDAN_POSTGAME_MUDKIP, Route103_Text_MayDefeated
+	goto Route103_EventScript_PostGameMayEnd
+	end
+
+Route103_EventScript_StartBrendanPostGameBattleTreecko::
+	trainerbattle_no_intro TRAINER_BRENDAN_POSTGAME_TREECKO, Route103_Text_MayDefeated
+	goto Route103_EventScript_PostGameMayEnd
+	end
+
+Route103_EventScript_StartBrendanPostGameBattleTorchic::
+	trainerbattle_no_intro TRAINER_BRENDAN_POSTGAME_TORCHIC, Route103_Text_MayDefeated
+	goto Route103_EventScript_PostGameMayEnd
+	end
+
+Route103_EventScript_StartBrendanPostGameBattleMudkip::
+	trainerbattle_no_intro TRAINER_BRENDAN_POSTGAME_MUDKIP, Route103_Text_MayDefeated
+	goto Route103_EventScript_PostGameMayEnd
+	end
 
 Route103_EventScript_Rival::
 	lockall
@@ -286,6 +361,59 @@ Route103_EventScript_Isabelle::
 	msgbox Route103_Text_IsabellePostBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route103_EventScript_PostGameRivalExit::
+	closemessage
+	switch VAR_FACING
+	case DIR_SOUTH, Route103_EventScript_PostGameRivalExitFacingSouth
+	case DIR_NORTH, Route103_EventScript_PostGameRivalExitFacingNorth
+	case DIR_WEST, Route103_EventScript_PostGameRivalExitFacingEastOrWest
+	case DIR_EAST, Route103_EventScript_PostGameRivalExitFacingEastOrWest
+	end
+
+Route103_EventScript_PostGameRivalExitFacingNorth::
+	applymovement LOCALID_PLAYER, Route103_Movement_WatchRivalExitFacingNorth
+	applymovement LOCALID_POSTGAME_RIVAL, Route103_Movement_RivalExitFacingNorth1
+	waitmovement 0
+	playse SE_LEDGE
+	applymovement LOCALID_POSTGAME_RIVAL, Route103_Movement_RivalExitFacingNorth2
+	waitmovement 0
+	goto Route103_EventScript_PostGameRivalEnd
+	end
+
+Route103_EventScript_PostGameRivalExitFacingEastOrWest::
+	applymovement LOCALID_PLAYER, Route103_Movement_WatchRivalExitFacingEastOrWest
+	applymovement LOCALID_POSTGAME_RIVAL, Route103_Movement_RivalExit1
+	waitmovement 0
+	playse SE_LEDGE
+	applymovement LOCALID_POSTGAME_RIVAL, Route103_Movement_RivalExit2
+	waitmovement 0
+	goto Route103_EventScript_PostGameRivalEnd
+	end
+
+Route103_EventScript_PostGameRivalExitFacingSouth::
+	applymovement LOCALID_POSTGAME_RIVAL Route103_Movement_RivalExit1
+	waitmovement 0
+	playse SE_LEDGE
+	applymovement LOCALID_POSTGAME_RIVAL, Route103_Movement_RivalExit2
+	waitmovement 0
+	goto Route103_EventScript_PostGameRivalEnd
+	end
+
+Route103_EventScript_PostGameRivalEnd::
+	@ one-time completion
+	setflag FLAG_DEFEATED_POSTGAME_RIVAL
+
+	@ hide/remove the postgame rival so they never appear again
+	setflag FLAG_HIDE_POSTGAME_RIVAL
+	removeobject LOCALID_POSTGAME_RIVAL
+
+	@ audio cleanup
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	releaseall
+	end
+
+
 Route103_Text_MayRoute103Pokemon:
 	.string "MAY: Let's see… The POKéMON found\n"
 	.string "on ROUTE 103 include…$"
@@ -350,4 +478,65 @@ Route103_Text_ShortcutToOldale:
 Route103_Text_RouteSign:
 	.string "ROUTE 103\n"
 	.string "{DOWN_ARROW} OLDALE TOWN$"
+
+Route103_Text_PostGameMayIntro:
+	.string "MAY: …Hey, {PLAYER}{KUN}.\p"
+	.string "Funny running into you here,\n"
+	.string "of all places.\p"
+	.string "This is where it all started,\n"
+	.string "isn't it?\p"
+	.string "Back then, we barely knew\n"
+	.string "what we were doing.\p"
+	.string "But now you're the CHAMPION.\p"
+	.string "So let's see how much we've\n"
+	.string "both grown.\p"
+	.string "No holding back!$"
+
+Route103_Text_PostGameMayDefeated:
+	.string "MAY: Wow…\n"
+	.string "I guess I expected that.$"
+
+Route103_Text_PostGameMayAfter:
+	.string "MAY: Battling you feels different\n"
+	.string "now.\p"
+	.string "Not just stronger…\n"
+	.string "more confident.\p"
+	.string "You really became someone\n"
+	.string "special, {PLAYER}{KUN}.\p"
+	.string "I'm glad we could battle here,\n"
+	.string "one last time.\p"
+	.string "Take care, CHAMPION.$"
+
+Route103_Text_PostGameBrendanIntro:
+	.string "BRENDAN: Heh…\n"
+	.string "Didn't expect to see you here.\p"
+	.string "This route brings back memories,\n"
+	.string "doesn't it?\p"
+	.string "We were just kids starting out,\n"
+	.string "testing our first POKeMON.\p"
+	.string "Now look at you.\n"
+	.string "CHAMPION of HOENN.\p"
+	.string "I've been waiting for a chance\n"
+	.string "to battle you again.\p"
+	.string "Let's do this! No excuses!$"
+
+Route103_Text_PostGameBrendanDefeated:
+	.string "BRENDAN: …Yeah.\n"
+	.string "You're incredible.$"
+
+Route103_Text_PostGameBrendanAfter:
+	.string "BRENDAN: That was intense.\p"
+	.string "Battling you really shows how\n"
+	.string "far you've come.\p"
+	.string "You've earned everything\n"
+	.string "you've achieved.\p"
+	.string "I'm glad we settled this here,\n"
+	.string "where it all began.\p"
+	.string "Don't lose that edge,\n"
+	.string "CHAMPION.$"
+
+Route103_Text_PostGameRivalAfter:
+	.string "That was a battle worth remembering.\p"
+	.string "See you around, CHAMPION.$"
+
 

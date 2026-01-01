@@ -28,11 +28,11 @@ LittlerootTown_ProfessorBirchsLab_OnTransition:
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_CheckReadyForJohtoStarter::
-	specialvar VAR_RESULT, HasAllHoennMons
-	goto_if_eq VAR_RESULT, TRUE, LittlerootTown_ProfessorBirchsLab_EventScript_SetReadyForJohtoStarter
-	setobjectmovementtype LOCALID_BIRCHS_LAB_RIVAL, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
-	setobjectxyperm LOCALID_BIRCHS_LAB_RIVAL, 5, 10
-	end
+    goto_if_set FLAG_BADGE03_GET, LittlerootTown_ProfessorBirchsLab_EventScript_SetReadyForJohtoStarter
+    setobjectmovementtype LOCALID_BIRCHS_LAB_RIVAL, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
+    setobjectxyperm LOCALID_BIRCHS_LAB_RIVAL, 5, 10
+    end
+
 
 LittlerootTown_ProfessorBirchsLab_EventScript_SetReadyForJohtoStarter::
 	setvar VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 4
@@ -878,20 +878,18 @@ LittlerootTown_ProfessorBirchsLab_Text_BrendanTakeBreakFromFieldwork:
 
 LittlerootTown_ProfessorBirchsLab_Text_CompletedDexChoosePokemon:
 	.string "PROF. BIRCH: Oh, {PLAYER}{KUN}!\n"
-	.string "Let's have a look at your POKéDEX.\p"
-	.string "… … … … … …\n"
-	.string "… … … … … …\p"
-	.string "Yes, there's no doubt about it.\p"
-	.string "You really have completed the HOENN\n"
-	.string "region's POKéDEX.\p"
-	.string "That's more than just impressive.\p"
-	.string "I have a gift for you.\p"
-	.string "Consider it my show of appreciation\n"
-	.string "for the fantastic work you've done.\p"
-	.string "My gift is a rare POKéMON only found\n"
-	.string "in another region!\p"
-	.string "You can have any one of these\n"
-	.string "three POKéMON!$"
+	.string "I've been meaning to speak with you.\p"
+	.string "You've grown a great deal since you\n"
+	.string "left LITTLEROOT TOWN.\p"
+	.string "Earning three GYM BADGES so quickly\n"
+	.string "is no small feat.\p"
+	.string "More importantly, you've shown a\n"
+	.string "strong understanding of POKéMON.\p"
+	.string "That's exactly the kind of TRAINER\n"
+	.string "I like to encourage.\p"
+	.string "So, I'd like to offer you a special\n"
+	.string "opportunity.$"
+
 
 LittlerootTown_ProfessorBirchsLab_Text_CanHaveAnyOneOfRarePokemon:
 	.string "PROF. BIRCH: These are rare POKéMON\n"

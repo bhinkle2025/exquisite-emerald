@@ -863,7 +863,13 @@
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT                      855
+#define TRAINER_BRENDAN_POSTGAME_MUDKIP     856
+#define TRAINER_BRENDAN_POSTGAME_TREECKO    857
+#define TRAINER_BRENDAN_POSTGAME_TORCHIC    858
+#define TRAINER_MAY_POSTGAME_MUDKIP         859
+#define TRAINER_MAY_POSTGAME_TREECKO        860
+#define TRAINER_MAY_POSTGAME_TORCHIC        861
+#define TRAINERS_COUNT                      862
 #define MAX_TRAINERS_COUNT                  864
 #define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)
 

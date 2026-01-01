@@ -50,9 +50,9 @@
 #define FLAG_RECEIVED_LINKING_CABLE       0x24 // Linking Cable
 #define FLAG_FOSSIL_MANIAC_OFFERED_SALE   0x25 // Fossil Maniac
 #define FLAG_DISABLE_FOLLOWERS            0x26 // Disables Pokemon Followers
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
+#define FLAG_POSTGAME_RIVAL               0x27 // Post Game Rival Fight
+#define FLAG_DEFEATED_POSTGAME_RIVAL      0x28 // Post Game Rival Defeated
+#define FLAG_HIDE_POSTGAME_RIVAL          0x29 // Hiding Post Game Rival
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag
 #define FLAG_UNUSED_0x02C    0x2C // Unused Flag
