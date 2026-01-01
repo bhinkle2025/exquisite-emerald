@@ -10,6 +10,8 @@ LilycoveCity_Harbor_EventScript_FerryAttendant::
 	lock
 	faceplayer
 	goto_if_unset FLAG_SYS_GAME_CLEAR, LilycoveCity_Harbor_EventScript_FerryUnavailable
+	checkitem ITEM_OLD_SEA_MAP
+	goto_if_eq VAR_RESULT, 1, LilycoveCity_Harbor_EventScript_OldSeaMapObtained
 	call LilycoveCity_Harbor_EventScript_GetEonTicketState
 	call LilycoveCity_Harbor_EventScript_GetAuroraTicketState
 	call LilycoveCity_Harbor_EventScript_GetOldSeaMapState
@@ -22,6 +24,16 @@ LilycoveCity_Harbor_EventScript_FerryAttendant::
 	goto_if_eq VAR_TEMP_B, 4, LilycoveCity_Harbor_EventScript_OldSeaMapFirstTime
 	goto_if_eq VAR_TEMP_B, 8, LilycoveCity_Harbor_EventScript_MysticTicketFirstTime
 	goto_if_ne VAR_TEMP_B, 0, LilycoveCity_Harbor_EventScript_MultipleEventTicketsFirstTime
+	goto LilycoveCity_Harbor_EventScript_NoFirstTimeEventTickets
+	end
+
+LilycoveCity_Harbor_EventScript_OldSeaMapObtained:
+	setflag FLAG_ENABLE_SHIP_FARAWAY_ISLAND
+	setflag FLAG_RECEIVED_OLD_SEA_MAP
+	call LilycoveCity_Harbor_EventScript_GetOldSeaMapState
+	call LilycoveCity_Harbor_EventScript_GetFirstTimeShowingTicket
+	call LilycoveCity_Harbor_EventScript_GetHasTicketsState
+	goto_if_eq VAR_TEMP_C, 2, LilycoveCity_Harbor_EventScript_OldSeaMapFirstTime
 	goto LilycoveCity_Harbor_EventScript_NoFirstTimeEventTickets
 	end
 

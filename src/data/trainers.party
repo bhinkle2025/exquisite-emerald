@@ -17372,21 +17372,57 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Tropius
-Level: 62
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Beautifly @ Bug Gem
+Level: 60
+Ability: Swarm
+IVs: 18 HP / 18 Atk / 18 Def / 31 SpA / 31 SpD / 31 Spe
+- Bug Buzz
+- Quiver Dance
+- Giga Drain
+- Air Cutter
 
-Pelipper
-Level: 62
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Exploud @ Throat Spray
+Level: 60
+Ability: Scrappy
+IVs: 18 HP / 18 Atk / 18 Def / 31 SpA / 18 SpD / 18 Spe
+- Hyper Voice
+- Boomburst
+- Hyper Beam
+- Roar
 
-Ludicolo
-Level: 62
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Mawile @ Life Orb
+Level: 60
+Ability: Intimidate
+IVs: 18 HP / 31 Atk / 31 Def / 18 SpA / 31 SpD / 18 Spe
+- Crunch
+- Iron Defense
+- Play Rough
+- Iron Head
 
-Blaziken
+Wailord @ Leftovers
+Level: 60
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Water Spout
+- Heavy Slam
+- Aqua Ring
+- Giga Impact
+
+Shiftry @ Blackglasses
+Level: 61
+Ability: Wind Rider
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Sucker Punch
+- Tailwind
+- Leaf Blade
+- Swords Dance
+
+Blaziken @ Blazikenite
 Level: 62
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+IVs: 24 HP / 31 Atk / 24 Def / 24 SpA / 24 SpD / 31 Spe
+- Blaze Kick
+- Sky Uppercut
+- Swords Dance
+- Stone Edge
 
 === TRAINER_BRENDAN_POSTGAME_MUDKIP ===
 Name: BRENDAN
@@ -17397,21 +17433,58 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Tropius
-Level: 31
+Beautifly @ Bug Gem
+Level: 60
+Ability: Swarm
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Bug Buzz
+- Quiver Dance
+- Giga Drain
+- Air Cutter
 
-Slugma
-Level: 32
+Exploud @ Throat Spray
+Level: 60
+Ability: Scrappy
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Hyper Voice
+- Boomburst
+- Hyper Beam
+- Roar
 
-Pelipper
-Level: 32
+Mawile @ Life Orb
+Level: 60
+Ability: Intimidate
+IVs: 18 HP / 31 Atk / 31 Def / 18 SpA / 31 SpD / 18 Spe
+- Crunch
+- Iron Defense
+- Play Rough
+- Iron Head
+
+Chandelure @ Spell Tag
+Level: 61
+Ability: Infiltrator
+IVs: 18 HP / 18 Atk / 18 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Ball
+- Flamethrower
+- Energy Ball
+- Will-O-Wisp
+
+Wailord @ Leftovers
+Level: 60
+Ability: Water Veil
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Water Spout
+- Heavy Slam
+- Aqua Ring
+- Giga Impact
 
-Grovyle
-Level: 34
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Sceptile @ Sceptilite
+Level: 62
+IVs: 24 HP / 31 Atk / 24 Def / 31 SpA / 24 SpD / 31 Spe
+- Dragon Dance
+- Dragon Claw
+- Leaf Blade
+- Leaf Storm
 
 === TRAINER_BRENDAN_POSTGAME_TORCHIC ===
 Name: BRENDAN
@@ -17433,14 +17506,14 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Exploud @ Throat Spray
 Level: 60
-Ability: Soundproof
+Ability: Scrappy
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Hyper Voice
 - Boomburst
 - Hyper Beam
 - Roar
 
-Mawile @ Leftovers
+Mawile @ Life Orb
 Level: 60
 Ability: Intimidate
 IVs: 18 HP / 31 Atk / 31 Def / 18 SpA / 31 SpD / 18 Spe
@@ -17485,21 +17558,58 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Tropius
+Beautifly @ Bug Gem
 Level: 60
+Ability: Swarm
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Bug Buzz
+- Quiver Dance
+- Giga Drain
+- Air Cutter
 
-Slugma
+Exploud @ Throat Spray
 Level: 60
+Ability: Scrappy
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Hyper Voice
+- Boomburst
+- Hyper Beam
+- Roar
 
-Pelipper
+Mawile @ Life Orb
+Level: 60
+Ability: Intimidate
+IVs: 18 HP / 31 Atk / 31 Def / 18 SpA / 31 SpD / 18 Spe
+- Crunch
+- Iron Defense
+- Play Rough
+- Iron Head
+
+Chandelure @ Spell Tag
 Level: 61
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Ability: Infiltrator
+IVs: 18 HP / 18 Atk / 18 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Ball
+- Flamethrower
+- Energy Ball
+- Will-O-Wisp
 
-Grovyle
+Wailord @ Leftovers
+Level: 60
+Ability: Water Veil
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Water Spout
+- Heavy Slam
+- Aqua Ring
+- Giga Impact
+
+Sceptile @ Sceptilite
 Level: 62
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+IVs: 24 HP / 31 Atk / 24 Def / 31 SpA / 24 SpD / 31 Spe
+- Dragon Dance
+- Dragon Claw
+- Leaf Blade
+- Leaf Storm
 
 === TRAINER_MAY_POSTGAME_TREECKO ===
 Name: MAY
@@ -17510,21 +17620,57 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Tropius
+Beautifly @ Bug Gem
+Level: 60
+Ability: Swarm
+IVs: 18 HP / 18 Atk / 18 Def / 31 SpA / 31 SpD / 31 Spe
+- Bug Buzz
+- Quiver Dance
+- Giga Drain
+- Air Cutter
+
+Exploud @ Throat Spray
+Level: 60
+Ability: Scrappy
+IVs: 18 HP / 18 Atk / 18 Def / 31 SpA / 18 SpD / 18 Spe
+- Hyper Voice
+- Boomburst
+- Hyper Beam
+- Roar
+
+Mawile @ Life Orb
+Level: 60
+Ability: Intimidate
+IVs: 18 HP / 31 Atk / 31 Def / 18 SpA / 31 SpD / 18 Spe
+- Crunch
+- Iron Defense
+- Play Rough
+- Iron Head
+
+Wailord @ Leftovers
 Level: 60
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Water Spout
+- Heavy Slam
+- Aqua Ring
+- Giga Impact
 
-Pelipper
-Level: 60
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Ludicolo
+Shiftry @ Blackglasses
 Level: 61
+Ability: Wind Rider
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Sucker Punch
+- Tailwind
+- Leaf Blade
+- Swords Dance
 
-Blaziken
+Blaziken @ Blazikenite
 Level: 62
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+IVs: 24 HP / 31 Atk / 24 Def / 24 SpA / 24 SpD / 31 Spe
+- Blaze Kick
+- Sky Uppercut
+- Swords Dance
+- Stone Edge
 
 === TRAINER_MAY_POSTGAME_TORCHIC ===
 Name: MAY
@@ -17535,18 +17681,56 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Tropius
+Beautifly @ Bug Gem
 Level: 60
+Ability: Swarm
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Bug Buzz
+- Quiver Dance
+- Giga Drain
+- Air Cutter
 
-Ludicolo
+Exploud @ Throat Spray
+Level: 60
+Ability: Scrappy
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Hyper Voice
+- Boomburst
+- Hyper Beam
+- Roar
+
+Mawile @ Life Orb
+Level: 60
+Ability: Intimidate
+IVs: 18 HP / 31 Atk / 31 Def / 18 SpA / 31 SpD / 18 Spe
+- Crunch
+- Iron Defense
+- Play Rough
+- Iron Head
+
+Chandelure @ Spell Tag
 Level: 61
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Ability: Infiltrator
+IVs: 18 HP / 18 Atk / 18 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Ball
+- Flamethrower
+- Energy Ball
+- Will-O-Wisp
 
-Slugma
+Shiftry @ Blackglasses
 Level: 61
+Ability: Wind Rider
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Sucker Punch
+- Tailwind
+- Leaf Blade
+- Swords Dance
 
-Marshtomp
+Swampert @ Swampertite
 Level: 62
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Ability: Torrent
+IVs: 24 HP / 31 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Hammer Arm
+- Earthquake
+- Surf
+- Rock Slide
