@@ -105,11 +105,12 @@ MossdeepCity_SpaceCenter_1F_EventScript_SunStoneMan::
 	lock
 	faceplayer
 	goto_if_eq VAR_MOSSDEEP_CITY_STATE, 2, MossdeepCity_SpaceCenter_1F_EventScript_SunStoneManMagma
-	goto_if_set FLAG_RECEIVED_SUN_STONE_MOSSDEEP, MossdeepCity_SpaceCenter_1F_EventScript_GaveSunStone
+	goto_if_set FLAG_RECEIVED_AURORA_TICKET, MossdeepCity_SpaceCenter_1F_EventScript_GaveSunStone
 	msgbox MossdeepCity_SpaceCenter_1F_Text_FoundThisYouCanHaveIt, MSGBOX_DEFAULT
-	giveitem ITEM_SUN_STONE
+	giveitem ITEM_AURORA_TICKET
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_SUN_STONE_MOSSDEEP
+	setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
+	setflag FLAG_RECEIVED_AURORA_TICKET
 	msgbox MossdeepCity_SpaceCenter_1F_Text_HoennFamousForMeteorShowers, MSGBOX_DEFAULT
 	release
 	end
@@ -308,10 +309,12 @@ MossdeepCity_SpaceCenter_1F_Text_MagmaHaveSightsOnSpaceCenter:
 	.string "to interfere with our rocket launch!$"
 
 MossdeepCity_SpaceCenter_1F_Text_FoundThisYouCanHaveIt:
-	.string "I was taking a stroll down the beach\n"
-	.string "when I found this.\p"
-	.string "It's not anything I need, so you can\n"
-	.string "have it.$"
+	.string "My family’s been telling me I\n"
+	.string "should take a break from sailing.\p"
+	.string "They want me to stay here and\n"
+	.string "spend more time with them.\p"
+	.string "I won’t be traveling for a while,\n"
+	.string "so you can have this.$"
 
 MossdeepCity_SpaceCenter_1F_Text_HoennFamousForMeteorShowers:
 	.string "The HOENN region has been famous for \n"

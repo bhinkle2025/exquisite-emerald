@@ -441,10 +441,14 @@ LilycoveCity_Harbor_Movement_UnusedBoardFerry:
 LilycoveCity_Harbor_EventScript_Sailor::
 	lock
 	faceplayer
-	goto_if_set FLAG_SYS_GAME_CLEAR, LilycoveCity_Harbor_EventScript_SailorFerryAvailable
-	msgbox LilycoveCity_Harbor_Text_SailorFerryUnavailable, MSGBOX_DEFAULT
-	release
+	goto_if_set FLAG_RECEIVED_SS_TICKET, LilycoveCity_Harbor_EventScript_SailorFerryAvailable
+	msgbox LilycoveCity_Harbor_Text_SailorPromoTicket, MSGBOX_DEFAULT
+	giveitem ITEM_SS_TICKET
+	setflag FLAG_RECEIVED_SS_TICKET
+	msgbox LilycoveCity_Harbor_Text_SailorPromoTicketAfter, MSGBOX_DEFAULT
+	goto LilycoveCity_Harbor_EventScript_SailorFerryAvailable
 	end
+
 
 LilycoveCity_Harbor_EventScript_SailorFerryAvailable::
 	msgbox LilycoveCity_Harbor_Text_SailorFerryAvailable, MSGBOX_DEFAULT
@@ -597,3 +601,18 @@ LilycoveCity_Harbor_Text_SailorFerryAvailable:
 	.string "The folks at the SHIPYARD in SLATEPORT\n"
 	.string "must've worked extra hard.\p"
 	.string "Well, it's my turn to get busy now!$"
+
+LilycoveCity_Harbor_Text_SailorPromoTicket:
+	.string "SAILOR: Hey, you!\n"
+	.string "You look like a capable TRAINER.\p"
+	.string "We’re trying to get the word out\n"
+	.string "about the S.S. TIDAL’s new routes.\p"
+	.string "Care to help us spread the buzz?$"
+
+LilycoveCity_Harbor_Text_SailorPromoTicketAfter:
+	.string "SAILOR: Here you go!\n"
+	.string "That’s an S.S. TICKET.\p"
+	.string "With that, you can ride the ferry\n"
+	.string "from major ports across HOENN.\p"
+	.string "Show it to the ferry staff whenever\n"
+	.string "you’re ready to set sail.$"
