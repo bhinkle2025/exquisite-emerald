@@ -61,6 +61,63 @@ static bool8 IsBannedWonderTradeSpecies(u16 species)
     }
 }
 
+static bool8 IsBannedMegaEvolutions(u16 species)
+{
+    switch (species)
+    {
+    case SPECIES_VENUSAUR_MEGA:
+    case SPECIES_BLASTOISE_MEGA:
+    case SPECIES_CHARIZARD_MEGA_X:
+    case SPECIES_CHARIZARD_MEGA_Y:
+    case SPECIES_BEEDRILL_MEGA:
+    case SPECIES_PIDGEOT_MEGA:
+    case SPECIES_SLOWBRO_MEGA:
+    case SPECIES_ALAKAZAM_MEGA:
+    case SPECIES_GENGAR_MEGA:
+    case SPECIES_KANGASKHAN_MEGA:
+    case SPECIES_PINSIR_MEGA:
+    case SPECIES_GYARADOS_MEGA:
+    case SPECIES_AERODACTYL_MEGA:
+    case SPECIES_MEWTWO_MEGA_X:
+    case SPECIES_MEWTWO_MEGA_Y:
+    case SPECIES_AMPHAROS_MEGA:
+    case SPECIES_STEELIX_MEGA:
+    case SPECIES_SCIZOR_MEGA:
+    case SPECIES_HERACROSS_MEGA:
+    case SPECIES_HOUNDOOM_MEGA:
+    case SPECIES_TYRANITAR_MEGA:
+    case SPECIES_BLAZIKEN_MEGA:
+    case SPECIES_SCEPTILE_MEGA:
+    case SPECIES_SWAMPERT_MEGA:
+    case SPECIES_MAWILE_MEGA:
+    case SPECIES_AGGRON_MEGA:
+    case SPECIES_MEDICHAM_MEGA:
+    case SPECIES_MANECTRIC_MEGA:
+    case SPECIES_BANETTE_MEGA:
+    case SPECIES_ABSOL_MEGA:
+    case SPECIES_SABLEYE_MEGA:
+    case SPECIES_SHARPEDO_MEGA:
+    case SPECIES_CAMERUPT_MEGA:
+    case SPECIES_ALTARIA_MEGA:
+    case SPECIES_GLALIE_MEGA:
+    case SPECIES_SALAMENCE_MEGA:
+    case SPECIES_METAGROSS_MEGA:
+    case SPECIES_RAYQUAZA_MEGA:
+    case SPECIES_LATIAS_MEGA:
+    case SPECIES_LATIOS_MEGA:
+    case SPECIES_GARCHOMP_MEGA:
+    case SPECIES_LUCARIO_MEGA:
+    case SPECIES_ABOMASNOW_MEGA:
+    case SPECIES_LOPUNNY_MEGA:
+    case SPECIES_GALLADE_MEGA:
+    case SPECIES_AUDINO_MEGA:
+    case SPECIES_DIANCIE_MEGA:
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
+
 static bool8 IsRecvMonBad(struct Pokemon* mon)
 {
     u16 s = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
@@ -93,6 +150,9 @@ static bool8 IsValidWonderTradeSpecies(u16 species)
 #endif
 
     if (IsBannedWonderTradeSpecies(species))
+        return FALSE;
+
+    if (IsBannedMegaEvolutions(species))
         return FALSE;
 
    // if (!IsSpeciesEnabled(species))
