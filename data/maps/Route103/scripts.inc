@@ -9,6 +9,7 @@ Route103_OnTransition:
 	end
 
 Route103_OnLoad:
+	setflag FLAG_HIDE_POSTGAME_RIVAL
 	call_if_set FLAG_SYS_GAME_CLEAR, Route103_EventScript_OpenAlteringCave
 	call_if_set FLAG_POSTGAME_RIVAL, Route103_EventScript_SetupPostGameRival
 	end
@@ -20,6 +21,7 @@ Route103_EventScript_OpenAlteringCave::
 
 Route103_EventScript_SetupPostGameRival::
 	goto_if_set FLAG_DEFEATED_POSTGAME_RIVAL, Route103_EventScript_HidePostGameRival
+	clearflag FLAG_HIDE_POSTGAME_RIVAL
 	return
 
 Route103_EventScript_HidePostGameRival::

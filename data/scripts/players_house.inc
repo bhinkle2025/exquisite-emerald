@@ -337,12 +337,42 @@ PlayersHouse_1F_EventScript_CheckGiveAmuletCoin::
 PlayersHouse_1F_EventScript_TryGiveAmuletCoin::
 	goto_if_set FLAG_RECEIVED_AMULET_COIN, PlayersHouse_1F_EventScript_MomHealsParty
 	msgbox PlayersHouse_1F_Text_GotDadsBadgeHeresSomethingFromMom, MSGBOX_DEFAULT
-	giveitem ITEM_AMULET_COIN
+	msgbox PlayersHouse_1F_Text_MomBlueOrRedQuestion, MSGBOX_DEFAULT
+
+		@ 0 = Blue, 1 = Red
+	multichoice 0, 0, MULTI_BLUE_OR_RED, 0
+	goto_if_eq VAR_RESULT, 0, PlayersHouse_1F_EventScript_GiveLatiosite
+	goto_if_eq VAR_RESULT, 1, PlayersHouse_1F_EventScript_GiveLatiasite
+	end
+
+PlayersHouse_1F_EventScript_GiveLatiosite::
+	msgbox PlayersHouse_1F_Text_MomPickedBlue, MSGBOX_DEFAULT
+	giveitem ITEM_LATIOSITE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	goto PlayersHouse_1F_EventScript_MomFinishMegaGift
+
+PlayersHouse_1F_EventScript_GiveLatiasite::
+	msgbox PlayersHouse_1F_Text_MomPickedRed, MSGBOX_DEFAULT
+	giveitem ITEM_LATIASITE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+
+PlayersHouse_1F_EventScript_MomFinishMegaGift::
 	msgbox PlayersHouse_1F_Text_DontPushYourselfTooHard, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_AMULET_COIN
 	release
 	end
+
+PlayersHouse_1F_Text_MomBlueOrRedQuestion:
+	.string "MOM: Tell me, dear.\n"
+	.string "Do you like BLUE or RED more?$"
+
+PlayersHouse_1F_Text_MomPickedBlue:
+	.string "MOM: BLUE?\n"
+	.string "That suits you nicely.$"
+
+PlayersHouse_1F_Text_MomPickedRed:
+	.string "MOM: RED?\n"
+	.string "I thought you might say that.$"
 
 PlayersHouse_1F_EventScript_MomHealsParty::
 	msgbox PlayersHouse_1F_Text_YouShouldRestABit, MSGBOX_DEFAULT

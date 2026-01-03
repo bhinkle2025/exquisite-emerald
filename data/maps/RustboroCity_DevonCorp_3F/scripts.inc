@@ -160,15 +160,45 @@ RustboroCity_DevonCorp_3F_EventScript_MrStone::
 
 RustboroCity_DevonCorp_3F_EventScript_GiveExpShare::
 	msgbox RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter, MSGBOX_DEFAULT
-	giveitem ITEM_EXP_SHARE
+
+	@ Give Mega Ring
+	giveitem ITEM_MEGA_RING
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+
+	@ Mark reward received (reuse existing flag unless you have a dedicated Mega Ring flag)
 	setflag FLAG_RECEIVED_EXP_SHARE
+
+	@ Give the appropriate Mega Stone for the starter
+	@ Expected values usually: 0=Treecko, 1=Torchic, 2=Mudkip
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_DevonCorp_3F_EventScript_GiveSceptilite
+	case 1, RustboroCity_DevonCorp_3F_EventScript_GiveBlazikenite
+	case 2, RustboroCity_DevonCorp_3F_EventScript_GiveSwampertite
+	end
+
+RustboroCity_DevonCorp_3F_EventScript_GiveSceptilite::
+	giveitem ITEM_SCEPTILITE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	goto RustboroCity_DevonCorp_3F_EventScript_ExplainMega
+
+RustboroCity_DevonCorp_3F_EventScript_GiveBlazikenite::
+	giveitem ITEM_BLAZIKENITE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	goto RustboroCity_DevonCorp_3F_EventScript_ExplainMega
+
+RustboroCity_DevonCorp_3F_EventScript_GiveSwampertite::
+	giveitem ITEM_SWAMPERTITE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	goto RustboroCity_DevonCorp_3F_EventScript_ExplainMega
+
+RustboroCity_DevonCorp_3F_EventScript_ExplainMega::
 	msgbox RustboroCity_DevonCorp_3F_Text_ExplainExpShare, MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
+
 
 RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterFavor::
 	msgbox RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends, MSGBOX_DEFAULT
@@ -249,13 +279,40 @@ RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter:
 	.string "It should help you, a TRAINER.$"
 
 RustboroCity_DevonCorp_3F_Text_ExplainExpShare:
-	.string "MR. STONE: A POKéMON holding that\n"
-	.string "EXP. SHARE will be given some of the\l"
-	.string "EXP Points from battle.\p"
-	.string "It will get EXP Points even if it didn't\n"
-	.string "actually battle.\p"
-	.string "I would say EXP. SHARE is quite useful\n"
-	.string "for raising weak POKéMON.$"
+	.string "MR. STONE: {PLAYER}{KUN},\n"
+	.string "isn't it?\p"
+	.string "You recovered the DEVON\n"
+	.string "GOODS from TEAM AQUA.\p"
+	.string "What happened near\n"
+	.string "RUSTURF TUNNEL shows\l"
+	.string "real courage.\p"
+	.string "You acted quickly and\n"
+	.string "protected what mattered.\p"
+	.string "That was not luck.\n"
+	.string "That was potential.\p"
+	.string "TEAM AQUA is growing\n"
+	.string "more dangerous every day.\p"
+	.string "If no one stops them now,\n"
+	.string "HOENN will pay the price.\p"
+	.string "DEVON cannot face this\n"
+	.string "threat alone.\p"
+	.string "I need allies I can trust.\p"
+	.string "So I am placing something\n"
+	.string "important in your hands.\p"
+	.string "This is a MEGA RING.\p"
+	.string "When a TRAINER shares a\n"
+	.string "strong bond with a POKEMON,\p"
+	.string "it can awaken a greater\n"
+	.string "power called MEGA EVOLUTION.\p"
+	.string "This MEGA STONE matches\n"
+	.string "the partner you chose.\p"
+	.string "You cannot use it yet,\n"
+	.string "but when the time comes,\l"
+	.string "you will know.\p"
+	.string "Use this power well,\n"
+	.string "{PLAYER}{KUN}.\p"
+	.string "HOENN is counting on you.$"
+
 
 RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends:
 	.string "MR. STONE: Since my youth, I've immersed\n"

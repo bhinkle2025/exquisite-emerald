@@ -614,6 +614,13 @@ static const struct MenuAction MultichoiceList_Fossil[] =
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_BlueOrRed[] =
+{
+    { COMPOUND_STRING("BLUE") },
+    { COMPOUND_STRING("RED") },
+};
+
+
 static const struct MenuAction MultichoiceList_YesNo[] =
 {
     {gText_Yes},
@@ -935,6 +942,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
     [MULTI_IV_STAT]                    = MULTICHOICE(sMultichoiceText_IvStat),
+    [MULTI_BLUE_OR_RED]                = MULTICHOICE(MultichoiceList_BlueOrRed),
 
 };
 

@@ -16,6 +16,9 @@ OldaleTown_House1_EventScript_OldManRandomStarter::
 	checkflag FLAG_GOT_OLDALE_STARTER
 	goto_if TRUE, OldaleTown_House1_EventScript_OldMan_Already
 
+	checkflag FLAG_DEFEATED_RIVAL_ROUTE103
+	goto_if FALSE, OldaleTown_House1_EventScript_OldMan_Route103NotCleared
+
 	msgbox OldaleTown_House1_Text_OldManIntro, MSGBOX_NPC
 
 	special Special_PickOldaleRandomStarter
@@ -35,6 +38,10 @@ OldaleTown_House1_EventScript_OldManRandomStarter::
 	goto Common_EventScript_NoMoreRoomForPokemon
 	end
 
+OldaleTown_House1_EventScript_OldMan_Route103NotCleared::
+	msgbox OldaleTown_House1_Text_OldMan_Route103NotCleared, MSGBOX_NPC
+	release
+	end
 
 @ =========================
 @ Party branch
@@ -306,4 +313,11 @@ OldaleTown_House1_Text_LeftPokemonGoesOutFirst:
 
 OldaleTown_House1_Text_ReceivedMon:
 	.string "{PLAYER} received {STR_VAR_1}!$"
+
+OldaleTown_House1_Text_OldMan_Route103NotCleared:
+	.string "No… the time isn’t right yet.\p"
+	.string "There’s a battle you haven’t fought\n"
+	.string "and a bond you haven’t forged.\p"
+	.string "Come back after that.$"
+
 

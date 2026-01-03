@@ -236,6 +236,7 @@ static const u16 sNewGamePCItems[][2] =
 {
     { ITEM_POTION, 1 },
     {ITEM_LUCKY_EGG, 1},
+    {ITEM_AMULET_COIN, 1},
     {ITEM_REPEL, 1},
     {ITEM_EXP_SHARE, 1},
     {ITEM_EXP_CHARM, 1},
