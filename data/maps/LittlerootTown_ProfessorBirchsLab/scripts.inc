@@ -22,15 +22,39 @@ LittlerootTown_ProfessorBirchsLab_MapScripts::
 LittlerootTown_ProfessorBirchsLab_OnTransition:
 	call Common_EventScript_SetupRivalGfxId
 	call ProfBirch_EventScript_UpdateLocation
+	call LittlerootTown_ProfessorBirchsLab_EventScript_UpdateRivalVisibility
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 6, LittlerootTown_ProfessorBirchsLab_EventScript_SetAfterJohtoStarterLayout
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_SetJohtoStarterLayout
 	goto_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 3, LittlerootTown_ProfessorBirchsLab_EventScript_CheckReadyForJohtoStarter
 	end
 
+LittlerootTown_ProfessorBirchsLab_EventScript_UpdateRivalVisibility::
+	@ Early game: before getting the POKEDEX, rival should be visible in the lab.
+	goto_if_unset FLAG_SYS_POKEDEX_GET, BirchLab_ShowRival
+
+	@ Do NOT show rival during the Johto starter gift sequence.
+	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 4, BirchLab_HideRival
+
+	@ After getting the POKEDEX, keep rival hidden until Lilycove defeat.
+	goto_if_unset FLAG_MET_RIVAL_LILYCOVE, BirchLab_HideRival
+
+	@ After Elite Four, hide until the postgame rival fight is done.
+	goto_if_set FLAG_SYS_GAME_CLEAR, BirchLab_CheckPostgame
+
+BirchLab_ShowRival:
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
+	return
+
+BirchLab_CheckPostgame:
+	goto_if_unset FLAG_DEFEATED_POSTGAME_RIVAL, BirchLab_HideRival
+	goto BirchLab_ShowRival
+
+BirchLab_HideRival:
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
+	return
+
 LittlerootTown_ProfessorBirchsLab_EventScript_CheckReadyForJohtoStarter::
     goto_if_set FLAG_BADGE03_GET, LittlerootTown_ProfessorBirchsLab_EventScript_SetReadyForJohtoStarter
-    setobjectmovementtype LOCALID_BIRCHS_LAB_RIVAL, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
-    setobjectxyperm LOCALID_BIRCHS_LAB_RIVAL, 5, 10
     end
 
 
@@ -39,21 +63,18 @@ LittlerootTown_ProfessorBirchsLab_EventScript_SetReadyForJohtoStarter::
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_SetJohtoStarterLayout
 
 LittlerootTown_ProfessorBirchsLab_EventScript_SetJohtoStarterLayout::
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
 	setmaplayoutindex LAYOUT_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB_WITH_TABLE
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_SetAfterJohtoStarterLayout::
 	setmaplayoutindex LAYOUT_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB_WITH_TABLE
-	setobjectmovementtype LOCALID_BIRCHS_LAB_RIVAL, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
-	setobjectxyperm LOCALID_BIRCHS_LAB_RIVAL, 5, 10
 	end
 
 LittlerootTown_ProfessorBirchsLab_OnWarp:
 	map_script_2 VAR_BIRCH_LAB_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_SetPlayerPosForReceiveStarter
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForDexUpgrade
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForDexUpgrade
-	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 3, LittlerootTown_ProfessorBirchsLab_EventScript_AddRivalObject
-	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 6, LittlerootTown_ProfessorBirchsLab_EventScript_AddRivalObject
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForJohtoStarters
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 5, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForJohtoStarters
 	.2byte 0
@@ -82,7 +103,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForJohtoStarters::
 	addobject LOCALID_BIRCHS_LAB_CYNDAQUIL_BALL
 	addobject LOCALID_BIRCHS_LAB_TOTODILE_BALL
 	addobject LOCALID_BIRCHS_LAB_CHIKORITA_BALL
-	addobject LOCALID_BIRCHS_LAB_RIVAL
 	turnobject LOCALID_BIRCHS_LAB_CYNDAQUIL_BALL, DIR_SOUTH
 	setobjectxy LOCALID_BIRCHS_LAB_CYNDAQUIL_BALL, 8, 4
 	turnobject LOCALID_BIRCHS_LAB_TOTODILE_BALL, DIR_SOUTH
@@ -91,8 +111,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForJohtoStarters::
 	setobjectxy LOCALID_BIRCHS_LAB_CHIKORITA_BALL, 10, 4
 	turnobject LOCALID_BIRCHS_LAB_BIRCH, DIR_SOUTH
 	setobjectxy LOCALID_BIRCHS_LAB_BIRCH, 6, 4
-	turnobject LOCALID_BIRCHS_LAB_RIVAL, DIR_EAST
-	setobjectxy LOCALID_BIRCHS_LAB_RIVAL, 5, 5
 	end
 
 LittlerootTown_ProfessorBirchsLab_OnFrame:
@@ -648,7 +666,40 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Bookshelf::
 
 LittlerootTown_ProfessorBirchsLab_EventScript_Book::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BookTooHardToRead, MSGBOX_SIGN
+	call LittlerootTown_ProfessorBirchsLab_EventScript_LevelCapToggle_FromBook
 	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_LevelCapToggle_FromBook::
+	checkflag FLAG_LEVEL_CAP_DISABLED
+	goto_if TRUE, BirchBook_CapIsOff
+
+BirchBook_CapIsOn:
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_LevelCapBookOn, MSGBOX_SIGN
+	goto BirchBook_Menu
+
+BirchBook_CapIsOff:
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_LevelCapBookOff, MSGBOX_SIGN
+
+BirchBook_Menu:
+	multichoice 0, 0, MULTI_LEVEL_CAP_TOGGLE, FALSE
+	switch VAR_RESULT
+	case 0, BirchBook_EnableCap
+	case 1, BirchBook_DisableCap
+	case 2, BirchBook_Cancel
+	end
+
+BirchBook_EnableCap:
+	clearflag FLAG_LEVEL_CAP_DISABLED
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_LevelCapEnabled, MSGBOX_SIGN
+	return
+
+BirchBook_DisableCap:
+	setflag FLAG_LEVEL_CAP_DISABLED
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_LevelCapDisabled, MSGBOX_SIGN
+	return
+
+BirchBook_Cancel:
+	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_ScottAboardSSTidalCall::
 	lockall
@@ -881,15 +932,14 @@ LittlerootTown_ProfessorBirchsLab_Text_CompletedDexChoosePokemon:
 	.string "I've been meaning to speak with you.\p"
 	.string "You've grown a great deal since you\n"
 	.string "left LITTLEROOT TOWN.\p"
-	.string "Earning three GYM BADGES so quickly\n"
-	.string "is no small feat.\p"
+	.string "Your progress through HOENN hasn't\n"
+	.string "gone unnoticed.\p"
 	.string "More importantly, you've shown a\n"
-	.string "strong understanding of POKéMON.\p"
+	.string "strong understanding of POKeMON.\p"
 	.string "That's exactly the kind of TRAINER\n"
 	.string "I like to encourage.\p"
 	.string "So, I'd like to offer you a special\n"
 	.string "opportunity.$"
-
 
 LittlerootTown_ProfessorBirchsLab_Text_CanHaveAnyOneOfRarePokemon:
 	.string "PROF. BIRCH: These are rare POKéMON\n"
@@ -936,10 +986,10 @@ LittlerootTown_ProfessorBirchsLab_Text_NicknameJohtoStarter:
 
 LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting:
 	.string "PROF. BIRCH: Listen, {PLAYER}{KUN}.\n"
-	.string "You've completed the HOENN POKéDEX,\l"
-	.string "but your POKéMON journey isn't over.\p"
+	.string "You've come a long way as a TRAINER,\l"
+	.string "but your journey isn't over.\p"
 	.string "There is no end to the road\n"
-	.string "that is POKéMON.\p"
+	.string "that is POKeMON.\p"
 	.string "Somewhere, there is a grassy patch\n"
 	.string "that's waiting for you!$"
 
@@ -992,3 +1042,29 @@ LittlerootTown_ProfessorBirchsLab_Text_ScottAboardSSTidalCall:
 	.string "we meet. I'll be waiting!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
+
+LittlerootTown_ProfessorBirchsLab_Text_LevelCapBookOn:
+	.string "A note is tucked inside.\p"
+	.string "LEVEL CAP: ON\p"
+	.string "Change this setting?$"
+
+LittlerootTown_ProfessorBirchsLab_Text_LevelCapBookOff:
+	.string "A note is tucked inside.\p"
+	.string "LEVEL CAP: OFF\p"
+	.string "Change this setting?$"
+
+LittlerootTown_ProfessorBirchsLab_Text_LevelCapEnabled:
+	.string "You flip a marked page.\p"
+	.string "BATTLE LIMITS: ENABLED\p"
+	.string "POKeMON will now stop\n"
+	.string "growing through battle once\p"
+	.string "they reach the current limit.$"
+
+LittlerootTown_ProfessorBirchsLab_Text_LevelCapDisabled:
+	.string "You flip a marked page.\p"
+	.string "BATTLE LIMITS: DISABLED\p"
+	.string "POKeMON will continue to\n"
+	.string "grow through battle without\p"
+	.string "restriction.$"
+
+

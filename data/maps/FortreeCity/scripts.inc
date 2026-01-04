@@ -11,6 +11,36 @@ FortreeCity_OnResume:
 	setstepcallback STEP_CB_FORTREE_BRIDGE
 	end
 
+FortreeCity_EventScript_Pidgeotite::
+	lock
+	faceplayer
+
+	checkflag FLAG_BADGE06_GET
+	goto_if FALSE, FortreeCity_EventScript_NoWinona
+
+	checkflag FLAG_RECEIVED_PIDGEOTITE
+	goto_if TRUE, FortreeCity_EventScript_AlreadyGave
+
+	msgbox FortreeCity_Text_PidgeotiteIntro, MSGBOX_NPC
+	giveitem ITEM_PIDGEOTITE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+
+	setflag FLAG_RECEIVED_PIDGEOTITE
+	msgbox FortreeCity_Text_PidgeotiteAfter, MSGBOX_NPC
+	release
+	end
+
+FortreeCity_EventScript_NoWinona::
+	msgbox FortreeCity_Text_NoWinona, MSGBOX_NPC
+	release
+	end
+
+FortreeCity_EventScript_AlreadyGave::
+	msgbox FortreeCity_Text_AlreadyGave, MSGBOX_NPC
+	release
+	end
+
+
 FortreeCity_EventScript_Man::
 	msgbox FortreeCity_Text_SawGiganticPokemonInSky, MSGBOX_NPC
 	end
@@ -146,3 +176,25 @@ FortreeCity_Text_GymSign:
 	.string "“The bird user taking flight into\n"
 	.string "the world.”$"
 
+FortreeCity_Text_NoWinona::
+	.string "These skies belong to WINONA.\n"
+	.string "If you want a real test,\l"
+	.string "you should challenge her first.$"
+
+FortreeCity_Text_PidgeotiteIntro::
+	.string "Ah! That look in your eyes…\n"
+	.string "You’ve battled WINONA, haven’t you?\p"
+	.string "Your flying skills impressed the wind\n"
+	.string "itself.\p"
+	.string "Take this.\n"
+	.string "It once let my PIDGEOT soar higher\p"
+	.string "than I ever could.$"
+
+FortreeCity_Text_PidgeotiteAfter::
+	.string "If your PIDGEOT takes to the sky\n"
+	.string "like a storm, you’ll know why\l"
+	.string "this stone matters.$"
+
+FortreeCity_Text_AlreadyGave::
+	.string "The sky remembers strong wings.\n"
+	.string "Fly true out there.$"

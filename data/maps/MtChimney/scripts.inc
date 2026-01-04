@@ -96,6 +96,16 @@ MtChimney_EventScript_ArchieExitNorth::
 MtChimney_EventScript_LavaCookieLady::
 	lock
 	faceplayer
+
+	@ One-time gift: Salamencite
+	goto_if_set FLAG_RECEIVED_SALAMENCITE, MtChimney_EventScript_LavaCookieShop
+	msgbox MtChimney_Text_SalamenciteIntro, MSGBOX_NPC
+	giveitem ITEM_SALAMENCITE
+	goto_if_eq VAR_RESULT, FALSE, MtChimney_EventScript_BagIsFull
+	setflag FLAG_RECEIVED_SALAMENCITE
+	msgbox MtChimney_Text_SalamenciteAfter, MSGBOX_NPC
+
+MtChimney_EventScript_LavaCookieShop::
 	showmoneybox 0, 0
 	msgbox MtChimney_Text_LavaCookiesJust200, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, MtChimney_EventScript_DeclineLavaCookie
@@ -120,11 +130,6 @@ MtChimney_EventScript_BagIsFull::
 	hidemoneybox
 	giveitem ITEM_LAVA_COOKIE
 	goto_if_eq VAR_RESULT, FALSE, MtChimney_EventScript_BagIsFull
-	release
-	end
-
-MtChimney_EventScript_BagIsFull::
-	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
 	release
 	end
 .endif @ OW_SHOW_ITEM_DESCRIPTIONS
@@ -851,3 +856,18 @@ MtChimney_Text_SawyerRematchDefeat:
 MtChimney_Text_SawyerPostRematch:
 	.string "Actually, it really is hot here.\n"
 	.string "I'm overdressed for these parts.$"
+
+MtChimney_Text_SalamenciteIntro::
+	.string "Oh, dearie!\n"
+	.string "You look worn out from the heat.\p"
+	.string "Here, take this.\n"
+	.string "It’s a rare stone I found up here.\p"
+	.string "A strong POKéMON will really shine\n"
+	.string "with it!$"
+
+MtChimney_Text_SalamenciteAfter::
+	.string "Heehee…\n"
+	.string "Now don’t go burning yourself out.\p"
+	.string "If you need a pick-me-up,\n"
+	.string "I’ve got LAVA COOKIES, too!$"
+

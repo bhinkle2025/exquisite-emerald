@@ -620,6 +620,13 @@ static const struct MenuAction MultichoiceList_BlueOrRed[] =
     { COMPOUND_STRING("RED") },
 };
 
+static const struct MenuAction MultichoiceList_LevelCapToggle[] =
+{
+    { COMPOUND_STRING("ENABLE") },
+    { COMPOUND_STRING("DISABLE") },
+    { COMPOUND_STRING("CANCEL") },
+};
+
 
 static const struct MenuAction MultichoiceList_YesNo[] =
 {
@@ -943,6 +950,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
     [MULTI_IV_STAT]                    = MULTICHOICE(sMultichoiceText_IvStat),
     [MULTI_BLUE_OR_RED]                = MULTICHOICE(MultichoiceList_BlueOrRed),
+    [MULTI_LEVEL_CAP_TOGGLE]           = MULTICHOICE(MultichoiceList_LevelCapToggle),
 
 };
 

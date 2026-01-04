@@ -62,6 +62,21 @@ VerdanturfTown_FriendshipRatersHouse_EventScript_Pikachu::
 	release
 	end
 
+VerdanturfTown_House_EventScript_LittleGirlMawilite::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_MAWILITE, VerdanturfTown_House_Text_AlreadyGave
+
+	msgbox VerdanturfTown_House_Text_MawiliteIntro, MSGBOX_NPC
+	giveitem ITEM_MAWILITE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+
+	setflag FLAG_RECEIVED_MAWILITE
+	msgbox VerdanturfTown_House_Text_MawiliteAfter, MSGBOX_NPC
+	release
+	end
+
+
 VerdanturfTown_FriendshipRatersHouse_Text_SeeHowMuchPokemonLikesYou:
 	.string "Let me see your POKéMON.\n"
 	.string "I'll check to see how much it likes you.\p"
@@ -101,4 +116,22 @@ VerdanturfTown_FriendshipRatersHouse_Text_DetestsYou:
 
 VerdanturfTown_FriendshipRatersHouse_Text_Pikachu:
 	.string "PIKACHU: Pika pika!$"
+
+VerdanturfTown_House_Text_MawiliteIntro::
+	.string "My POKéMON likes quiet places.\n"
+	.string "That’s why I love living here.\p"
+	.string "But this little stone makes it\n"
+	.string "feel really brave.\p"
+	.string "I think you’d take good care of it.\n"
+	.string "Here!$"
+
+VerdanturfTown_House_Text_MawiliteAfter::
+	.string "If your POKéMON smiles more,\n"
+	.string "that means it likes you.\p"
+	.string "I hope it helps you win!$"
+
+VerdanturfTown_House_Text_AlreadyGave::
+	.string "Quiet towns are the best.\n"
+	.string "They make POKéMON feel safe.$"
+
 

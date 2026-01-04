@@ -35,20 +35,64 @@ VerdanturfTown_WandasHouse_EventScript_WallysUncleEverGrande::
 	end
 
 VerdanturfTown_WandasHouse_EventScript_WandasBoyfriend::
+	lock
+	faceplayer
+
+	@ Try to give Aggronite if not received yet
+	checkflag FLAG_RECEIVED_AGGRONITE_RUSTURF
+	goto_if TRUE, VerdanturfTown_WandasHouse_EventScript_NormalDialogue
+
+	checkitemspace ITEM_AGGRONITE, 1
+	goto_if_eq VAR_RESULT, FALSE, VerdanturfTown_WandasHouse_EventScript_AggroniteBagFull
+
+	msgbox VerdanturfTown_WandasHouse_Text_GiveAggronite, MSGBOX_NPC
+	giveitem ITEM_AGGRONITE
+	setflag FLAG_RECEIVED_AGGRONITE_RUSTURF
+	release
+	end
+
+VerdanturfTown_WandasHouse_EventScript_AggroniteBagFull:
+	msgbox VerdanturfTown_WandasHouse_Text_AggroniteBagFull, MSGBOX_NPC
+	release
+	end
+
+VerdanturfTown_WandasHouse_EventScript_NormalDialogue:
 	msgbox VerdanturfTown_WandasHouse_Text_CanSeeGirlfriendEveryDay, MSGBOX_NPC
+	release
 	end
 
 VerdanturfTown_WandasHouse_EventScript_Wanda::
 	lock
 	faceplayer
-	goto_if_set FLAG_DEFEATED_LAVARIDGE_GYM, VerdanturfTown_WandasHouse_EventScript_WandaDontWorry
-	goto_if_set FLAG_DEFEATED_WALLY_MAUVILLE, VerdanturfTown_WandasHouse_EventScript_MeetWanda
-	msgbox VerdanturfTown_WandasHouse_Text_DontWorryAboutWally, MSGBOX_DEFAULT
+
+	@ One-time gift check
+	goto_if_set FLAG_RECEIVED_GARDEVOIRITE, VerdanturfTown_WandasHouse_EventScript_WandaAlreadyGaveStone
+
+	@ Must beat Wally first
+	goto_if_unset FLAG_DEFEATED_WALLY_MAUVILLE, VerdanturfTown_WandasHouse_EventScript_WandaDontWorry
+
+	@ Give the stone regardless of Lavaridge order
+	goto VerdanturfTown_WandasHouse_EventScript_WandaGiveGardevoirite
+
+VerdanturfTown_WandasHouse_EventScript_WandaGiveGardevoirite::
+	msgbox VerdanturfTown_WandasHouse_Text_MeetWanda, MSGBOX_DEFAULT
+	goto_if_set FLAG_DEFEATED_LAVARIDGE_GYM, VerdanturfTown_WandasHouse_EventScript_WandaGiveAfterLavaridge
+
+	msgbox VerdanturfTown_WandasHouse_Text_GaveGardevoirite, MSGBOX_DEFAULT
+	goto VerdanturfTown_WandasHouse_EventScript_WandaFinishGive
+
+VerdanturfTown_WandasHouse_EventScript_WandaGiveAfterLavaridge::
+	msgbox VerdanturfTown_WandasHouse_Text_GaveGardevoirite_PostLavaridge, MSGBOX_DEFAULT
+
+VerdanturfTown_WandasHouse_EventScript_WandaFinishGive::
+	giveitem ITEM_GARDEVOIRITE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_RECEIVED_GARDEVOIRITE
 	release
 	end
 
-VerdanturfTown_WandasHouse_EventScript_MeetWanda::
-	msgbox VerdanturfTown_WandasHouse_Text_MeetWanda, MSGBOX_DEFAULT
+VerdanturfTown_WandasHouse_EventScript_WandaAlreadyGaveStone::
+	msgbox VerdanturfTown_WandasHouse_Text_AlreadyGaveGardevoirite, MSGBOX_DEFAULT
 	release
 	end
 
@@ -86,7 +130,7 @@ VerdanturfTown_WandasHouse_Text_StrongerSpeech:
 	.string "WALLY: I lost to you, {PLAYER}, but I'm\n"
 	.string "not feeling down anymore.\p"
 	.string "Because I have a new purpose in life.\n"
-	.string "Together with my RALTS, I'm going\l"
+	.string "Together with my KIRLIA, I'm going\l"
 	.string "to challenge POKéMON GYMS and become\l"
 	.string "a great TRAINER.\p"
 	.string "Please watch me, {PLAYER}.\n"
@@ -165,4 +209,39 @@ VerdanturfTown_WandasHouse_Text_WallyWasInEverGrande:
 	.string "WALLY was in EVER GRANDE?\p"
 	.string "His parents in PETALBURG would be\n"
 	.string "astonished to hear that!$"
+
+VerdanturfTown_WandasHouse_Text_GiveAggronite:
+	.string "Oh, hey!\p"
+	.string "I meant to give you this earlier.\n"
+	.string "It's an AGGRONITE.\p"
+	.string "Thanks again for everything you did.$"
+
+VerdanturfTown_WandasHouse_Text_AggroniteBagFull:
+	.string "Oh, hey!\p"
+	.string "I want to give you an AGGRONITE,\n"
+	.string "but your BAG is full.\p"
+	.string "Make some space and talk to me again.$"
+
+VerdanturfTown_WandasHouse_Text_GaveGardevoirite::
+	.string "WANDA: Oh! You're the TRAINER who\n"
+	.string "helped WALLY, aren't you?\p"
+	.string "His confidence is coming back,\n"
+	.string "little by little.\p"
+	.string "I want you to have this.\n"
+	.string "It's special to our family.\p"
+	.string "If you have a GARDEVOIR,\n"
+	.string "it will respond to it.$"
+
+VerdanturfTown_WandasHouse_Text_AlreadyGaveGardevoirite::
+	.string "WANDA: How is it?\n"
+	.string "That stone suits you.\p"
+	.string "Take good care of your POKeMON,\n"
+	.string "and they'll take good care of you.$"
+
+VerdanturfTown_WandasHouse_Text_GaveGardevoirite_PostLavaridge::
+	.string "WANDA: Ah, {PLAYER}{KUN}…\n"
+	.string "WALLY told me you kept going.\p"
+	.string "Please take this.\n"
+	.string "It’s a special stone.\p"
+	.string "It resonates with GARDEVOIR.$"
 

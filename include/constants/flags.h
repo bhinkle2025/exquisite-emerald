@@ -53,13 +53,13 @@
 #define FLAG_POSTGAME_RIVAL               0x27 // Post Game Rival Fight
 #define FLAG_DEFEATED_POSTGAME_RIVAL      0x28 // Post Game Rival Defeated
 #define FLAG_HIDE_POSTGAME_RIVAL          0x29 // Hiding Post Game Rival
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
+#define FLAG_RECEIVED_AGGRONITE_RUSTURF   0x2A // Aggronite Rusturf
+#define FLAG_LEVEL_CAP_DISABLED           0x2B // Level Cap
+#define FLAG_RECEIVED_GARDEVOIRITE        0x2C // Gardevoirite
+#define FLAG_RECEIVED_MAWILITE            0x2D // Mawilite
+#define FLAG_RECEIVED_SALAMENCITE         0x2E // Salamencite
+#define FLAG_RECEIVED_GYARADOSITE         0x2F // Gyaradosite
+#define FLAG_RECEIVED_PIDGEOTITE          0x30 // Pidgeotite
 #define FLAG_UNUSED_0x031    0x31 // Unused Flag
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag

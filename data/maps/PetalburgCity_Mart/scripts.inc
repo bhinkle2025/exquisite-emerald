@@ -20,11 +20,12 @@ PetalburgCity_Mart_Pokemart_Basic:
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_AWAKENING
 	.2byte ITEM_HONEY
-	.2byte ITEM_METAL_COAT
+	.2byte ITEM_NORMAL_GEM
+	.2byte ITEM_FIGHTING_GEM
+	.2byte ITEM_ROCK_GEM
+	.2byte ITEM_CHILAN_BERRY
 	.2byte ITEM_EXP_CANDY_XS
 	.2byte ITEM_EXP_CANDY_S
-	.2byte ITEM_EXP_CANDY_M
-	.2byte ITEM_EXP_CANDY_L
 	pokemartlistend
 
 PetalburgCity_Mart_EventScript_ExpandedItems::
@@ -42,12 +43,13 @@ PetalburgCity_Mart_Pokemart_Expanded:
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_AWAKENING
-	.2byte ITEM_REPEL
+	.2byte ITEM_HONEY
+	.2byte ITEM_NORMAL_GEM
+	.2byte ITEM_FIGHTING_GEM
+	.2byte ITEM_ROCK_GEM
+	.2byte ITEM_CHILAN_BERRY
 	.2byte ITEM_EXP_CANDY_XS
 	.2byte ITEM_EXP_CANDY_S
-	.2byte ITEM_EXP_CANDY_M
-	.2byte ITEM_EXP_CANDY_L
-	.2byte ITEM_EXP_CANDY_XL
 	pokemartlistend
 
 PetalburgCity_Mart_EventScript_Woman::

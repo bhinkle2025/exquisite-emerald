@@ -59,6 +59,9 @@ RusturfTunnel_EventScript_ClearTunnelScene::
 	giveitem ITEM_HM_STRENGTH
 	setflag FLAG_RECEIVED_HM_STRENGTH
 	msgbox RusturfTunnel_Text_ExplainStrength, MSGBOX_DEFAULT
+
+	call RusturfTunnel_EventScript_TryGiveAggronite
+
 	closemessage
 	call_if_eq VAR_TEMP_1, 1, RusturfTunnel_EventScript_BoyfriendApproachWanda1
 	call_if_eq VAR_TEMP_1, 2, RusturfTunnel_EventScript_BoyfriendApproachWanda2
@@ -71,6 +74,25 @@ RusturfTunnel_EventScript_ClearTunnelScene::
 	call RusturfTunnel_EventScript_SetRusturfTunnelOpen
 	releaseall
 	end
+
+RusturfTunnel_EventScript_TryGiveAggronite::
+	checkflag FLAG_RECEIVED_AGGRONITE_RUSTURF
+	goto_if TRUE, RusturfTunnel_EventScript_TryGiveAggronite_End
+
+	checkitemspace ITEM_AGGRONITE, 1
+	goto_if_eq VAR_RESULT, FALSE, RusturfTunnel_EventScript_AggroniteBagFull
+
+	msgbox RusturfTunnel_Text_GiveAggronite, MSGBOX_DEFAULT
+	giveitem ITEM_AGGRONITE
+	setflag FLAG_RECEIVED_AGGRONITE_RUSTURF
+	return
+
+RusturfTunnel_EventScript_AggroniteBagFull:
+	msgbox RusturfTunnel_Text_AggroniteBagFull, MSGBOX_DEFAULT
+	return
+
+RusturfTunnel_EventScript_TryGiveAggronite_End:
+	return
 
 RusturfTunnel_EventScript_BoyfriendApproachWanda1::
 	applymovement LOCALID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend1
@@ -524,4 +546,17 @@ RusturfTunnel_Text_MikePostBattle:
 	.string "They halted development here to\n"
 	.string "protect POKéMON, right?\l"
 	.string "There's a feel-good story!$"
+
+RusturfTunnel_Text_GiveAggronite:
+	.string "Oh, wait!\p"
+	.string "I want you to take this, too.\n"
+	.string "It's an AGGRONITE.\p"
+	.string "Thank you for helping us.$"
+
+RusturfTunnel_Text_AggroniteBagFull:
+	.string "Oh, wait!\p"
+	.string "I want to give you an AGGRONITE,\n"
+	.string "but your BAG is full.\p"
+	.string "Make some space and talk to me again.$"
+
 

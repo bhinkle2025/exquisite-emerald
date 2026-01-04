@@ -6,6 +6,44 @@ Route123_OnTransition:
 	special SetRoute123Weather
 	end
 
+Route123_EventScript_Poochyena::
+	lock
+	faceplayer
+
+	@ Already received the item
+	goto_if_set FLAG_RECEIVED_GYARADOSITE, Route123_EventScript_AlreadyGotGyaradosite
+
+	@ Ask if player wants to pet Poochyena
+	msgbox Route123_Text_AskPetPoochyena, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route123_EventScript_DeclinePet
+
+	@ Pet the Poochyena
+	msgbox Route123_Text_PetsPoochyena, MSGBOX_DEFAULT
+
+	@ Approval flavor
+	msgbox Route123_Text_PoochyenaApproves, MSGBOX_DEFAULT
+
+	@ Give Gyaradosite
+	giveitem ITEM_GYARADOSITE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+
+	setflag FLAG_RECEIVED_GYARADOSITE
+
+	msgbox Route123_Text_ReceivedGyaradosite, MSGBOX_DEFAULT
+
+	release
+	end
+
+Route123_EventScript_DeclinePet::
+	msgbox Route123_Text_PoochyenaConfused, MSGBOX_DEFAULT
+	release
+	end
+
+Route123_EventScript_AlreadyGotGyaradosite::
+	msgbox Route123_Text_PoochyenaHappy, MSGBOX_DEFAULT
+	release
+	end
+
 Route123_EventScript_GigaDrainGirl::
 	lock
 	faceplayer
@@ -195,4 +233,30 @@ Route123_Text_RouteSignMtPyre:
 
 Route123_Text_BerryMastersHouse:
 	.string "BERRY MASTER'S HOUSE$"
+
+Route123_Text_AskPetPoochyena:
+	.string "POOCHYENA looks up at you\n"
+	.string "expectantly.\p"
+	.string "Pet the POOCHYENA?$"
+
+Route123_Text_PetsPoochyena:
+	.string "You gently pet POOCHYENA.\p"
+	.string "Its tail wags wildly.$"
+
+Route123_Text_PoochyenaApproves:
+	.string "POOCHYENA growls softly and\n"
+	.string "drops something at your feet.$"
+
+Route123_Text_ReceivedGyaradosite:
+	.string "You received the GYARADOSITE!\p"
+	.string "It pulses with savage power.$"
+
+Route123_Text_PoochyenaConfused:
+	.string "POOCHYENA tilts its head,\n"
+	.string "slightly disappointed.$"
+
+Route123_Text_PoochyenaHappy:
+	.string "POOCHYENA stays close,\n"
+	.string "clearly fond of you.$"
+
 

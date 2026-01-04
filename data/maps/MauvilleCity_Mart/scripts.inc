@@ -19,12 +19,12 @@ MauvilleCity_Mart_Pokemart:
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_AWAKENING
-	.2byte ITEM_LEAF_STONE
-	.2byte ITEM_WATER_STONE
-	.2byte ITEM_THUNDER_STONE
-	.2byte ITEM_ELECTIRIZER
-	.2byte ITEM_DAWN_STONE
-	.2byte ITEM_ICE_STONE
+	.2byte ITEM_CELL_BATTERY
+	.2byte ITEM_WACAN_BERRY
+	.2byte ITEM_ELECTRIC_SEED
+	.2byte ITEM_ELECTRIC_GEM
+	.2byte ITEM_EXP_CANDY_S
+	.2byte ITEM_EXP_CANDY_M
 	pokemartlistend
 
 MauvilleCity_Mart_EventScript_ExpertM::

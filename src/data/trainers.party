@@ -323,7 +323,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Poochyena
-Level: 11
+Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_WEATHER_INST_1 ===
@@ -391,7 +391,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Carvanha
-Level: 15
+Level: 19
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_MUSEUM_2 ===
@@ -404,11 +404,11 @@ Double Battle: No
 AI: Check Bad Move
 
 Zubat
-Level: 14
+Level: 19
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Carvanha
-Level: 14
+Level: 19
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_SPACE_CENTER_1 ===
@@ -1387,12 +1387,20 @@ Items: Hyper Potion
 Double Battle: No
 AI: Basic Trainer
 
-Swellow
+Swellow @ Oran Berry
 Level: 26
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Quick Attack
 - Agility
 - Wing Attack
+
+Lopunny @ Oran Berry
+Level: 26
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Quick Attack
+- Agility
+- Power-Up Punch
+- Mach Punch
 
 === TRAINER_PARKER ===
 Name: PARKER
@@ -1411,6 +1419,12 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Dizzy Punch
 - Focus Punch
 
+Noctowl
+Level: 26
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Confusion
+- Confuse Ray
+
 === TRAINER_GEORGE ===
 Name: GEORGE
 Class: Cooltrainer
@@ -1428,6 +1442,14 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Counter
 - Shadow Ball
 
+Munchlax @ Sitrus Berry
+Level: 26
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Bite
+- Stockpile
+- Swallow
+- Recycle
+
 === TRAINER_BERKE ===
 Name: BERKE
 Class: Cooltrainer
@@ -1438,11 +1460,20 @@ Items: Hyper Potion
 Double Battle: No
 AI: Basic Trainer
 
-Vigoroth
+Vigoroth @ Oran Berry
 Level: 26
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Focus Energy
 - Slash
+
+Smeargle @ Focus Sash
+Level: 26
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Mind Reader
+- Fissure
+- Sheer Cold
+- Guillotine
+
 
 === TRAINER_BRAXTON ===
 Name: BRAXTON
@@ -1801,6 +1832,12 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Feint Attack
 - Shock Wave
 
+Pidgeot
+Level: 26
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Aerial Ace
+- Swift
+
 === TRAINER_ALEXIA ===
 Name: ALEXIA
 Class: Cooltrainer
@@ -1811,12 +1848,19 @@ Items: Hyper Potion
 Double Battle: No
 AI: Basic Trainer
 
-Wigglytuff
+Wigglytuff @ Oran Berry
 Level: 26
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Defense Curl
 - Double Edge
 - Shadow Ball
+
+Greedent @ Oran Berry
+Level: 26
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Defense Curl
+- Rollout
+- Stuff Cheeks
 
 === TRAINER_JODY ===
 Name: JODY
@@ -1828,11 +1872,19 @@ Items: Hyper Potion
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
 
-Zangoose
+Zangoose @ Oran Berry
 Level: 26
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Swords Dance
 - Slash
+
+Farfetchd @ Oran Berry
+Level: 26
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Swords Dance
+- Steel Wing
+- Aerial Ace
+- Knock Off
 
 === TRAINER_WENDY ===
 Name: WENDY
@@ -3503,7 +3555,7 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Electrike
+Electrike @ Oran Berry
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Quick Attack
@@ -3511,12 +3563,20 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Spark
 - Leer
 
-Voltorb
+Voltorb @ Oran Berry
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Charge
 - Shock Wave
 - Screech
+
+Morpeko @ Sitrus Berry
+Level: 19
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Thunder Shock
+- Nasty Plot
+- Power Trip
+- Tickle
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_7 ===
 Name: GRUNT
@@ -3557,13 +3617,29 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Voltorb
+Voltorb @ Oran Berry
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Charge
+- Eerie Impulse
+- Charge Beam
+- Rollout
 
-Magnemite
+Magnemite @ Oran Berry
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Gyro Ball
+- Electro Ball
+- Thunder Wave
+- Supersonic
+
+Toxel @ Sitrus Berry
+Level: 17
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Belch
+- Tearful Look
+- Nuzzle
+- Flail
 
 === TRAINER_FERNANDO_1 ===
 Name: FERNANDO
@@ -3709,7 +3785,11 @@ Slugma
 Level: 22
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Slugma
+Quilava
+Level: 22
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Magmar
 Level: 22
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -3726,6 +3806,10 @@ Numel
 Level: 23
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
+Charmeleon
+Level: 23
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
 === TRAINER_JACE ===
 Name: JACE
 Class: Kindler
@@ -3739,6 +3823,10 @@ Slugma
 Level: 23
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
+Fletchinder
+Level: 23
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
 === TRAINER_KEEGAN ===
 Name: KEEGAN
 Class: Kindler
@@ -3749,6 +3837,10 @@ Double Battle: No
 AI: Check Bad Move
 
 Slugma
+Level: 23
+IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+
+Pignite
 Level: 23
 IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
 
@@ -5731,11 +5823,11 @@ Double Battle: No
 AI: Check Bad Move
 
 Taillow @ Oran Berry
-Level: 16
+Level: 20
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 Zigzagoon @ Oran Berry
-Level: 16
+Level: 20
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 === TRAINER_MIGUEL_1 ===
@@ -5870,7 +5962,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint
 
 Roselia @ Oran Berry
-Level: 17
+Level: 20
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_VANESSA ===
@@ -6083,7 +6175,7 @@ Double Battle: No
 AI: Basic Trainer
 
 Meditite
-Level: 18
+Level: 21
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - High Jump Kick
 - Meditate
@@ -6258,7 +6350,7 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Zigzagoon
+Zigzagoon @ Oran Berry
 Level: 17
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Headbutt
@@ -6266,13 +6358,21 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Growl
 - Thunderbolt
 
-Gulpin
+Yamper @ Oran Berry
 Level: 17
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Amnesia
-- Sludge
-- Yawn
-- Pound
+- Nuzzle
+- Bite
+- Roar
+- Tail Whip
+
+Emolga @ Sitrus Berry
+Level: 18
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Nuzzle
+- Thundershock
+- Charm
+- Quick Attack
 
 === TRAINER_QUINCY ===
 Name: QUINCY
@@ -7613,6 +7713,14 @@ Skarmory
 Level: 30
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
+Chatot
+Level: 33
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Chatter
+- Hyper Voice
+- Mimic
+- Sing
+
 === TRAINER_PRESLEY ===
 Name: PRESLEY
 Class: Bird Keeper
@@ -7641,11 +7749,30 @@ AI: Check Bad Move
 
 Doduo
 Level: 29
+Ability: Early Bird
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Quick Attack
+- Pluck
+- Agility
+- Uproar
 
 Pelipper
 Level: 29
+Ability: Keen Eye
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Air Slash
+- Tailwind
+- Stockpile
+- Swallow
+
+Toucannon
+Level: 29
+Ability: Skill Link
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Beak Blast
+- Roost
+- Pluck
+- Rock Blast
 
 === TRAINER_COLIN ===
 Name: COLIN
@@ -9395,6 +9522,10 @@ Numel
 Level: 23
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
+Litleo
+Level: 23
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
 === TRAINER_ANNIKA ===
 Name: ANNIKA
 Class: Pokefan
@@ -9788,17 +9919,56 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Slugma
-Level: 18
+Loudred @ Oran Berry
+Level: 22
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Echoed Voice
+- Bite
+- Rest
+- Sleep Talk
 
-Wingull
-Level: 18
+Swellow @ Oran Berry
+Level: 22
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Aerial Ace
+- Double Team
+- Quick Attack
+- Brave Bird
 
-Grovyle
-Level: 20
+Beautifly @ Oran Berry
+Level: 22
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Mega Drain
+- Air Cutter
+- Bug Bite
+- Stun Spore
+
+Wailmer @ Oran Berry
+Level: 22
+Ability: Water Veil
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Water Pulse
+- Heavy Slam
+- Rock Smash
+- Rock Tomb
+
+Mawile @ Oran Berry
+Level: 22
+Ability: Intimidate
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Knock Off
+- Charm
+- Fairy Wind
+- Bite
+
+Grovyle @ Sitrus Berry
+Level: 22
+Ability: Unburden
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- X-Scissor
+- Mega Drain
+- Quick Attack
+- Energy Ball
 
 === TRAINER_BRENDAN_ROUTE_119_MUDKIP ===
 Name: BRENDAN
@@ -9809,17 +9979,59 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Slugma
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Loudred @ Oran Berry
+Level: 30
+Ability: Soundproof
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Echoed Voice
+- Bite
+- Rest
+- Sleep Talk
 
-Pelipper
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Litwick @ Oran Berry
+Level: 30
+Ability: Infiltrator
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Will-O-Wisp
+- Fire Spin
+- Hex
+- Minimize
 
-Grovyle
+Beautifly @ Oran Berry
 Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Ability: Rivalry
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Mega Drain
+- Air Cutter
+- Bug Bite
+- Stun Spore
+
+Wailmer @ Oran Berry
+Level: 31
+Ability: Water Veil
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Brine
+- Heavy Slam
+- Rock Smash
+- Rock Tomb
+
+Mawile @ Oran Berry
+Level: 32
+Ability: Intimidate
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Knock Off
+- Iron Defense
+- Draining Kiss
+- Crunch
+
+Grovyle @ Sitrus Berry
+Level: 32
+Ability: Unburden
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- X-Scissor
+- Giga Drain
+- Quick Attack
+- Energy Ball
 
 === TRAINER_BRENDAN_ROUTE_103_TREECKO ===
 Name: BRENDAN
@@ -9925,7 +10137,12 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Mawile @ Oran Berry
 Level: 22
+Ability: Intimidate
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Knock Off
+- Charm
+- Fairy Wind
+- Bite
 
 Marshtomp @ Oran Berry
 Level: 22
@@ -9978,17 +10195,56 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Wingull
-Level: 18
+Loudred @ Oran Berry
+Level: 22
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Echoed Voice
+- Bite
+- Rest
+- Sleep Talk
 
-Slugma
-Level: 18
+Swellow @ Oran Berry
+Level: 22
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Aerial Ace
+- Double Team
+- Quick Attack
+- Brave Bird
 
-Grovyle
-Level: 20
+Beautifly @ Oran Berry
+Level: 22
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Mega Drain
+- Air Cutter
+- Bug Bite
+- Stun Spore
+
+Wailmer @ Oran Berry
+Level: 22
+Ability: Water Veil
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Water Pulse
+- Heavy Slam
+- Rock Smash
+- Rock Tomb
+
+Mawile @ Oran Berry
+Level: 22
+Ability: Intimidate
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Knock Off
+- Charm
+- Fairy Wind
+- Bite
+
+Grovyle @ Sitrus Berry
+Level: 22
+Ability: Unburden
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- X-Scissor
+- Mega Drain
+- Quick Attack
+- Energy Ball
 
 === TRAINER_MAY_ROUTE_119_MUDKIP ===
 Name: MAY
@@ -9999,17 +10255,59 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Slugma
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Loudred @ Oran Berry
+Level: 30
+Ability: Soundproof
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Echoed Voice
+- Bite
+- Rest
+- Sleep Talk
 
-Lombre
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Litwick @ Oran Berry
+Level: 30
+Ability: Infiltrator
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Will-O-Wisp
+- Fire Spin
+- Hex
+- Minimize
 
-Grovyle
+Beautifly @ Oran Berry
 Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Ability: Rivalry
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Mega Drain
+- Air Cutter
+- Bug Bite
+- Stun Spore
+
+Wailmer @ Oran Berry
+Level: 31
+Ability: Water Veil
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Brine
+- Heavy Slam
+- Rock Smash
+- Rock Tomb
+
+Mawile @ Oran Berry
+Level: 32
+Ability: Intimidate
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Knock Off
+- Iron Defense
+- Draining Kiss
+- Crunch
+
+Grovyle @ Sitrus Berry
+Level: 32
+Ability: Unburden
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- X-Scissor
+- Giga Drain
+- Quick Attack
+- Energy Ball
 
 === TRAINER_MAY_ROUTE_103_TREECKO ===
 Name: MAY
@@ -11517,15 +11815,15 @@ Double Battle: No
 AI: Basic Trainer
 
 Marill
-Level: 15
+Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Shroomish
-Level: 15
+Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Numel
-Level: 15
+Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HALEY_2 ===
@@ -12293,6 +12591,10 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Feint Attack
 - Bind
 
+Growlithe Hisui
+Level: 23
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
 === TRAINER_VIVIAN ===
 Name: VIVIAN
 Class: Battle Girl
@@ -12302,7 +12604,7 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Meditite
+Meditite @ Oran Berry
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Bide
@@ -12310,13 +12612,21 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Confusion
 - Thunder Punch
 
-Meditite
+Meditite @ Oran Berry
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Thunder Punch
 - Detect
 - Confusion
 - Meditate
+
+Pawmot @ Sitrus Berry
+Level: 18
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Thundershock
+- Revival Blessing
+- Rock Smash
+- Wild Charge
 
 === TRAINER_DANIELLE ===
 Name: DANIELLE
@@ -12334,6 +12644,10 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Detect
 - Confusion
 - Fire Punch
+
+Monferno
+Level: 23
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HIDEO ===
 Name: HIDEO
@@ -12427,6 +12741,15 @@ Xatu
 Level: 29
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
+Kilowattrel
+Level: 29
+Ability: Wind Power
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Tailwind
+- Electro Ball
+- Dual Wingbeat
+- Roost
+
 === TRAINER_ASHLEY ===
 Name: ASHLEY
 Class: Picnicker
@@ -12440,13 +12763,23 @@ Swablu
 Level: 27
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Swablu
-Level: 27
+Rufflet
+Level: 30
+Ability: Hustle
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Hone Claws
+- Tailwind
+- Aerial Ace
+- Shadow Claw
 
-Swablu
-Level: 27
+Unfezant
+Level: 32
+Ability: Super Luck
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Quick Attack
+- Air Cutter
+- Feather Dance
+- Swagger
 
 === TRAINER_WALLY_MAUVILLE ===
 Name: WALLY
@@ -16316,19 +16649,31 @@ Music: Suspicious
 Double Battle: No
 AI: Basic Trainer
 
-Illumise
+Illumise @ Oran Berry
 Level: 17
+Ability: Tinted Lens
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Shock Wave
 - Quick Attack
 - Charm
+- Struggle Bug
 
-Volbeat
+Volbeat @ Oran Berry
 Level: 17
+Ability: Swarm
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Shock Wave
 - Quick Attack
 - Confuse Ray
+- Struggle Bug
+
+Joltik @ Sitrus Berry
+Level: 17
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Electroweb
+- Bug Bite
+- Thunder Wave
+- Absorb
 
 === TRAINER_DARIUS ===
 Name: DARIUS
@@ -16339,9 +16684,39 @@ Music: Cool
 Double Battle: No
 AI: Basic Trainer
 
-Tropius
+Tropius @ Oran Berry
+Level: 30
+Ability: Harvest
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Whirlwind
+- Gust
+- Growth
+- Leaf Storm
+
+Corvisquire @ Oran Berry
+Level: 30
+Ability: Big Pecks
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Power Trip
+- Hone Claws
+- Taunt
+- Pluck
+
+Staravia @ Oran Berry
 Level: 30
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Quick Attack
+- Endeavor
+- Aerial Ace
+- Whirlwind
+
+Squawkabilly @ Oran Berry
+Level: 30
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Quick Attack
+- Mimic
+- Aerial Ace
+- Copycat
 
 === TRAINER_STEVEN ===
 Name: STEVEN
