@@ -60,7 +60,7 @@
 #define FLAG_RECEIVED_SALAMENCITE         0x2E // Salamencite
 #define FLAG_RECEIVED_GYARADOSITE         0x2F // Gyaradosite
 #define FLAG_RECEIVED_PIDGEOTITE          0x30 // Pidgeotite
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
+#define FLAG_RECEIVED_LOPUNNITE           0x31 // Lopunnite
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
@@ -996,7 +996,7 @@
 #define FLAG_HIDE_ROUTE_128_MAXIE                                   0x3B1
 #define FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS                       0x3B2
 #define FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE                          0x3B3
-#define FLAG_HIDE_SLATEPORT_CITY_TM_SALESMAN                        0x3B4
+#define FLAG_HIDE_SLATEPORT_CITY_TM_SALESMAN                        0x3B4  // Now Removed and Unused
 #define FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_EMPLOYEE              0x3B5
 #define FLAG_HIDE_SS_TIDAL_CORRIDOR_MR_BRINEY                       0x3B6
 #define FLAG_HIDE_SS_TIDAL_ROOMS_SNATCH_GIVER                       0x3B7

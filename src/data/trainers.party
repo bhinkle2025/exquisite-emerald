@@ -13031,21 +13031,59 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Tropius
-Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Exploud @ Sitrus Berry
+Level: 40
+Ability: Soundproof
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Echoed Voice
+- Bite
+- Rest
+- Sleep Talk
 
-Slugma
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Lampent @ Fire Gem
+Level: 40
+Ability: Infiltrator
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Will-O-Wisp
+- Inferno
+- Shadow Ball
+- Curse
 
-Pelipper
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Beautifly @ Bug Gem
+Level: 41
+Ability: Rivalry
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Mega Drain
+- Air Cutter
+- Bug Bite
+- Stun Spore
 
-Grovyle
-Level: 34
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Wailmer @ Chesto Berry
+Level: 41
+Ability: Water Veil
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Surf
+- Heavy Slam
+- Body Slam
+- Rest
+
+Mawile @ Sitrus Berry
+Level: 42
+Ability: Intimidate
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Knock Off
+- Iron Defense
+- Draining Kiss
+- Crunch
+
+Sceptile @ Liechi Berry
+Level: 42
+Ability: Unburden
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- X-Scissor
+- Giga Drain
+- Leaf Blade
+- Dragon Dance
 
 === TRAINER_BRENDAN_LILYCOVE_TREECKO ===
 Name: BRENDAN
@@ -13144,21 +13182,59 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Tropius
-Level: 31
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Exploud @ Sitrus Berry
+Level: 40
+Ability: Soundproof
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Echoed Voice
+- Bite
+- Rest
+- Sleep Talk
 
-Slugma
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Lampent @ Fire Gem
+Level: 40
+Ability: Infiltrator
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Will-O-Wisp
+- Inferno
+- Shadow Ball
+- Curse
 
-Pelipper
-Level: 32
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Beautifly @ Bug Gem
+Level: 41
+Ability: Rivalry
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Mega Drain
+- Air Cutter
+- Bug Bite
+- Stun Spore
 
-Grovyle
-Level: 34
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Wailord @ Chesto Berry
+Level: 41
+Ability: Water Veil
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Surf
+- Heavy Slam
+- Body Slam
+- Rest
+
+Mawile @ Sitrus Berry
+Level: 42
+Ability: Intimidate
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Knock Off
+- Iron Defense
+- Draining Kiss
+- Crunch
+
+Sceptile @ Liechi Berry
+Level: 42
+Ability: Unburden
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- X-Scissor
+- Giga Drain
+- Leaf Blade
+- Dragon Dance
 
 === TRAINER_MAY_LILYCOVE_TREECKO ===
 Name: MAY

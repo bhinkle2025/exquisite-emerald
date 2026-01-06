@@ -18,8 +18,18 @@ MauvilleCity_EventScript_MoveWattsonBackToGym::
 	setflag FLAG_WATTSON_REMATCH_AVAILABLE
 	return
 
-MauvilleCity_EventScript_Boy::
-	msgbox MauvilleCity_Text_NurseHurtMonBackToHealth, MSGBOX_NPC
+MauvilleCity_EventScript_GiveLopunnite::
+	lock
+	faceplayer
+
+	goto_if_set FLAG_RECEIVED_LOPUNNITE, MauvilleCity_Text_LopunniteAlready
+
+	msgbox MauvilleCity_Text_LopunniteIntro, MSGBOX_NPC
+	giveitem ITEM_LOPUNNITE, 1
+	setflag FLAG_RECEIVED_LOPUNNITE
+
+	msgbox MauvilleCity_Text_LopunniteGiven, MSGBOX_NPC
+	release
 	end
 
 MauvilleCity_EventScript_Maniac::
@@ -609,12 +619,6 @@ MauvilleCity_Text_WattsonYoungTakeCharge:
 	.string "It pleases me to no end to see\n"
 	.string "the young step up and take charge!$"
 
-MauvilleCity_Text_NurseHurtMonBackToHealth:
-	.string "You know, it's cool to have POKéMON\n"
-	.string "battles and stuff…\p"
-	.string "But if your POKéMON gets hurt,\n"
-	.string "you have to nurse it back to health.$"
-
 MauvilleCity_Text_AllSortsOfPeopleComeThrough:
 	.string "The roads of this town stretch north\n"
 	.string "and south, and east and west.\p"
@@ -662,3 +666,22 @@ MauvilleCity_Text_ExplainTV:
 
 MauvilleCity_Text_BeenCheckingOutTV:
 	.string "Hi, have you been checking out TVs?$"
+
+MauvilleCity_Text_LopunniteIntro:
+	.string "Speed. Timing. Precision.\p"
+	.string "Battles are won by knowing\n"
+	.string "when to move.\p"
+	.string "This stone reacts to graceful\n"
+	.string "fighters with explosive speed.\p"
+	.string "In the right hands,\n"
+	.string "it changes everything.$"
+
+MauvilleCity_Text_LopunniteGiven:
+	.string "Take it.\p"
+	.string "If you master its rhythm,\n"
+	.string "your battles will never be slow.$"
+
+MauvilleCity_Text_LopunniteAlready:
+	.string "Speed isn't about moving first.\n"
+	.string "It's about moving right.$"
+
