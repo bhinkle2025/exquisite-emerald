@@ -107,13 +107,6 @@ OldaleTown_House1_EventScript_OldMan_Already::
 @ - sets VAR_TEMP_TRANSFERRED_SPECIES for nickname/PC scripts
 @ =========================
 OldaleTown_House1_EventScript_SetupGiftStarter::
-	compare VAR_OLDALE_STARTER_SPECIES, SPECIES_BULBASAUR
-	goto_if_eq OldaleTown_House1_EventScript_Setup_Bulbasaur
-	compare VAR_OLDALE_STARTER_SPECIES, SPECIES_CHARMANDER
-	goto_if_eq OldaleTown_House1_EventScript_Setup_Charmander
-	compare VAR_OLDALE_STARTER_SPECIES, SPECIES_SQUIRTLE
-	goto_if_eq OldaleTown_House1_EventScript_Setup_Squirtle
-
 	compare VAR_OLDALE_STARTER_SPECIES, SPECIES_TURTWIG
 	goto_if_eq OldaleTown_House1_EventScript_Setup_Turtwig
 	compare VAR_OLDALE_STARTER_SPECIES, SPECIES_CHIMCHAR
@@ -157,26 +150,7 @@ OldaleTown_House1_EventScript_SetupGiftStarter::
 	goto_if_eq OldaleTown_House1_EventScript_Setup_Quaxly
 
 	@ failsafe
-	goto OldaleTown_House1_EventScript_Setup_Bulbasaur
-
-
-OldaleTown_House1_EventScript_Setup_Bulbasaur::
-	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_BULBASAUR
-	showmonpic SPECIES_BULBASAUR, 10, 3
-	return
-
-OldaleTown_House1_EventScript_Setup_Charmander::
-	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CHARMANDER
-	showmonpic SPECIES_CHARMANDER, 10, 3
-	return
-
-OldaleTown_House1_EventScript_Setup_Squirtle::
-	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_SQUIRTLE
-	showmonpic SPECIES_SQUIRTLE, 10, 3
-	return
+	goto OldaleTown_House1_EventScript_Setup_Turtwig
 
 OldaleTown_House1_EventScript_Setup_Turtwig::
 	bufferspeciesname STR_VAR_1, SPECIES_TURTWIG

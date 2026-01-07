@@ -4376,8 +4376,6 @@ void Special_PickOldaleRandomStarter(void)
 {
     static const u16 sOldaleStarters[] =
     {
-        // Gen 1
-        SPECIES_BULBASAUR, SPECIES_CHARMANDER, SPECIES_SQUIRTLE,
 
         // Gen 4
         SPECIES_TURTWIG, SPECIES_CHIMCHAR, SPECIES_PIPLUP,

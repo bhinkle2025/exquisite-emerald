@@ -2,11 +2,9 @@ MauvilleCity_GameCorner_MapScripts::
 	.byte 0
 
     @ Game Corner prices
-	.set TM_DOUBLE_TEAM_COINS, 1500
-	.set TM_PSYCHIC_COINS, 3500
-	.set TM_FLAMETHROWER_COINS, 4000
-	.set TM_THUNDERBOLT_COINS, 4000
-	.set TM_ICE_BEAM_COINS, 4000
+	.set BULBASAUR_COINS, 3000
+	.set CHARMANDER_COINS, 3000
+	.set SQUIRTLE_COINS, 3000
 	.set DOLL_COINS, 1000
 
 	.set COINS_PRICE_50,  1000
@@ -236,120 +234,212 @@ MauvilleCity_GameCorner_EventScript_ReturnToChooseTMPrize::
 MauvilleCity_GameCorner_EventScript_ChooseTMPrize::
 	multichoice 12, 0, MULTI_GAME_CORNER_TMS, FALSE
 	switch VAR_RESULT
-	case 0, MauvilleCity_GameCorner_EventScript_TMDoubleTeam
-	case 1, MauvilleCity_GameCorner_EventScript_TMPsychic
-	case 2, MauvilleCity_GameCorner_EventScript_TMFlamethrower
-	case 3, MauvilleCity_GameCorner_EventScript_TMThunderbolt
-	case 4, MauvilleCity_GameCorner_EventScript_TMIceBeam
-	case 5, MauvilleCity_GameCorner_EventScript_CancelTMSelect
+	case 0, MauvilleCity_GameCorner_EventScript_PrizeBulbasaur
+	case 1, MauvilleCity_GameCorner_EventScript_PrizeCharmander
+	case 2, MauvilleCity_GameCorner_EventScript_PrizeSquirtle
+	case 3, MauvilleCity_GameCorner_EventScript_CancelTMSelect
 	goto MauvilleCity_GameCorner_EventScript_CancelTMSelect
 	end
 
-MauvilleCity_GameCorner_EventScript_TMDoubleTeam::
+@ --- Prize selection entry points (replace the old TM scripts you were calling) ---
+
+MauvilleCity_GameCorner_EventScript_PrizeBulbasaur::
 	setvar VAR_TEMP_1, 1
-	bufferitemname STR_VAR_1, ITEM_TM_DOUBLE_TEAM
-	setvar VAR_0x8004, ITEM_TM_DOUBLE_TEAM
-	goto MauvilleCity_GameCorner_EventScript_ConfirmTMPrize
+	goto MauvilleCity_GameCorner_EventScript_ConfirmStarterPrize
 
-MauvilleCity_GameCorner_EventScript_TMPsychic::
+MauvilleCity_GameCorner_EventScript_PrizeCharmander::
 	setvar VAR_TEMP_1, 2
-	bufferitemname STR_VAR_1, ITEM_TM_PSYCHIC
-	setvar VAR_0x8004, ITEM_TM_PSYCHIC
-	goto MauvilleCity_GameCorner_EventScript_ConfirmTMPrize
+	goto MauvilleCity_GameCorner_EventScript_ConfirmStarterPrize
 
-MauvilleCity_GameCorner_EventScript_TMFlamethrower::
+MauvilleCity_GameCorner_EventScript_PrizeSquirtle::
 	setvar VAR_TEMP_1, 3
-	bufferitemname STR_VAR_1, ITEM_TM_FLAMETHROWER
-	setvar VAR_0x8004, ITEM_TM_FLAMETHROWER
-	goto MauvilleCity_GameCorner_EventScript_ConfirmTMPrize
+	goto MauvilleCity_GameCorner_EventScript_ConfirmStarterPrize
 
-MauvilleCity_GameCorner_EventScript_TMThunderbolt::
-	setvar VAR_TEMP_1, 4
-	bufferitemname STR_VAR_1, ITEM_TM_THUNDERBOLT
-	setvar VAR_0x8004, ITEM_TM_THUNDERBOLT
-	goto MauvilleCity_GameCorner_EventScript_ConfirmTMPrize
 
-MauvilleCity_GameCorner_EventScript_TMIceBeam::
-	setvar VAR_TEMP_1, 5
-	bufferitemname STR_VAR_1, ITEM_TM_ICE_BEAM
-	setvar VAR_0x8004, ITEM_TM_ICE_BEAM
-	goto MauvilleCity_GameCorner_EventScript_ConfirmTMPrize
+@ --- Confirm prize (now uses per-choice text, no buffering needed) ---
 
-MauvilleCity_GameCorner_EventScript_ConfirmTMPrize::
-	special BufferTMHMMoveName
-	msgbox MauvilleCity_GameCorner_Text_SoYourChoiceIsTheTMX, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_EventScript_CancelTMSelect
+MauvilleCity_GameCorner_EventScript_ConfirmStarterPrize::
 	switch VAR_TEMP_1
-	case 1, MauvilleCity_GameCorner_EventScript_BuyTMDoubleTeam
-	case 2, MauvilleCity_GameCorner_EventScript_BuyTMPsychic
-	case 3, MauvilleCity_GameCorner_EventScript_BuyTMFlamethrower
-	case 4, MauvilleCity_GameCorner_EventScript_BuyTMThunderbolt
-	case 5, MauvilleCity_GameCorner_EventScript_BuyTMIceBeam
+	case 1, MauvilleCity_GameCorner_EventScript_ConfirmBulbasaur
+	case 2, MauvilleCity_GameCorner_EventScript_ConfirmCharmander
+	case 3, MauvilleCity_GameCorner_EventScript_ConfirmSquirtle
 	end
 
-MauvilleCity_GameCorner_EventScript_BuyTMDoubleTeam::
+MauvilleCity_GameCorner_EventScript_ConfirmBulbasaur::
+	msgbox MauvilleCity_GameCorner_Text_SoYourChoiceIsBulbasaur, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_EventScript_CancelTMSelect
+	goto MauvilleCity_GameCorner_EventScript_BuyBulbasaur
+
+MauvilleCity_GameCorner_EventScript_ConfirmCharmander::
+	msgbox MauvilleCity_GameCorner_Text_SoYourChoiceIsCharmander, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_EventScript_CancelTMSelect
+	goto MauvilleCity_GameCorner_EventScript_BuyCharmander
+
+MauvilleCity_GameCorner_EventScript_ConfirmSquirtle::
+	msgbox MauvilleCity_GameCorner_Text_SoYourChoiceIsSquirtle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_EventScript_CancelTMSelect
+	goto MauvilleCity_GameCorner_EventScript_BuySquirtle
+
+
+@ --- Purchase scripts (same pattern as your TM buys) ---
+
+MauvilleCity_GameCorner_EventScript_BuyBulbasaur::
 	checkcoins VAR_TEMP_2
-	goto_if_lt VAR_TEMP_2, TM_DOUBLE_TEAM_COINS, MauvilleCity_GameCorner_EventScript_NotEnoughCoinsForTM
-	checkitemspace ITEM_TM_DOUBLE_TEAM
-	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_EventScript_NoRoomForTM
-	removecoins TM_DOUBLE_TEAM_COINS
-	additem ITEM_TM_DOUBLE_TEAM
+	goto_if_lt VAR_TEMP_2, BULBASAUR_COINS, MauvilleCity_GameCorner_EventScript_NotEnoughCoinsForTM
+
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_BULBASAUR
+	givemon SPECIES_BULBASAUR, 5, ITEM_NONE
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, MauvilleCity_GameCorner_EventScript_BulbasaurToParty
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC,    MauvilleCity_GameCorner_EventScript_BulbasaurToPC
+	
+	@ No room at all
+	hidemonpic
+	release
+	goto Common_EventScript_NoMoreRoomForPokemon
+	end
+
+MauvilleCity_GameCorner_EventScript_BulbasaurToParty::
+	removecoins BULBASAUR_COINS
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	msgbox MauvilleCity_GameCorner_Text_HereYouGo, MSGBOX_DEFAULT
-	goto MauvilleCity_GameCorner_EventScript_ReturnToChooseTMPrize
+	bufferspeciesname STR_VAR_2, SPECIES_BULBASAUR
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox MauvilleCity_GameCorner_Text_ReceivedMon, MSGBOX_DEFAULT
+	waitmessage
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_EventScript_ReturnToChooseTMPrize
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	hidecoinsbox 0, 0
+	release
 	end
 
-MauvilleCity_GameCorner_EventScript_BuyTMPsychic::
-	checkcoins VAR_TEMP_2
-	goto_if_lt VAR_TEMP_2, TM_PSYCHIC_COINS, MauvilleCity_GameCorner_EventScript_NotEnoughCoinsForTM
-	checkitemspace ITEM_TM_PSYCHIC
-	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_EventScript_NoRoomForTM
-	removecoins TM_PSYCHIC_COINS
-	additem ITEM_TM_PSYCHIC
+MauvilleCity_GameCorner_EventScript_BulbasaurToPC::
+	removecoins BULBASAUR_COINS
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	msgbox MauvilleCity_GameCorner_Text_HereYouGo, MSGBOX_DEFAULT
-	goto MauvilleCity_GameCorner_EventScript_ReturnToChooseTMPrize
+	bufferspeciesname STR_VAR_2, SPECIES_BULBASAUR
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox MauvilleCity_GameCorner_Text_ReceivedMon, MSGBOX_DEFAULT
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_EventScript_PrizeMonTransferredToPC
+	call Common_EventScript_NameReceivedBoxMon
+	goto MauvilleCity_GameCorner_EventScript_PrizeMonTransferredToPC
 	end
 
-MauvilleCity_GameCorner_EventScript_BuyTMFlamethrower::
+
+MauvilleCity_GameCorner_EventScript_BuyCharmander::
 	checkcoins VAR_TEMP_2
-	goto_if_lt VAR_TEMP_2, TM_FLAMETHROWER_COINS, MauvilleCity_GameCorner_EventScript_NotEnoughCoinsForTM
-	checkitemspace ITEM_TM_FLAMETHROWER
-	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_EventScript_NoRoomForTM
-	removecoins TM_FLAMETHROWER_COINS
-	additem ITEM_TM_FLAMETHROWER
+	goto_if_lt VAR_TEMP_2, CHARMANDER_COINS, MauvilleCity_GameCorner_EventScript_NotEnoughCoinsForTM
+
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CHARMANDER
+	givemon SPECIES_CHARMANDER, 5, ITEM_NONE
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, MauvilleCity_GameCorner_EventScript_CharmanderToParty
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC,    MauvilleCity_GameCorner_EventScript_CharmanderToPC
+	
+	@ No room at all
+	hidemonpic
+	release
+	goto Common_EventScript_NoMoreRoomForPokemon
+	end
+
+MauvilleCity_GameCorner_EventScript_CharmanderToParty::
+	removecoins CHARMANDER_COINS
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	msgbox MauvilleCity_GameCorner_Text_HereYouGo, MSGBOX_DEFAULT
-	goto MauvilleCity_GameCorner_EventScript_ReturnToChooseTMPrize
+	bufferspeciesname STR_VAR_2, SPECIES_CHARMANDER
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox MauvilleCity_GameCorner_Text_ReceivedMon, MSGBOX_DEFAULT
+	waitmessage
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_EventScript_ReturnToChooseTMPrize
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	hidecoinsbox 0, 0
+	release
 	end
 
-MauvilleCity_GameCorner_EventScript_BuyTMThunderbolt::
-	checkcoins VAR_TEMP_2
-	goto_if_lt VAR_TEMP_2, TM_THUNDERBOLT_COINS, MauvilleCity_GameCorner_EventScript_NotEnoughCoinsForTM
-	checkitemspace ITEM_TM_THUNDERBOLT
-	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_EventScript_NoRoomForTM
-	removecoins TM_THUNDERBOLT_COINS
-	additem ITEM_TM_THUNDERBOLT
+MauvilleCity_GameCorner_EventScript_CharmanderToPC::
+	removecoins CHARMANDER_COINS
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	msgbox MauvilleCity_GameCorner_Text_HereYouGo, MSGBOX_DEFAULT
-	goto MauvilleCity_GameCorner_EventScript_ReturnToChooseTMPrize
+	bufferspeciesname STR_VAR_2, SPECIES_CHARMANDER
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox MauvilleCity_GameCorner_Text_ReceivedMon, MSGBOX_DEFAULT
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_EventScript_PrizeMonTransferredToPC
+	call Common_EventScript_NameReceivedBoxMon
+	goto MauvilleCity_GameCorner_EventScript_PrizeMonTransferredToPC
 	end
 
-MauvilleCity_GameCorner_EventScript_BuyTMIceBeam::
+
+MauvilleCity_GameCorner_EventScript_BuySquirtle::
 	checkcoins VAR_TEMP_2
-	goto_if_lt VAR_TEMP_2, TM_ICE_BEAM_COINS, MauvilleCity_GameCorner_EventScript_NotEnoughCoinsForTM
-	checkitemspace ITEM_TM_ICE_BEAM
-	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_EventScript_NoRoomForTM
-	removecoins TM_ICE_BEAM_COINS
-	additem ITEM_TM_ICE_BEAM
+	goto_if_lt VAR_TEMP_2, SQUIRTLE_COINS, MauvilleCity_GameCorner_EventScript_NotEnoughCoinsForTM
+
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_SQUIRTLE
+	givemon SPECIES_SQUIRTLE, 5, ITEM_NONE
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, MauvilleCity_GameCorner_EventScript_SquirtleToParty
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC,    MauvilleCity_GameCorner_EventScript_SquirtleToPC
+	
+	@ No room at all
+	hidemonpic
+	release
+	goto Common_EventScript_NoMoreRoomForPokemon
+	end
+
+MauvilleCity_GameCorner_EventScript_SquirtleToParty::
+	removecoins SQUIRTLE_COINS
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	msgbox MauvilleCity_GameCorner_Text_HereYouGo, MSGBOX_DEFAULT
-	goto MauvilleCity_GameCorner_EventScript_ReturnToChooseTMPrize
+	bufferspeciesname STR_VAR_2, SPECIES_SQUIRTLE
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox MauvilleCity_GameCorner_Text_ReceivedMon, MSGBOX_DEFAULT
+	waitmessage
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_EventScript_ReturnToChooseTMPrize
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	hidecoinsbox 0, 0
+	release
+	end
+
+MauvilleCity_GameCorner_EventScript_SquirtleToPC::
+	removecoins SQUIRTLE_COINS
+	updatecoinsbox 1, 1
+	playse SE_SHOP
+	msgbox MauvilleCity_GameCorner_Text_HereYouGo, MSGBOX_DEFAULT
+	bufferspeciesname STR_VAR_2, SPECIES_SQUIRTLE
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox MauvilleCity_GameCorner_Text_ReceivedMon, MSGBOX_DEFAULT
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_EventScript_PrizeMonTransferredToPC
+	call Common_EventScript_NameReceivedBoxMon
+	goto MauvilleCity_GameCorner_EventScript_PrizeMonTransferredToPC
+	end
+
+MauvilleCity_GameCorner_EventScript_PrizeMonTransferredToPC::
+	@ Optional: your existing “here you go” line is fine too, but this is clearer for PC.
+	msgbox MauvilleCity_GameCorner_Text_StoredInPC, MSGBOX_DEFAULT
+	hidecoinsbox 0, 0
+	release
 	end
 
 MauvilleCity_GameCorner_EventScript_NotEnoughCoinsForTM::
@@ -775,4 +865,22 @@ MauvilleCity_GameCorner_Text_HeresSomeSlotsInfo:
 MauvilleCity_GameCorner_Text_CantPlayWithNoCoinCase:
 	.string "You can't play if you don't have\n"
 	.string "a COIN CASE.$"
+
+MauvilleCity_GameCorner_Text_ReceivedMon::
+	.string "{PLAYER} received the prize POKéMON!$"
+
+MauvilleCity_GameCorner_Text_StoredInPC::
+	.string "It was transferred to your PC.$"
+
+MauvilleCity_GameCorner_Text_SoYourChoiceIsBulbasaur::
+	.string "So, your choice is BULBASAUR?\p"
+	.string "Is that right?$"
+
+MauvilleCity_GameCorner_Text_SoYourChoiceIsCharmander::
+	.string "So, your choice is CHARMANDER?\p"
+	.string "Is that right?$"
+
+MauvilleCity_GameCorner_Text_SoYourChoiceIsSquirtle::
+	.string "So, your choice is SQUIRTLE?\p"
+	.string "Is that right?$"
 
