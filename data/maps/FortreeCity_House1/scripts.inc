@@ -61,14 +61,12 @@ FortreeCity_House1_EventScript_Zigzagoon::
 	end
 
 FortreeCity_House1_Text_YouWillTradeWontYou:
-	.string "Wrooooaaar! I need it!\n"
-	.string "I have to get me a {STR_VAR_1}!\l"
-	.string "I'll do anything for it!\p"
-	.string "…Uh… Did you hear that?\n"
-	.string "My shout from the bottom of my heart?\p"
-	.string "Having heard that, you will trade\n"
-	.string "your {STR_VAR_1} for my {STR_VAR_2},\l"
-	.string "won't you?$"
+	.string "I study POKéMON that live among\n"
+	.string "the treetops here.\p"
+	.string "Lately, I've been observing a\n"
+	.string "strange, cold-loving POKéMON.\p"
+	.string "It doesn't belong in this climate.\p"
+	.string "Would you trade me a TROPIUS for it?$"
 
 FortreeCity_House1_Text_MonYouTakeCare:
 	.string "Oh, yeah, right on!\p"
@@ -80,18 +78,21 @@ FortreeCity_House1_Text_ThisIsntAMon:
 	.string "That isn't a {STR_VAR_1}.$"
 
 FortreeCity_House1_Text_YouWontTradeMe:
-	.string "No? You won't trade me?\n"
-	.string "Even after I bared my heart to you?$"
+	.string "I see.\p"
+	.string "TROPIUS are important to this\n"
+	.string "forest, after all.$"
 
 FortreeCity_House1_Text_GoingToMakeVolbeatStrong:
-	.string "I'm going to make VOLBEAT super\n"
-	.string "strong from this moment on!\p"
-	.string "I hope you do the same with PLUSLE!$"
+	.string "I'll take good care of this\n"
+	.string "TROPIUS.\p"
+	.string "It will continue to thrive\n"
+	.string "here among the trees.$"
 
 FortreeCity_House1_Text_TradingMemoriesWithOthers:
-	.string "Trading POKéMON with others…\p"
-	.string "It's as if you're trading your own\n"
-	.string "memories with other people.$"
+	.string "When you trade POKéMON with\n"
+	.string "someone else...\p"
+	.string "You're trusting them with a\n"
+	.string "living thing.$"
 
 FortreeCity_House1_Text_Zigzagoon:
 	.string "ZIGZAGOON: Gumomoh?$"

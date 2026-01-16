@@ -50,28 +50,28 @@ RustboroCity_House1_EventScript_Hiker::
 	end
 
 RustboroCity_House1_Text_IllTradeIfYouWant:
-	.string "Huh? My POKéMON is cute?\n"
-	.string "Sure, I knew that.\p"
-	.string "But if you really want, I'm willing\n"
-	.string "to trade it to you.\p"
-	.string "I'll trade you my {STR_VAR_2} for\n"
-	.string "a {STR_VAR_1} if you want.$"
+	.string "You're eyeing my POKéMON?\n"
+	.string "It runs louder than it looks.\p"
+	.string "Takes a steady hand to handle,\n"
+	.string "but it's built to last.\p"
+	.string "If you want, I'll trade my\n"
+	.string "{STR_VAR_2} for your {STR_VAR_1}.$"
 
 RustboroCity_House1_Text_PleaseBeGoodToMyPokemon:
-	.string "Eheheh…\n"
-	.string "Please be good to my POKéMON.$"
+	.string "Take care of it.\n"
+	.string "It's built to last.$"
 
 RustboroCity_House1_Text_DoesntLookLikeMonToMe:
 	.string "Huh? That doesn't look anything like\n"
 	.string "a {STR_VAR_1} to me.$"
 
 RustboroCity_House1_Text_YouDontWantToThatsOkay:
-	.string "Oh, if you don't want to, that's okay.\n"
-	.string "But my POKéMON is cute, you know…$"
+	.string "Oh, not interested? That's fine.\n"
+	.string "Not everyone likes a rough build.$"
 
 RustboroCity_House1_Text_AnyPokemonCanBeCute:
-	.string "Any POKéMON can be cute if you raise\n"
-	.string "it with care and kindness.$"
+	.string "Any POKéMON can shine if you\n"
+	.string "put the work into raising it.$"
 
 RustboroCity_House1_Text_AllSortsOfPlaces:
 	.string "In all sorts of places, there are all\n"

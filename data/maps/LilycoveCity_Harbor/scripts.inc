@@ -9,7 +9,7 @@ LilycoveCity_Harbor_OnTransition:
 LilycoveCity_Harbor_EventScript_FerryAttendant::
 	lock
 	faceplayer
-	goto_if_unset FLAG_SYS_GAME_CLEAR, LilycoveCity_Harbor_EventScript_FerryUnavailable
+	goto_if_unset FLAG_RECEIVED_SS_TICKET, LilycoveCity_Harbor_EventScript_FerryUnavailable
 	checkitem ITEM_OLD_SEA_MAP
 	goto_if_eq VAR_RESULT, 1, LilycoveCity_Harbor_EventScript_OldSeaMapObtained
 	call LilycoveCity_Harbor_EventScript_GetEonTicketState

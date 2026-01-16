@@ -3335,3 +3335,15 @@ u16 PerfectSelectedMonIV(void)
 
     return 1;
 }
+
+bool8 Special_AltariaInParty(void)
+{
+    int i;
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_ALTARIA)
+            return TRUE;
+    }
+    return FALSE;
+}
+

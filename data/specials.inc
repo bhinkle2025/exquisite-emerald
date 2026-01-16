@@ -568,3 +568,4 @@ gSpecials::
 	def_special Special_PickRandomBabyEggSpecies
 	def_special PerfectSelectedMonIV
 	def_special WonderTrade
+	def_special Special_AltariaInParty

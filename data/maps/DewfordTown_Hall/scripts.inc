@@ -69,8 +69,84 @@ DewfordTown_Hall_EventScript_Twin::
 DewfordTown_Hall_EventScript_LittleBoy::
 	lock
 	faceplayer
-	call Common_EventScript_BufferTrendyPhrase
-	msgbox DewfordTown_Hall_Text_CollectTrendMerchandise, MSGBOX_DEFAULT
+
+	checkflag FLAG_RECEIVED_TRUBBISH
+	goto_if TRUE, DewfordTown_Hall_EventScript_LittleBoyAfter
+
+	msgbox DewfordTown_Hall_Text_LittleBoyIntro, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, DewfordTown_Hall_EventScript_LittleBoyReject
+
+	@ Give Trubbish (Lv. 5, no item)
+	givemon SPECIES_TRUBBISH, 5, ITEM_ROOM_SERVICE
+
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, DewfordTown_Hall_EventScript_TrubbishToParty
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC,    DewfordTown_Hall_EventScript_TrubbishToPC
+
+	@ No room at all
+	hidemonpic
+	goto Common_EventScript_NoMoreRoomForPokemon
+	release
+	end
+
+DewfordTown_Hall_EventScript_TrubbishToParty::
+	bufferspeciesname STR_VAR_1, SPECIES_TRUBBISH
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TRUBBISH
+	showmonpic SPECIES_TRUBBISH, 10, 3
+
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox DewfordTown_Hall_Text_GotTrubbish, MSGBOX_DEFAULT
+	waitfanfare
+
+	hidemonpic
+
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, DewfordTown_Hall_EventScript_TrubbishToParty_NoNickname
+
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	goto DewfordTown_Hall_EventScript_AfterGive
+	end
+
+DewfordTown_Hall_EventScript_TrubbishToParty_NoNickname::
+	goto DewfordTown_Hall_EventScript_AfterGive
+	end
+
+
+DewfordTown_Hall_EventScript_TrubbishToPC::
+	bufferspeciesname STR_VAR_1, SPECIES_TRUBBISH
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TRUBBISH
+	showmonpic SPECIES_TRUBBISH, 10, 3
+
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox DewfordTown_Hall_Text_GotTrubbish, MSGBOX_DEFAULT
+	waitfanfare
+
+	hidemonpic
+
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, DewfordTown_Hall_EventScript_TrubbishTransferredToPC
+
+	call Common_EventScript_NameReceivedBoxMon
+	goto DewfordTown_Hall_EventScript_TrubbishTransferredToPC
+	end
+
+DewfordTown_Hall_EventScript_TrubbishTransferredToPC::
+	call Common_EventScript_TransferredToPC
+	goto DewfordTown_Hall_EventScript_AfterGive
+	end
+
+DewfordTown_Hall_EventScript_AfterGive::
+	setflag FLAG_RECEIVED_TRUBBISH
+	release
+	end
+
+DewfordTown_Hall_EventScript_LittleBoyAfter::
+	msgbox DewfordTown_Hall_Text_LittleBoyAfter, MSGBOX_DEFAULT
+	release
+	end
+
+DewfordTown_Hall_EventScript_LittleBoyReject::
+	msgbox DewfordTown_Hall_Text_LittleBoyReject, MSGBOX_NPC
 	release
 	end
 
@@ -438,3 +514,25 @@ DewfordTown_Hall_Text_LoveSludgeBombButTrendInToo:
 	.string "“{STR_VAR_1}”\l"
 	.string "are in, too.$"
 
+DewfordTown_Hall_Text_GotTrubbish:
+	.string "{PLAYER} received {STR_VAR_1}!$"
+
+DewfordTown_Hall_Text_LittleBoyAfter:
+	.string "My room smells better now!\n"
+	.string "Mom will be happy.$"
+
+DewfordTown_Hall_Text_LittleBoyIntro:
+	.string "I was cleaning my room like my\n"
+	.string "mom told me to.\p"
+	.string "Then this weird POKéMON crawled\n"
+	.string "out of a pile of junk!\p"
+	.string "It smells really bad, so I don't\n"
+	.string "want to keep it.\p"
+	.string "Do you want to take it?$"
+
+	DewfordTown_Hall_Text_LittleBoyReject:
+	.string "Oh... okay.\p"
+	.string "I guess it can stay in my room\n"
+	.string "for now.\p"
+	.string "But Mom isn't going to like\n"
+	.string "the smell...$"

@@ -26,8 +26,22 @@ MauvilleCity_PokemonCenter_1F_EventScript_Woman1::
 	end
 
 MauvilleCity_PokemonCenter_1F_EventScript_Woman2::
-	msgbox MauvilleCity_PokemonCenter_1F_Text_MyDataUpdatedFromRecordCorner, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_AUDINITE, MauvilleCity_PokemonCenter_1F_EventScript_Woman2_After
+
+	msgbox MauvilleCity_PokemonCenter_1F_Text_AudiniteIntro, MSGBOX_NPC
+	giveitem ITEM_AUDINITE
+	setflag FLAG_RECEIVED_AUDINITE
+	msgbox MauvilleCity_PokemonCenter_1F_Text_AudiniteGiven, MSGBOX_NPC
+	release
 	end
+
+MauvilleCity_PokemonCenter_1F_EventScript_Woman2_After::
+	msgbox MauvilleCity_PokemonCenter_1F_Text_AudiniteAfter, MSGBOX_NPC
+	release
+	end
+
 
 MauvilleCity_PokemonCenter_1F_EventScript_Youngster::
 	msgbox MauvilleCity_PokemonCenter_1F_Text_RecordCornerSoundsFun, MSGBOX_NPC
@@ -39,12 +53,19 @@ MauvilleCity_PokemonCenter_1F_Text_ManOverThereSaysWeirdThings:
 	.string "He's funny in a weird way.\n"
 	.string "I doubt I'll forget about him!$"
 
-MauvilleCity_PokemonCenter_1F_Text_MyDataUpdatedFromRecordCorner:
-	.string "When I accessed the RECORD CORNER,\n"
-	.string "the data for what's hot in DEWFORD\l"
-	.string "got updated.\p"
-	.string "Now that bit of data is the same\n"
-	.string "as my friend's!$"
+MauvilleCity_PokemonCenter_1F_Text_AudiniteIntro::
+	.string "Some POKeMON have a natural\n"
+	.string "talent for caring for others.\p"
+	.string "AUDINO is one of them.$"
+
+MauvilleCity_PokemonCenter_1F_Text_AudiniteGiven::
+	.string "This stone reacts to that\n"
+	.string "kind of heart.\p"
+	.string "I think you should have it.$"
+
+MauvilleCity_PokemonCenter_1F_Text_AudiniteAfter::
+	.string "Take good care of your\n"
+	.string "POKeMON.$"
 
 MauvilleCity_PokemonCenter_1F_Text_RecordCornerSoundsFun:
 	.string "A RECORD CORNER opened upstairs in\n"

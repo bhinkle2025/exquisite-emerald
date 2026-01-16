@@ -23831,6 +23831,10 @@
         "Move": "MOVE_SLASH"
       },
       {
+        "Level": 28,
+        "Move": "MOVE_JUMP_KICK"
+      },
+      {
         "Level": 30,
         "Move": "MOVE_BOUNCE"
       },
@@ -23976,6 +23980,10 @@
         "Move": "MOVE_SLASH"
       },
       {
+        "Level": 28,
+        "Move": "MOVE_JUMP_KICK"
+      },
+      {
         "Level": 30,
         "Move": "MOVE_BOUNCE"
       },
@@ -23984,19 +23992,23 @@
         "Move": "MOVE_FOCUS_ENERGY"
       },
       {
-        "Level": 42,
+        "Level": 40,
         "Move": "MOVE_BULK_UP"
       },
       {
+        "Level": 45,
+        "Move": "MOVE_HI_JUMP_KICK"
+      },
+      {
         "Level": 49,
-        "Move": "MOVE_REVERSAL"
+        "Move": "MOVE_SKY_UPPERCUT"
       },
       {
         "Level": 56,
         "Move": "MOVE_FLARE_BLITZ"
       },
       {
-        "Level": 63,
+        "Level": 58,
         "Move": "MOVE_BRAVE_BIRD"
       }
     ],
@@ -24399,11 +24411,11 @@
         "Move": "MOVE_SCREECH"
       },
       {
-        "Level": 56,
+        "Level": 54,
         "Move": "MOVE_ENDEAVOR"
       },
       {
-        "Level": 63,
+        "Level": 58,
         "Move": "MOVE_HYDRO_PUMP"
       }
     ],
@@ -39920,6 +39932,10 @@
       {
         "Level": 1,
         "Move": "MOVE_ENDURE"
+      },
+      {
+        "Level": 1,
+        "Move": "MOVE_BULLET_PUNCH"
       },
       {
         "Level": 4,
@@ -68428,11 +68444,11 @@
         "Move": "MOVE_BOUNCE"
       },
       {
-        "Level": 54,
+        "Level": 52,
         "Move": "MOVE_DOUBLE_EDGE"
       },
       {
-        "Level": 62,
+        "Level": 58,
         "Move": "MOVE_COURT_CHANGE"
       }
     ],

@@ -61,9 +61,9 @@
 #define FLAG_RECEIVED_GYARADOSITE         0x2F // Gyaradosite
 #define FLAG_RECEIVED_PIDGEOTITE          0x30 // Pidgeotite
 #define FLAG_RECEIVED_LOPUNNITE           0x31 // Lopunnite
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
+#define FLAG_RECEIVED_ALTARIANITE         0x32 // Altarianite
+#define FLAG_RECEIVED_AUDINITE            0x33 // Audinite
+#define FLAG_RECEIVED_TRUBBISH            0x34 // Trubbish
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag
 #define FLAG_UNUSED_0x037    0x37 // Unused Flag

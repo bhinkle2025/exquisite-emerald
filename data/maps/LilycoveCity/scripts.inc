@@ -50,8 +50,10 @@ LilycoveCity_EventScript_ReceivedBerry::
 	release
 	end
 
-LilycoveCity_EventScript_Man3::
-	msgbox LilycoveCity_Text_ContestHallInTown, MSGBOX_NPC
+LilycoveCity_EventScript_Man1::
+	lockall
+	msgbox LilycoveCity_Text_JustArrivedAndSawRarePokemon, MSGBOX_NPC
+	applymovement LOCALID_LILYCOVE_MAN_1, Common_Movement_FaceOriginalDirection
 	end
 
 LilycoveCity_EventScript_Girl::
@@ -130,11 +132,37 @@ LilycoveCity_EventScript_FatMan::
 	msgbox LilycoveCity_Text_SawTallTowerOnRoute131, MSGBOX_NPC
 	end
 
-LilycoveCity_EventScript_Man1::
+LilycoveCity_EventScript_Man3::
 	lockall
-	msgbox LilycoveCity_Text_JustArrivedAndSawRarePokemon, MSGBOX_NPC
-	applymovement LOCALID_LILYCOVE_MAN_1, Common_Movement_FaceOriginalDirection
+	faceplayer
+
+	goto_if_set FLAG_RECEIVED_ALTARIANITE, LilycoveCity_EventScript_Man1_Already
+
+	msgbox LilycoveCity_Text_JustArrivedAndSawAltaria, MSGBOX_NPC
+
+	@ Check if player has Altaria in party
+	specialvar VAR_RESULT, Special_AltariaInParty
+	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_EventScript_Man1_NoAltaria
+
+	msgbox LilycoveCity_Text_Man1_ShowAltaria, MSGBOX_NPC
+
+	giveitem ITEM_ALTARIANITE, 1
+	setflag FLAG_RECEIVED_ALTARIANITE
+
+	msgbox LilycoveCity_Text_Man1_GiveAltarianite, MSGBOX_NPC
+	releaseall
 	end
+
+LilycoveCity_EventScript_Man1_NoAltaria::
+	msgbox LilycoveCity_Text_Man1_NoAltaria, MSGBOX_NPC
+	releaseall
+	end
+
+LilycoveCity_EventScript_Man1_Already::
+	msgbox LilycoveCity_Text_Man1_Already, MSGBOX_NPC
+	releaseall
+	end
+
 
 LilycoveCity_EventScript_Woman1::
 	lockall
@@ -755,4 +783,27 @@ LilycoveCity_Text_HoneymoonVowToSeeRarePokemon:
 	.string "So we were delighted to see a rare\n"
 	.string "POKéMON as soon as we arrived.\p"
 	.string "I mean, we are totally happy!$"
+
+LilycoveCity_Text_JustArrivedAndSawAltaria:
+	.string "I spend a lot of time at the\n"
+	.string "CONTEST HALL.\p"
+	.string "One day, I saw an ALTARIA\n"
+	.string "perform with breathtaking grace.$"
+
+LilycoveCity_Text_Man1_ShowAltaria:
+	.string "Wait… you have one?\p"
+	.string "That’s incredible!$"
+
+LilycoveCity_Text_Man1_GiveAltarianite:
+	.string "Please take this.\p"
+	.string "It reacts to ALTARIA\n"
+	.string "in a special way.$"
+
+LilycoveCity_Text_Man1_NoAltaria:
+	.string "If you ever find an ALTARIA,\n"
+	.string "please come show me.$"
+
+LilycoveCity_Text_Man1_Already:
+	.string "I’ll never forget seeing\n"
+	.string "your ALTARIA.$"
 

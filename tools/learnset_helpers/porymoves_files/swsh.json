@@ -12599,6 +12599,10 @@
         "Move": "MOVE_SAND_ATTACK"
       },
       {
+        "Level": 12,
+        "Move": "MOVE_ANCIENT_POWER"
+      },
+      {
         "Level": 15,
         "Move": "MOVE_AQUA_JET"
       },
@@ -12609,10 +12613,6 @@
       {
         "Level": 25,
         "Move": "MOVE_MUD_SHOT"
-      },
-      {
-        "Level": 30,
-        "Move": "MOVE_ANCIENT_POWER"
       },
       {
         "Level": 35,
@@ -56965,11 +56965,11 @@
         "Move": "MOVE_ANCIENT_POWER"
       },
       {
-        "Level": 12,
+        "Level": 10,
         "Move": "MOVE_ICY_WIND"
       },
       {
-        "Level": 16,
+        "Level": 12,
         "Move": "MOVE_ROUND"
       },
       {

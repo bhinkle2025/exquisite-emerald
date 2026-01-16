@@ -1387,15 +1387,18 @@ Items: Hyper Potion
 Double Battle: No
 AI: Basic Trainer
 
-Swellow @ Oran Berry
-Level: 26
+Cyclizar @ Sitrus Berry
+Level: 27
+Ability: Regenerator
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Quick Attack
-- Agility
-- Wing Attack
+- Breaking Swipe
+- Rapid Spin
+- U-turn
 
-Lopunny @ Oran Berry
+Lopunny @ Sitrus Berry
 Level: 26
+Ability: Limber
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Quick Attack
 - Agility
@@ -1412,18 +1415,22 @@ Items: Hyper Potion
 Double Battle: No
 AI: Basic Trainer
 
-Spinda
+Kecleon @ Blunder Policy
 Level: 26
+Ability: Protean
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Teeter Dance
-- Dizzy Punch
-- Focus Punch
+- Psybeam
+- Dynamic Punch
+- Shadow Sneak
+- Shed Tail
 
-Noctowl
+Noctowl @ Micle Berry
 Level: 26
+Ability: Keen Eye
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Confusion
 - Confuse Ray
+- Hurricane
 
 === TRAINER_GEORGE ===
 Name: GEORGE
@@ -1435,15 +1442,16 @@ Items: Hyper Potion
 Double Battle: No
 AI: Basic Trainer
 
-Slakoth @ Sitrus Berry
+Audino @ Eject Button
 Level: 26
+Ability: Regenerator
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Slack Off
-- Counter
-- Shadow Ball
+- Drain Punch
+- Draining Kiss
 
 Munchlax @ Sitrus Berry
 Level: 26
+Ability: Thick Fat
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Bite
 - Stockpile
@@ -1460,14 +1468,18 @@ Items: Hyper Potion
 Double Battle: No
 AI: Basic Trainer
 
-Vigoroth @ Oran Berry
+Furret @ Sitrus Berry
 Level: 26
+Ability: Keen Eye
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Focus Energy
-- Slash
+- Shadow Claw
+- Coil
+- Fury Swipes
 
 Smeargle @ Focus Sash
 Level: 26
+Ability: Moody
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Mind Reader
 - Fissure
@@ -1826,14 +1838,16 @@ Items: Hyper Potion
 Double Battle: No
 AI: Basic Trainer
 
-Delcatty
+Delcatty @ Normal Gem
 Level: 26
+Ability: Normalize
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Feint Attack
 - Shock Wave
 
-Pidgeot
+Pidgeot @ Silk Scarf
 Level: 26
+Ability: Big Pecks
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Aerial Ace
 - Swift
@@ -1848,19 +1862,22 @@ Items: Hyper Potion
 Double Battle: No
 AI: Basic Trainer
 
-Wigglytuff @ Oran Berry
+Wigglytuff @ Ganlon Berry
 Level: 26
+Ability: Competitive
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Defense Curl
 - Double Edge
 - Shadow Ball
 
-Greedent @ Oran Berry
+Greedent @ Sitrus Berry
 Level: 26
+Ability: Cheek Pouch
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Defense Curl
 - Rollout
 - Stuff Cheeks
+- Covet
 
 === TRAINER_JODY ===
 Name: JODY
@@ -1872,19 +1889,23 @@ Items: Hyper Potion
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
 
-Zangoose @ Oran Berry
+Farfetchd @ Leek
 Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Swords Dance
-- Slash
-
-Farfetchd @ Oran Berry
-Level: 26
+Ability: Inner Focus
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Swords Dance
 - Steel Wing
 - Aerial Ace
 - Knock Off
+
+Bouffalant @ Normal Gem
+Level: 26
+Ability: Sap Sipper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Swords Dance
+- Strength
+- Revenge
+- Retaliate
 
 === TRAINER_WENDY ===
 Name: WENDY
@@ -3363,9 +3384,14 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Machop
+Sawk @ Oran Berry
 Level: 13
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Ability: Sturdy
+IVs: 21 HP / 23 Atk / 18 Def / 4 SpA / 15 SpD / 25 Spe
+- Leer
+- Rock Smash
+- Mach Punch
+- Focus Energy
 
 === TRAINER_HITOSHI ===
 Name: HITOSHI
@@ -3555,24 +3581,18 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Electrike @ Oran Berry
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Quick Attack
-- Thunder Wave
-- Spark
-- Leer
-
 Voltorb @ Oran Berry
 Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ability: Soundproof
+IVs: 12 HP / 22 Atk / 14 Def / 21 SpA / 13 SpD / 24 Spe
 - Charge
 - Shock Wave
-- Screech
+- Rollout
+- Charge Beam
 
 Morpeko @ Sitrus Berry
 Level: 19
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 20 HP / 18 Atk / 14 Def / 16 SpA / 12 SpD / 22 Spe
 - Thunder Shock
 - Nasty Plot
 - Power Trip
@@ -3617,25 +3637,28 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Voltorb @ Oran Berry
+Geodude Alola @ Oran Berry
 Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Charge
-- Eerie Impulse
-- Charge Beam
+Ability: Sturdy
+IVs: 16 HP / 21 Atk / 23 Def / 6 SpA / 14 SpD / 12 Spe
+- Rock Polish
 - Rollout
+- Spark
+- Defense Curl
 
-Magnemite @ Oran Berry
+Luxio @ Oran Berry
 Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Gyro Ball
-- Electro Ball
-- Thunder Wave
-- Supersonic
+Ability: Intimidate
+IVs: 18 HP / 22 Atk / 16 Def / 9 SpA / 14 SpD / 17 Spe
+- Charge
+- Bite
+- Spark
+- Leer
 
 Toxel @ Sitrus Berry
 Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ability: Static
+IVs: 21 HP / 12 Atk / 13 Def / 19 SpA / 16 SpD / 12 Spe
 - Belch
 - Tearful Look
 - Nuzzle
@@ -3768,9 +3791,23 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
-Numel
+Raboot @ Sitrus Berry
 Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ability: Blaze
+IVs: 17 HP / 23 Atk / 14 Def / 12 SpA / 15 SpD / 21 Spe
+- Flame Charge
+- Double Kick
+- Quick Attack
+- Trailblaze
+
+Growlithe Hisui @ Sitrus Berry
+Level: 23
+Ability: Flash Fire
+IVs: 21 HP / 20 Atk / 16 Def / 6 SpA / 14 SpD / 12 Spe
+- Flame Wheel
+- Bite
+- Howl
+- Leer
 
 === TRAINER_JEFF ===
 Name: JEFF
@@ -3781,17 +3818,32 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
-Slugma
+Quilava @ Sitrus Berry
 Level: 22
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ability: Blaze
+IVs: 22 HP / 23 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Flame Wheel
+- Defense Curl
+- Smokescreen
+- Quick Attack
 
-Quilava
+Magmar @ Sitrus Berry
 Level: 22
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ability: Flame Body
+IVs: 18 HP / 21 Atk / 13 Def / 14 SpA / 16 SpD / 20 Spe
+- Smokescreen
+- Flame Wheel
+- Confuse Ray
+- Leer
 
-Magmar
-Level: 22
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ceruledge @ Sitrus Berry
+Level: 24
+Ability: Flash Fire
+IVs: 20 HP / 24 Atk / 14 Def / 12 SpA / 15 SpD / 18 Spe
+- Shadow Sneak
+- Flame Charge
+- Solar Blade
+- Shadow Claw
 
 === TRAINER_AXLE ===
 Name: AXLE
@@ -3802,13 +3854,29 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
-Numel
+Flareon @ Toxic Orb
 Level: 23
+Ability: Guts
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Sunny Day
+- Fire Fang
 
-Charmeleon
+Charmeleon @ Charcoal
+Level: 23
+Ability: Blaze
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Fire Fang
+- Dragon Breath
+- Smokescreen
+- Growl
+
+Rotom Heat @ Fire Gem
 Level: 23
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Charge
+- Overheat
+- Electro Ball
+- Confuse Ray
 
 === TRAINER_JACE ===
 Name: JACE
@@ -3819,13 +3887,22 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
-Slugma
+Numel
 Level: 23
+Ability: Simple
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Amnesia
+- Lava Plume
+- Bulldoze
 
 Fletchinder
 Level: 23
+Ability: Flame Body
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Flame Charge
+- Acrobatics
+- Quick Attack
+- Steel Wing
 
 === TRAINER_KEEGAN ===
 Name: KEEGAN
@@ -3836,13 +3913,23 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
-Slugma
+Heatmor @ Sitrus Berry
 Level: 23
+Ability: White Smoke
 IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+- Incinerate
+- Lick
+- Stockpile
+- Swallow
 
-Pignite
+Pignite @ Sitrus Berry
 Level: 23
+Ability: Blaze
 IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+- Flame Charge
+- Defense Curl
+- Rollout
+- Arm Thrust
 
 === TRAINER_BERNIE_1 ===
 Name: BERNIE
@@ -4353,9 +4440,23 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Kirlia
+Delphox @ Salac Berry
 Level: 36
+Ability: Magic Guard
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Mystical Fire
+- Psybeam
+- Light Screen
+- Shadow Ball
+
+Slowbro Galar @ Quick Claw
+Level: 36
+Ability: Quick Draw
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Psyshock
+- Shell Side Arm
+- Yawn
+- Slack Off
 
 === TRAINER_VIRGIL ===
 Name: VIRGIL
@@ -4379,9 +4480,23 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Girafarig
+Bronzong @ Leftovers
 Level: 36
+Ability: Levitate
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Iron Defense
+- Extrasensory
+- Hypnosis
+- Safeguard
+
+Veluza @ Sitrus Berry
+Level: 36
+Ability: Sharpness
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Fillet Away
+- Night Slash
+- Aqua Cutter
+- Psycho Cut
 
 === TRAINER_WILLIAM ===
 Name: WILLIAM
@@ -4525,9 +4640,25 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Kirlia
+Malamar @ Razor Claw
 Level: 36
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ability: Contrary
+IVs: 18 HP / 26 Atk / 15 Def / 7 SpA / 19 SpD / 13 Spe
+- Psycho Cut
+- Night Slash
+- Hypnosis
+- Slash
+
+Slowking Galar @ Black Sludge
+Level: 36
+Ability: Curious Medicine
+IVs: 25 HP / 4 Atk / 17 Def / 22 SpA / 24 SpD / 6 Spe
+- Eerie Spell
+- Yawn
+- Nasty Plot
+- Slack Off
+
+
 
 === TRAINER_SAMANTHA ===
 Name: SAMANTHA
@@ -4538,9 +4669,23 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Xatu
+Mr. Mime Galar @ Sitrus Berry
 Level: 36
+Ability: Screen Cleaner
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Ice Shard
+- Stealth Rock
+- Psybeam
+- Protect
+
+Espeon @ Petaya Berry
+Level: 36
+Ability: Magic Guard
+IVs: 31 HP / 7 Atk / 18 Def / 31 SpA / 31 SpD / 22 Spe
+- Calm Mind
+- Shadow Ball
+- Charm
+- Stored Power
 
 === TRAINER_MAURA ===
 Name: MAURA
@@ -4551,9 +4696,23 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Kadabra
+Kadabra @ Twisted Spoon
 Level: 36
+Ability: Synchronize
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Recover
+- Reflect
+- Ally Switch
+- Psychic
+
+Ponyta Galar @ Eviolite
+Level: 36
+Ability: Pastel Veil
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Psybeam
+- Fairy Wind
+- Calm Mind
+- Heal Pulse
 
 === TRAINER_KAYLA ===
 Name: KAYLA
@@ -6306,9 +6465,22 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Geodude
-Level: 10
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Archen @ Oran Berry
+Level: 12
+Ability: Defeatist
+IVs: 15 HP / 24 Atk / 10 Def / 16 SpA / 13 SpD / 18 Spe
+- Ancient Power
+- Wing Attack
+- Dragon Breath
+- Quick Attack
+
+Tyrunt @ Oran Berry
+Level: 12
+Ability: Sturdy
+IVs: 20 HP / 19 Atk / 22 Def / 6 SpA / 14 SpD / 11 Spe
+- Rock Throw
+- Charm
+- Tail Whip
 - Tackle
 
 === TRAINER_TOMMY ===
@@ -6320,13 +6492,23 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Geodude
-Level: 8
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+Omanyte @ Oran Berry
+Level: 12
+Ability: Shell Armor
+IVs: 16 HP / 23 Atk / 23 Def / 19 SpA / 14 SpD / 9 Spe
+- Bind
+- Rollout
+- Withdraw
+- Sand Attack
 
-Geodude
+Tirtouga @ Oran Berry
 Level: 8
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+Ability: Sturdy
+IVs: 18 HP / 21 Atk / 22 Def / 19 SpA / 15 SpD / 10 Spe
+- Ancient Power
+- Withdraw
+- Protect
+- Aqua Jet
 
 === TRAINER_JOEY ===
 Name: JOEY
@@ -6352,6 +6534,7 @@ AI: Check Bad Move
 
 Zigzagoon @ Oran Berry
 Level: 17
+Ability: Quick Feet
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Headbutt
 - Sand Attack
@@ -6360,6 +6543,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Yamper @ Oran Berry
 Level: 17
+Ability: Rattled
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Nuzzle
 - Bite
@@ -6368,6 +6552,7 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Emolga @ Sitrus Berry
 Level: 18
+Ability: Motor Drive
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Nuzzle
 - Thundershock
@@ -7688,17 +7873,32 @@ Music: Cool
 Double Battle: No
 AI: Check Bad Move
 
-Doduo
-Level: 27
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Kilowattrel @ Sharp Beak
+Level: 29
+Ability: Wind Power
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Tailwind
+- Electro Ball
+- Dual Wingbeat
+- Roost
 
-Skarmory
-Level: 27
+Unfezant @ Scope Lens
+Level: 32
+Ability: Super Luck
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Quick Attack
+- Air Cutter
+- Feather Dance
+- Swagger
 
-Tropius
+Honchkrow @ Sitrus Berry
 Level: 27
+Ability: Moxie
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Sucker Punch
+- Tailwind
+- Acrobatics
+- Brave Bird
 
 === TRAINER_HUMBERTO ===
 Name: HUMBERTO
@@ -7709,12 +7909,18 @@ Music: Cool
 Double Battle: No
 AI: Check Bad Move
 
-Skarmory
+Rufflet @ Sharp Beak
 Level: 30
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+Ability: Hustle
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Hone Claws
+- Tailwind
+- Aerial Ace
+- Shadow Claw
 
-Chatot
+Chatot @ Throat Spray
 Level: 33
+Ability: Keen Eye
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Chatter
 - Hyper Voice
@@ -7747,25 +7953,16 @@ Music: Cool
 Double Battle: No
 AI: Check Bad Move
 
-Doduo
+Dartrix @ Eviolite
 Level: 29
-Ability: Early Bird
+Ability: Long Reach
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Quick Attack
-- Pluck
-- Agility
-- Uproar
+- Trailblaze
+- Aerial Ace
+- Brave Bird
+- Roost
 
-Pelipper
-Level: 29
-Ability: Keen Eye
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Air Slash
-- Tailwind
-- Stockpile
-- Swallow
-
-Toucannon
+Toucannon @ Loaded Dice
 Level: 29
 Ability: Skill Link
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
@@ -8206,9 +8403,23 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Meditite
+Sneasel Hisui @ Oran Berry
 Level: 13
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Ability: Inner Focus
+IVs: 15 HP / 23 Atk / 19 Def / 6 SpA / 15 SpD / 21 Spe
+- Leer
+- Rock Smash
+- Taunt
+- Quick Attack
+
+Riolu @ Oran Berry
+Level: 13
+Ability: Inner Focus
+IVs: 20 HP / 18 Atk / 17 Def / 5 SpA / 15 SpD / 11 Spe
+- Bullet Punch
+- Counter
+- Bulk Up
+- Quick Attack
 
 === TRAINER_LAURA ===
 Name: LAURA
@@ -8219,9 +8430,14 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Meditite
+Stufful @ Oran Berry
 Level: 13
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Ability: Fluffy
+IVs: 22 HP / 20 Atk / 18 Def / 6 SpA / 18 SpD / 25 Spe
+- Leer
+- Baby-Doll Eyes
+- Brutal Swing
+- Force Palm
 
 === TRAINER_CYNDY_1 ===
 Name: CYNDY
@@ -9518,13 +9734,23 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
-Numel
+Torracat @ Sitrus Berry
 Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ability: Intimidate
+IVs: 19 HP / 22 Atk / 15 Def / 8 SpA / 14 SpD / 21 Spe
+- Fake Out
+- Bite
+- Double Kick
+- Fire Fang
 
-Litleo
+Litleo @ Sitrus Berry
 Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ability: Moxie
+IVs: 18 HP / 20 Atk / 13 Def / 12 SpA / 14 SpD / 19 Spe
+- Fire Fang
+- Noble Roar
+- Headbutt
+- Work Up
 
 === TRAINER_ANNIKA ===
 Name: ANNIKA
@@ -11148,13 +11374,22 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
-Geodude
+Kabuto @ Oran Berry
 Level: 8
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+IVs: 19 HP / 16 Atk / 21 Def / 23 SpA / 14 SpD / 18 Spe
+- Absorb
+- Harden
+- Sand Attack
+- Ancient Power
 
-Geodude
+Amaura @ Oran Berry
 Level: 8
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Ability: Refrigerate
+IVs: 17 HP / 5 Atk / 25 Def / 20 SpA / 18 SpD / 15 Spe
+- Round
+- Growl
+- Ancient Power
+- Encore
 
 === TRAINER_BRENDEN ===
 Name: BRENDEN
@@ -11165,9 +11400,23 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Machop
+Timburr @ Oran Berry
 Level: 13
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ability: Guts
+IVs: 19 HP / 21 Atk / 16 Def / 5 SpA / 14 SpD / 18 Spe
+- Low Kick
+- Bulk Up
+- Focus Energy
+- Rock Throw
+
+Clobbopus @ Oran Berry
+Level: 13
+Ability: Technician
+IVs: 18 HP / 20 Atk / 14 Def / 6 SpA / 15 SpD / 12 Spe
+- Rock Smash
+- Leer
+- Power-Up Punch
+- Bullet Punch
 
 === TRAINER_LILITH ===
 Name: LILITH
@@ -11178,9 +11427,14 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Meditite
+Passimian @ Oran Berry
 Level: 13
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Ability: Defiant
+IVs: 20 HP / 24 Atk / 18 Def / 8 SpA / 18 SpD / 28 Spe
+- Tackle
+- Leer
+- Rock Smash
+- Focus Energy
 
 === TRAINER_CRISTIAN ===
 Name: CRISTIAN
@@ -11191,9 +11445,14 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Makuhita
+Throh @ Oran Berry
 Level: 13
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Ability: Guts
+IVs: 27 HP / 24 Atk / 24 Def / 6 SpA / 24 SpD / 7 Spe
+- Leer
+- Focus Energy
+- Circle Throw
+- Bulk Up
 
 === TRAINER_SYLVIA ===
 Name: SYLVIA
@@ -11305,9 +11564,23 @@ Music: Rich
 Double Battle: No
 AI: Check Bad Move
 
-Spoink
+Reuniclus @ Liechi Berry
+Level: 41
+Ability: Magic Guard
+IVs: 28 HP / 16 Atk / 20 Def / 26 SpA / 23 SpD / 2 Spe
+- Hammer Arm
+- Trick Room
+- Recover
+- Psyshock
+
+Musharna @ Room Service
 Level: 36
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ability: Telepathy
+IVs: 26 HP / 4 Atk / 18 Def / 23 SpA / 22 SpD / 6 Spe
+- Moonblast
+- Calm Mind
+- Psychic
+- Moonlight
 
 === TRAINER_KATHLEEN ===
 Name: KATHLEEN
@@ -11318,9 +11591,23 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Kadabra
-Level: 36
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Hatterene @ Rocky Helmet
+Level: 42
+Ability: Magic Bounce
+IVs: 24 HP / 5 Atk / 19 Def / 27 SpA / 21 SpD / 3 Spe
+- Calm Mind
+- Heal Pulse
+- Dazzling Gleam
+- Psybeam
+
+Rabsca @ Sitrus Berry
+Level: 38
+Ability: Synchronize
+IVs: 22 HP / 8 Atk / 16 Def / 19 SpA / 27 SpD / 5 Spe
+- Lunge
+- Revival Blessing
+- Extrasensory
+- Safeguard
 
 === TRAINER_CLIFFORD ===
 Name: CLIFFORD
@@ -11331,9 +11618,24 @@ Music: Rich
 Double Battle: No
 AI: Check Bad Move
 
-Girafarig
+Meowstic @ Light Clay
+Level: 38
+Ability: Magic Bounce
+IVs: 17 HP / 6 Atk / 14 Def / 20 SpA / 25 SpD / 11 Spe
+- Light Screen
+- Reflect
+- Fake Out
+- Helping Hand
+
+Wobbuffet @ Sitrus Berry
 Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ability: Shadow Tag
+IVs: 27 HP / 3 Atk / 19 Def / 0 SpA / 22 SpD / 6 Spe
+- Encore
+- Counter
+- Mirror Coat
+- Destiny Bond
+
 
 === TRAINER_NICHOLAS ===
 Name: NICHOLAS
@@ -11344,9 +11646,23 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Wobbuffet
+Girafarig @ Sitrus Berry
+Level: 37
+Ability: Sap Sipper
+IVs: 21 HP / 31 Atk / 14 Def / 24 SpA / 17 SpD / 12 Spe
+- Crunch
+- Psybeam 
+- Agility
+- Double Hit
+
+Armarouge @ Petaya Berry
 Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ability: Weak Armor
+IVs: 23 HP / 4 Atk / 15 Def / 26 SpA / 20 SpD / 12 Spe
+- Psyshock
+- Calm Mind
+- Mystical Fire
+- Ally Switch
 
 === TRAINER_GRUNT_SPACE_CENTER_3 ===
 Name: GRUNT
@@ -11426,9 +11742,14 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Natu
+Espeon @ Petaya Berry
 Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ability: Magic Guard
+IVs: 31 HP / 7 Atk / 18 Def / 31 SpA / 31 SpD / 22 Spe
+- Calm Mind
+- Baton Pass
+- Charm
+- Stored Power
 
 === TRAINER_BRENDAN_RUSTBORO_TREECKO ===
 Name: BRENDAN
@@ -12583,17 +12904,23 @@ Items: Hyper Potion
 Double Battle: No
 AI: Basic Trainer
 
-Kecleon
+Kecleon @ Fire Gem
 Level: 23
+Ability: Protean
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Flamethrower
 - Fury Swipes
 - Feint Attack
-- Bind
+- Fire Punch
 
-Growlithe Hisui
+Tauros Paldea Blaze @ Sitrus Berry
 Level: 23
+Ability: Flash Fire
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Flame Charge
+- Double Kick
+- Work Up
+- Headbutt
 
 === TRAINER_VIVIAN ===
 Name: VIVIAN
@@ -12606,15 +12933,7 @@ AI: Check Bad Move
 
 Meditite @ Oran Berry
 Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Bide
-- Detect
-- Confusion
-- Thunder Punch
-
-Meditite @ Oran Berry
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 14 HP / 19 Atk / 12 Def / 15 SpA / 13 SpD / 18 Spe
 - Thunder Punch
 - Detect
 - Confusion
@@ -12622,7 +12941,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Pawmot @ Sitrus Berry
 Level: 18
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ability: Volt Absorb
+IVs: 22 HP / 21 Atk / 14 Def / 15 SpA / 16 SpD / 19 Spe
 - Thundershock
 - Revival Blessing
 - Rock Smash
@@ -12637,7 +12957,7 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Meditite
+Meditite @ Sitrus Berry
 Level: 23
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Bide
@@ -12645,9 +12965,14 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Confusion
 - Fire Punch
 
-Monferno
+Monferno @ Sitrus Berry
 Level: 23
+Ability: Blaze
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Mach Punch
+- Flame Wheel
+- Taunt
+- Leer
 
 === TRAINER_HIDEO ===
 Name: HIDEO
@@ -12733,21 +13058,22 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Swellow
+Butterfree @ Flying Gem
 Level: 29
+Ability: Compound Eyes
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Xatu
-Level: 29
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Kilowattrel
-Level: 29
-Ability: Wind Power
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Hurricane
 - Tailwind
-- Electro Ball
+- Whirlwind
+- Sleep Powder
+
+Scyther @ Eviolite
+Level: 29
+Ability: Technician
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 - Dual Wingbeat
+- Fury Cutter
+- Quick Attack
 - Roost
 
 === TRAINER_ASHLEY ===
@@ -12759,27 +13085,32 @@ Music: Girl
 Double Battle: No
 AI: Check Bad Move
 
-Swablu
+Vivillon @ Light Clay
 Level: 27
+Ability: Compound Eyes
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Hurricane
+- Light Screen
+- Reflect
+- Sleep Powder
 
-Rufflet
+Drifblim @ Sitrus Berry
 Level: 30
-Ability: Hustle
+Ability: Unburden
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Hone Claws
-- Tailwind
-- Aerial Ace
-- Shadow Claw
+- Acrobatics
+- Minimize
+- Strength Sap
+- Shadow Ball
 
-Unfezant
+Togekiss @ Flying Gem
 Level: 32
-Ability: Super Luck
+Ability: Serene Grace
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Quick Attack
-- Air Cutter
-- Feather Dance
-- Swagger
+- Air Slash
+- Fairy Wind
+- Extreme Speed
+- Roost
 
 === TRAINER_WALLY_MAUVILLE ===
 Name: WALLY
@@ -16728,7 +17059,7 @@ AI: Basic Trainer
 Illumise @ Oran Berry
 Level: 17
 Ability: Tinted Lens
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 18 HP / 22 Atk / 14 Def / 20 SpA / 17 SpD / 12 Spe
 - Shock Wave
 - Quick Attack
 - Charm
@@ -16737,7 +17068,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 Volbeat @ Oran Berry
 Level: 17
 Ability: Swarm
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 16 HP / 15 Atk / 13 Def / 12 SpA / 14 SpD / 19 Spe
 - Shock Wave
 - Quick Attack
 - Confuse Ray
@@ -16745,7 +17076,8 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Joltik @ Sitrus Berry
 Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Ability: Swarm
+IVs: 14 HP / 12 Atk / 12 Def / 22 SpA / 16 SpD / 21 Spe
 - Electroweb
 - Bug Bite
 - Thunder Wave
@@ -16760,16 +17092,16 @@ Music: Cool
 Double Battle: No
 AI: Basic Trainer
 
-Tropius @ Oran Berry
+Vullaby @ Rocky Helmet
 Level: 30
-Ability: Harvest
+Ability: Big Pecks
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Whirlwind
-- Gust
-- Growth
-- Leaf Storm
+- Pluck
+- Tailwind
+- Knock Off
+- Roost
 
-Corvisquire @ Oran Berry
+Corvisquire @ Eviolite
 Level: 30
 Ability: Big Pecks
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
@@ -16778,7 +17110,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Taunt
 - Pluck
 
-Staravia @ Oran Berry
+Staravia @ Eject Button
 Level: 30
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Quick Attack
@@ -16786,7 +17118,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Aerial Ace
 - Whirlwind
 
-Squawkabilly @ Oran Berry
+Squawkabilly @ Wide Lens
 Level: 30
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Quick Attack
