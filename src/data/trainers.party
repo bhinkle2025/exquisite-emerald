@@ -2350,21 +2350,22 @@ Items: Full Restore
 Double Battle: No
 AI: Check Bad Move
 
-Luvdisc @ Nugget
+Primarina @ Mystic Water
 Level: 39
+Ability: Liquid Voice
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Attract
-- Sweet Kiss
-- Flail
-- Water Pulse
+- Aqua Jet
+- Sing
+- Disarming Voice
+- Sparkling Aria
 
-Luvdisc @ Nugget
+Starmie @ Rindo Berry
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Attract
-- Safeguard
-- Take Down
-- Water Pulse
+- Recover
+- Surf
+- Psychic
+- Light Screen
 
 === TRAINER_GRUNT_SPACE_CENTER_2 ===
 Name: GRUNT
@@ -2413,9 +2414,23 @@ Items: Full Restore
 Double Battle: No
 AI: Check Bad Move
 
-Seaking @ Nugget
+Seaking @ Rindo Berry
 Level: 40
+Ability: Lightning Rod
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Waterfall
+- Aqua Ring
+- Horn Attack
+- Protect
+
+Gastrodon @ Assault Vest
+Level: 40
+Ability: Storm Drain
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Ancient Power
+- Muddy Water
+- Earth Power
+- Recover
 
 === TRAINER_NAOMI ===
 Name: NAOMI
@@ -2564,9 +2579,41 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Goldeen
+Golduck @ Damp Rock
 Level: 40
+Ability: Swift Swim
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Rain Dance
+- Light Screen
+- Flip Turn
+- Scald
+
+Blastoise @ White Herb
+Level: 40
+Ability: Rain Dish
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Shell Smash
+- Surf
+- Waterfall
+- Ice Beam
+
+Carracosta @ Water Gem
+Level: 40
+Ability: Swift Swim
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Rain Dance
+- Crunch
+- Waterfall
+- Ancient Power
+
+Kingdra @ Chesto Berry
+Level: 40
+Ability: Swift Swim
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Double Team
+- Ice Beam
+- Rest
+- Water Pulse
 
 === TRAINER_BRIDGET ===
 Name: BRIDGET
@@ -2577,9 +2624,23 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Azumarill
+Azumarill @ Sitrus Berry
 Level: 40
+Ability: Sap Sipper
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Aqua Tail
+- Play Rough
+- Aqua Ring
+- Rain Dance
+
+Floatzel @ Life Orb
+Level: 40
+Ability: Swift Swim
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Ice Fang
+- Crunch
+- Surf
+- Aqua Jet
 
 === TRAINER_OLIVIA ===
 Name: OLIVIA
@@ -2590,28 +2651,32 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Clamperl
-Level: 35
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Iron Defense
-- Whirlpool
-- Rain Dance
-- Water Pulse
-
-Corphish
+Gorebyss @ Damp Rock
 Level: 37
+Ability: Swift Swim
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Taunt
-- Crabhammer
+- Rain Dance
+- Shell Smash
+- Ice Beam
 - Water Pulse
 
-Lombre
-Level: 39
+Bruxish @ Life Orb
+Level: 35
+Ability: Strong Jaw
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Uproar
-- Fury Swipes
-- Fake Out
-- Water Pulse
+- Swords Dance
+- Psychic Fangs
+- Aqua Jet
+- Crunch
+
+Kingler @ Life Orb
+Level: 39
+Ability: Sheer Force
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Razor Shell
+- Swords Dance
+- Hammer Arm
+- Rock Slide
 
 === TRAINER_TIFFANY ===
 Name: TIFFANY
@@ -2622,13 +2687,23 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Carvanha
+Rotom Wash @ Sitrus Berry
 Level: 39
+Ability: Levitate
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Hydro Pump
+- Charge
+- Shock Wave
+- Nasty Plot
 
-Sharpedo
+Bibarel @ Sitrus Berry
 Level: 39
+Ability: Moody
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Aqua Jet
+- Waterfall
+- Yawn 
+- Crunch
 
 === TRAINER_JESSICA_2 ===
 Name: JESSICA
@@ -4467,9 +4542,23 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Ralts
+Musharna @ Room Service
 Level: 36
+Ability: Telepathy
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Moonblast
+- Calm Mind
+- Psychic
+- Moonlight
+
+Hatterene @ Leftovers
+Level: 36
+Ability: Magic Bounce
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Draining Kiss
+- Calm Mind
+- Psybeam
+- Life Dew
 
 === TRAINER_BLAKE ===
 Name: BLAKE
@@ -6146,17 +6235,31 @@ Music: Twins
 Double Battle: No
 AI: Check Bad Move
 
-Azurill @ Oran Berry
+Palafin @ Expert Belt
 Level: 35
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Flip Turn
+- Close Combat
+- Ice Punch
+- Jet Punch
 
-Marill @ Oran Berry
-Level: 37
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Azumarill @ Oran Berry
+Octillery @ Scope Lens
 Level: 39
+Ability: Sniper
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Ice Beam
+- Octazooka
+- Psybeam
+- Focus Energy
+
+Feraligatr @ Life Orb
+Level: 37
+Ability: Sheer Force
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Crunch
+- Liquidation
+- Dragon Dance
+- Ice Punch
 
 === TRAINER_ISABEL_1 ===
 Name: ISABEL
@@ -9761,21 +9864,22 @@ Music: Twins
 Double Battle: No
 AI: Check Bad Move
 
-Feebas @ Oran Berry
+Clawitzer @ Wacan Berry
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Flail
+- Dark Pulse
+- Dragon Pulse
 - Water Pulse
-- Return
-- Attract
+- Heal Pulse
 
-Feebas @ Oran Berry
+Vaporeon @ Leftovers
 Level: 39
+Ability: Water Absorb
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Flail
-- Water Pulse
-- Return
-- Attract
+- Protect
+- Wish
+- Scald
+- Aqua Ring
 
 === TRAINER_JAZMYN ===
 Name: JAZMYN
@@ -11463,9 +11567,23 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Meditite
+Beheeyem @ Psychic Gem
 Level: 36
+Ability: Analytic
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Psychic Terrain
+- Light Screen
+- Reflect
+- Psyshock
+
+Jynx @ Focus Sash
+Level: 36
+Ability: Oblivious
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Sing
+- Fake Tears
+- Ice Punch
+- Psychic
 
 === TRAINER_LEONARDO ===
 Name: LEONARDO
@@ -11573,14 +11691,14 @@ IVs: 28 HP / 16 Atk / 20 Def / 26 SpA / 23 SpD / 2 Spe
 - Recover
 - Psyshock
 
-Musharna @ Room Service
+Wobbuffet @ Sitrus Berry
 Level: 36
-Ability: Telepathy
-IVs: 26 HP / 4 Atk / 18 Def / 23 SpA / 22 SpD / 6 Spe
-- Moonblast
-- Calm Mind
-- Psychic
-- Moonlight
+Ability: Shadow Tag
+IVs: 27 HP / 3 Atk / 19 Def / 0 SpA / 22 SpD / 6 Spe
+- Encore
+- Counter
+- Mirror Coat
+- Destiny Bond
 
 === TRAINER_KATHLEEN ===
 Name: KATHLEEN
@@ -11591,14 +11709,14 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Hatterene @ Rocky Helmet
+Orbeetle @ Terrain Extender
 Level: 42
-Ability: Magic Bounce
+Ability: Swarm
 IVs: 24 HP / 5 Atk / 19 Def / 27 SpA / 21 SpD / 3 Spe
-- Calm Mind
-- Heal Pulse
-- Dazzling Gleam
-- Psybeam
+- Psychic Terrain
+- Psychic
+- Bug Buzz
+- Reflect
 
 Rabsca @ Sitrus Berry
 Level: 38
@@ -11627,14 +11745,14 @@ IVs: 17 HP / 6 Atk / 14 Def / 20 SpA / 25 SpD / 11 Spe
 - Fake Out
 - Helping Hand
 
-Wobbuffet @ Sitrus Berry
+Oranguru @ Mental Herb
 Level: 36
-Ability: Shadow Tag
+Ability: Telepathy
 IVs: 27 HP / 3 Atk / 19 Def / 0 SpA / 22 SpD / 6 Spe
-- Encore
-- Counter
-- Mirror Coat
-- Destiny Bond
+- Nasty Plot
+- Psychic
+- Taunt
+- Energy Ball
 
 
 === TRAINER_NICHOLAS ===
@@ -11646,23 +11764,23 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Girafarig @ Sitrus Berry
+Hypno @ Psychic Seed
 Level: 37
-Ability: Sap Sipper
+Ability: Insomnia
 IVs: 21 HP / 31 Atk / 14 Def / 24 SpA / 17 SpD / 12 Spe
-- Crunch
-- Psybeam 
-- Agility
-- Double Hit
-
-Armarouge @ Petaya Berry
-Level: 36
-Ability: Weak Armor
-IVs: 23 HP / 4 Atk / 15 Def / 26 SpA / 20 SpD / 12 Spe
+- Drain Punch
 - Psyshock
-- Calm Mind
-- Mystical Fire
-- Ally Switch
+- Nasty Plot
+- Shadow Ball
+
+Exeggutor @ Petaya Berry
+Level: 36
+Ability: Harvest
+IVs: 23 HP / 4 Atk / 15 Def / 26 SpA / 20 SpD / 12 Spe
+- Extrasensory
+- Giga Drain
+- Synthesis
+- Hypnosis
 
 === TRAINER_GRUNT_SPACE_CENTER_3 ===
 Name: GRUNT
@@ -11742,14 +11860,22 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Espeon @ Petaya Berry
+Sigilyph @ Sitrus Berry
 Level: 36
 Ability: Magic Guard
 IVs: 31 HP / 7 Atk / 18 Def / 31 SpA / 31 SpD / 22 Spe
-- Calm Mind
-- Baton Pass
-- Charm
-- Stored Power
+- Cosmic Power
+- Air Slash
+- Psybeam
+- Whirlwind
+
+Raichu Alola @ Psychic Gem
+Level: 36
+IVs: 31 HP / 7 Atk / 18 Def / 31 SpA / 31 SpD / 22 Spe
+- Psychic
+- Nasty Plot
+- Thunderbolt
+- Surf
 
 === TRAINER_BRENDAN_RUSTBORO_TREECKO ===
 Name: BRENDAN
@@ -12262,9 +12388,41 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Luvdisc
+Greninja @ Expert Belt
+Ability: Protean
 Level: 40
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Water Shuriken
+- Shadow Sneak
+- Spikes
+- Aerial Ace
+
+Araquanid @ Expert Belt
+Ability: Water Bubble
+Level: 40
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Sticky Web
+- Aqua Ring
+- Bubble Beam
+- Leech Life
+
+Poliwrath @ Leftovers
+Ability: Water Absorb
+Level: 40
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Circle Throw
+- Scald
+- Protect
+- Bulk Up
+
+Cloyster @ Wacan Berry
+Ability: Skill Link
+Level: 40
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Rock Blast
+- Liquidation
+- Shell Smash
+- Icicle Spear
 
 === TRAINER_CRISSY ===
 Name: CRISSY
@@ -12275,13 +12433,23 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Goldeen
+Toxapex @ Water Gem
 Level: 39
+Ability: Merciless
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Liquidation
+- Toxic Spikes
+- Baneful Bunker
+- Recover
 
-Wailmer
+Golisopod @ Mystic Water
 Level: 39
+Ability: Emergency Exit
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- First Impression
+- Aqua Jet
+- Iron Defense
+- Leech Life
 
 === TRAINER_RICK ===
 Name: RICK
