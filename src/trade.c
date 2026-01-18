@@ -3320,6 +3320,12 @@ static void BufferTradeSceneStrings(void)
         ingameTrade = &sIngameTrades[gSpecialVar_0x8004];
         StringCopy(gStringVar1, ingameTrade->otName);
         StringCopy_Nickname(gStringVar3, ingameTrade->nickname);
+        if (gSpecialVar_0x8004 == INGAME_TRADE_WONDER)
+        {
+            StringCopy(gStringVar1, COMPOUND_STRING("UNKNOWN"));
+            GetMonData(&gPlayerParty[gSpecialVar_0x8005], MON_DATA_NICKNAME, gStringVar2);
+            GetMonData(&gEnemyParty[0], MON_DATA_NICKNAME, gStringVar3);
+        }
         GetMonData(&gPlayerParty[gSpecialVar_0x8005], MON_DATA_NICKNAME, name);
         StringCopy_Nickname(gStringVar2, name);
     }

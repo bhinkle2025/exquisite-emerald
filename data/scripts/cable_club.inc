@@ -410,48 +410,42 @@ CableClub_EventScript_ConfirmNumberAndRestart::
 	end
 
 CableClub_EventScript_TradeCenter::
-	@ We are replacing real trades with single-player Wonder Trade.
-	@ No link-up. No warp to MAP_TRADE_CENTER.
+	@ Single-player Wonder Trade (no link-up, no Trade Center warp)
+	lock
+	faceplayer
 
 	msgbox CableClub_Text_WonderTradeIntro, MSGBOX_DEFAULT
-	setflag FLAG_DISABLE_FOLLOWERS
+	setflag FLAG_TEMP_E
 
 	@ --- Pick a POKEMON from party ---
-	@ One of these two specials will exist in your base.
-	@ If "ChoosePartyMon" exists, use that.
-	@ If not, swap it to "ChooseMonForWirelessMinigame" or your project's party picker special.
 	special ChoosePartyMon
+	waitstate
 
-	@ Many party pickers store the chosen slot in VAR_RESULT.
-	@ If your picker uses a different var, we'll adjust after your first compile/test.
-	copyvar VAR_0x8004, VAR_RESULT
+	@ Your picker is writing the chosen slot into VAR_0x8004 (as you confirmed)
+	copyvar VAR_0x8005, VAR_0x8004
 
-	@ Cancel handling (commonly PARTY_SIZE or MULTI_B_PRESSED; PARTY_SIZE is safest)
-	goto_if_eq VAR_0x8004, PARTY_SIZE, CableClub_EventScript_WonderTradeCancel
+	@ Cancel handling
+	goto_if_eq VAR_0x8005, PARTY_NOTHING_CHOSEN, CableClub_EventScript_WonderTradeCancel
+	goto_if_eq VAR_0x8005, PARTY_SIZE,           CableClub_EventScript_WonderTradeCancel
 
-	msgbox CableClub_Text_WonderTradeConnecting, MSGBOX_DEFAULT
+	@ Prepare received mon in gEnemyParty[0] + prep trade scene string vars
+	special Special_PrepareWonderTradeScene
 
-	@ --- Do the Wonder Trade ---
-	@ This calls your C special: WonderTrade
-	special WonderTrade
-
-	clearflag FLAG_DISABLE_FOLLOWERS
-
-	@ Return codes (we'll match these to your C implementation)
-	@ 0 = success
-	@ 1 = generic fail
-	@ 2 = egg blocked
-	@ 3 = already wonder traded (new)
-	goto_if_eq VAR_RESULT, 0, CableClub_EventScript_WonderTradeSuccess
+	@ Route based on result
+	goto_if_eq VAR_RESULT, 0, CableClub_EventScript_WonderTradeDoScene
 	goto_if_eq VAR_RESULT, 2, CableClub_EventScript_WonderTradeEggBlocked
 	goto_if_eq VAR_RESULT, 3, CableClub_EventScript_WonderTradeAlreadyWonder
+	goto CableClub_EventScript_WonderTradeFailed
 
-	msgbox CableClub_Text_WonderTradeFailed, MSGBOX_DEFAULT
+CableClub_EventScript_WonderTradeDoScene::
+	special DoInGameTradeScene
+	waitstate
+	msgbox CableClub_Text_WonderTradeDone, MSGBOX_DEFAULT
 	release
 	end
 
-CableClub_EventScript_WonderTradeSuccess::
-	msgbox CableClub_Text_WonderTradeDone, MSGBOX_DEFAULT
+CableClub_EventScript_WonderTradeFailed::
+	msgbox CableClub_Text_WonderTradeFailed, MSGBOX_DEFAULT
 	release
 	end
 
@@ -469,6 +463,7 @@ CableClub_EventScript_WonderTradeCancel::
 	msgbox CableClub_Text_WonderTradeComeBack, MSGBOX_DEFAULT
 	release
 	end
+
 
 CableClub_Text_WonderTradeIntro:
 	.string "Welcome to WONDER TRADE!\p"

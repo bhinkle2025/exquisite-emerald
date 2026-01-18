@@ -4,6 +4,7 @@
 #include "random.h"
 #include "string_util.h"
 #include "constants/species.h"
+#include "constants/trade.h"
 #include "event_data.h"
 
 extern u16 gSpecialVar_0x8004;
@@ -283,4 +284,90 @@ void WonderTrade(void)
     CalculatePlayerPartyCount();
     gSpecialVar_Result = 0;
 }
+
+extern u16 gSpecialVar_0x8005;   // chosen party slot (matches CreateInGameTradePokemon usage)
+extern u16 gSpecialVar_Result;
+
+#define WONDER_OT_ID 0x57544F4EU
+
+void Special_PrepareWonderTradeScene(void)
+{
+    u8 slot = (u8)gSpecialVar_0x8005;
+    u8 partyCount = CalculatePlayerPartyCount();
+    struct Pokemon* giveMon;
+    struct Pokemon* recvMon = &gEnemyParty[0]; // this is what the trade scene uses
+    u8 level;
+    u16 species;
+    u32 tries;
+
+    gSpecialVar_Result = 1; // default fail
+
+    if (partyCount == 0 || slot >= partyCount)
+        return;
+
+    // Force trade scene inputs (prevents stale values)
+    gSpecialVar_0x8004 = INGAME_TRADE_WONDER; // which template
+    gSpecialVar_0x8005 = slot;                // which player mon slot
+
+    giveMon = &gPlayerParty[slot];
+
+    // Block eggs
+    if (GetMonData(giveMon, MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG
+#ifdef MON_DATA_SANITY_IS_EGG
+        || GetMonData(giveMon, MON_DATA_SANITY_IS_EGG)
+#endif
+        )
+    {
+        gSpecialVar_Result = 2;
+        return;
+    }
+
+    // Block re-trading Wonder Trade Pokémon
+    if (IsAlreadyWonderTraded(giveMon))
+    {
+        gSpecialVar_Result = 3;
+        return;
+    }
+
+    level = (u8)GetMonData(giveMon, MON_DATA_LEVEL);
+    if (level == 0)
+        return;
+
+    // Generate a safe received mon into gEnemyParty[0]
+    for (tries = 0; tries < 50; tries++)
+    {
+        species = GetRandomSafeWonderTradeSpecies(level);
+        CreateMon(recvMon, species, level, USE_RANDOM_IVS, FALSE, 0, OT_ID_PRESET, WONDER_OT_ID);
+
+        if (!IsRecvMonBad(recvMon))
+            break;
+    }
+
+    if (IsRecvMonBad(recvMon))
+        return;
+
+    // Stamp Wonder Trade identity + met data onto the received mon
+    {
+        u32 otId = WONDER_OT_ID;
+        u8 otGender = MALE;
+        metloc_u8_t metLocation =
+#ifdef METLOC_WONDER_TRADE
+            METLOC_WONDER_TRADE;
+#else
+            METLOC_IN_GAME_TRADE;
+#endif
+        u8 metLevel = level;
+
+        SetMonData(recvMon, MON_DATA_OT_ID, &otId);
+        SetMonData(recvMon, MON_DATA_OT_NAME, sWonderOtName);
+        SetMonData(recvMon, MON_DATA_OT_GENDER, &otGender);
+        SetMonData(recvMon, MON_DATA_MET_LOCATION, &metLocation);
+        SetMonData(recvMon, MON_DATA_MET_LEVEL, &metLevel);
+
+        CalculateMonStats(recvMon);
+    }
+
+    gSpecialVar_Result = 0; // success
+}
+
 

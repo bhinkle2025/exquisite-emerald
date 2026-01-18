@@ -569,3 +569,5 @@ gSpecials::
 	def_special PerfectSelectedMonIV
 	def_special WonderTrade
 	def_special Special_AltariaInParty
+	def_special Special_PrepareWonderTradeScene
+

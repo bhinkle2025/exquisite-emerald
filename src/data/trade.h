@@ -1047,6 +1047,23 @@ static const struct InGameTrade sIngameTrades[] =
         .otGender = FEMALE,
         .sheen = 10,
         .requestedSpecies = SPECIES_SINISTEA
+    },
+    [INGAME_TRADE_WONDER] =
+{
+        // Pure template for the cutscene/UI. We will override the mon + text at runtime.
+        .nickname = _("WONDER"),
+        .species = SPECIES_MAGIKARP,        // placeholder only
+        .ivs = {10, 10, 10, 10, 10, 10},
+        .abilityNum = 0,
+        .otId = 0,                          // placeholder
+        .conditions = {0, 0, 0, 0, 0},
+        .personality = 0,
+        .heldItem = ITEM_NONE,
+        .mailNum = 0,
+        .otName = _("WONDER"),
+        .otGender = MALE,
+        .sheen = 0,
+        .requestedSpecies = SPECIES_NONE,   // not used for Wonder Trade
     }
 };
 
