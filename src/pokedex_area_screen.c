@@ -447,6 +447,8 @@ static bool8 MapHasSpecies(const struct WildEncounterTypes *info, u16 species)
         return TRUE;
     if (MonListHasSpecies(info->sandMonsInfo, species, SAND_WILD_COUNT))
         return TRUE;
+    if (MonListHasSpecies(info->waterMonsInfo, species, PUDDLE_WILD_COUNT))
+        return TRUE;
 // When searching the fishing encounters, this incorrectly uses the size of the land encounters.
 // As a result it's reading out of bounds of the fishing encounters tables.
 #ifdef BUGFIX

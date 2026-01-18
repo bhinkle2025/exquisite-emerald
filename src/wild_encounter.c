@@ -243,6 +243,44 @@ u32 ChooseWildMonIndex_Sand(void)
     return wildMonIndex;
 }
 
+// PUDDLES_WILD_COUNT (12 slots: 20,20,10,10,10,10,5,5,4,4,1,1)
+u32 ChooseWildMonIndex_Puddle(void)
+{
+    u8 wildMonIndex;
+    u8 rand = Random() % 100;
+
+    if (rand < 20)
+        wildMonIndex = 0;          // 20%
+    else if (rand < 40)
+        wildMonIndex = 1;          // 20%
+    else if (rand < 50)
+        wildMonIndex = 2;          // 10%
+    else if (rand < 60)
+        wildMonIndex = 3;          // 10%
+    else if (rand < 70)
+        wildMonIndex = 4;          // 10%
+    else if (rand < 80)
+        wildMonIndex = 5;          // 10%
+    else if (rand < 85)
+        wildMonIndex = 6;          // 5%
+    else if (rand < 90)
+        wildMonIndex = 7;          // 5%
+    else if (rand < 94)
+        wildMonIndex = 8;          // 4%
+    else if (rand < 98)
+        wildMonIndex = 9;          // 4%
+    else if (rand < 99)
+        wildMonIndex = 10;         // 1%
+    else
+        wildMonIndex = 11;         // 1%
+
+    // Optional: lure behavior for puddles
+    // Bias slightly toward rarer encounters
+    if (LURE_STEP_COUNT != 0 && (Random() % 10 < 2))
+        wildMonIndex = 11 - wildMonIndex;
+
+    return wildMonIndex;
+}
 
 // WATER_WILD_COUNT
 u32 ChooseWildMonIndex_Water(void)
@@ -452,6 +490,9 @@ enum TimeOfDay GetTimeOfDayForEncounters(u32 headerId, enum WildPokemonArea area
         case WILD_AREA_SAND:
             wildMonInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].sandMonsInfo;
             break;
+        case WILD_AREA_PUDDLE:
+            wildMonInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].puddleMonsInfo;
+            break;
         case WILD_AREA_WATER:
             wildMonInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo;
             break;
@@ -573,6 +614,9 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum 
         break;
     case WILD_AREA_SAND:
         wildMonIndex = ChooseWildMonIndex_Sand();
+        break;
+    case WILD_AREA_PUDDLE:
+        wildMonIndex = ChooseWildMonIndex_Puddle();
         break;
     case WILD_AREA_WATER:
         if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_STEEL, ABILITY_MAGNET_PULL, &wildMonIndex, WATER_WILD_COUNT))
@@ -734,8 +778,13 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
 
             headerId = GetBattlePikeWildMonHeaderId();
 
-            // Decide if we are on sand and should use sand tables
-            if (MetatileBehavior_IsSandOrDeepSand((u8)curMetatileBehavior)
+            // Decide if we are on sand/puddles and should use special tables
+            if (MetatileBehavior_IsPuddle((u8)curMetatileBehavior)
+                && gBattlePikeWildMonHeaders[headerId].encounterTypes[0].puddleMonsInfo != NULL)
+            {
+                area = WILD_AREA_PUDDLE;
+            }
+            else if (MetatileBehavior_IsSandOrDeepSand((u8)curMetatileBehavior)
                 && gBattlePikeWildMonHeaders[headerId].encounterTypes[0].sandMonsInfo != NULL)
             {
                 area = WILD_AREA_SAND;
@@ -752,7 +801,9 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
                 return FALSE;
 
             // Pick the correct table for this area
-            monsInfo = (area == WILD_AREA_SAND)
+            monsInfo = (area == WILD_AREA_PUDDLE)
+                ? gBattlePikeWildMonHeaders[headerId].encounterTypes[timeOfDay].puddleMonsInfo
+                : (area == WILD_AREA_SAND)
                 ? gBattlePikeWildMonHeaders[headerId].encounterTypes[timeOfDay].sandMonsInfo
                 : gBattlePikeWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo;
 
@@ -796,8 +847,10 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
             const struct WildPokemonInfo* monsInfo;
             enum WildPokemonArea area;
 
-            // Decide whether this "land encounter" should pull from the sand table
-            if (MetatileBehavior_IsSandOrDeepSand((u8)curMetatileBehavior))
+            // Decide whether this "land encounter" should pull from puddles/sand/land tables
+            if (MetatileBehavior_IsPuddle((u8)curMetatileBehavior))
+                area = WILD_AREA_PUDDLE;
+            else if (MetatileBehavior_IsSandOrDeepSand((u8)curMetatileBehavior))
                 area = WILD_AREA_SAND;
             else
                 area = WILD_AREA_LAND;
@@ -806,7 +859,9 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
             timeOfDay = GetTimeOfDayForEncounters(headerId, area);
 
             // Pick the correct table pointer
-            monsInfo = (area == WILD_AREA_SAND)
+            monsInfo = (area == WILD_AREA_PUDDLE)
+                ? gWildMonHeaders[headerId].encounterTypes[timeOfDay].puddleMonsInfo
+                : (area == WILD_AREA_SAND)
                 ? gWildMonHeaders[headerId].encounterTypes[timeOfDay].sandMonsInfo
                 : gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo;
 

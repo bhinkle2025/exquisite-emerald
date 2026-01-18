@@ -22,6 +22,23 @@
           ]
         },
         {
+          "type": "puddle_mons",
+          "encounter_rates": [
+            20,
+            20,
+            10,
+            10,
+            10,
+            10,
+            5,
+            5,
+            4,
+            4,
+            1,
+            1
+          ]
+        },
+        {
           "type": "water_mons",
           "encounter_rates": [
             60,
@@ -134,12 +151,12 @@
               {
                 "min_level": 2,
                 "max_level": 2,
-                "species": "SPECIES_RUFFLET"
+                "species": "SPECIES_ZORUA"
               },
               {
                 "min_level": 2,
                 "max_level": 2,
-                "species": "SPECIES_CHERUBI"
+                "species": "SPECIES_SEWADDLE"
               },
               {
                 "min_level": 3,
@@ -362,7 +379,7 @@
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_SHELMET"
+                "species": "SPECIES_PURRLOIN"
               },
               {
                 "min_level": 2,
@@ -501,7 +518,7 @@
               {
                 "min_level": 4,
                 "max_level": 4,
-                "species": "SPECIES_MUDKIP"
+                "species": "SPECIES_PATRAT"
               },
               {
                 "min_level": 5,
@@ -527,6 +544,71 @@
                 "min_level": 5,
                 "max_level": 5,
                 "species": "SPECIES_ZIGZAGOON_GALAR"
+              }
+            ]
+          },
+          "puddle_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 4,
+                "max_level": 4,
+                "species": "SPECIES_STUNFISK"
+              },
+              {
+                "min_level": 4,
+                "max_level": 4,
+                "species": "SPECIES_STUNFISK_GALAR"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_MUDKIP"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_WOOPER"
+              },
+              {
+                "min_level": 4,
+                "max_level": 4,
+                "species": "SPECIES_TYMPOLE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_POLIWAG"
+              },
+              {
+                "min_level": 4,
+                "max_level": 4,
+                "species": "SPECIES_DEWPIDER"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_SHELLOS"
+              },
+              {
+                "min_level": 4,
+                "max_level": 4,
+                "species": "SPECIES_KARRABLAST"
+              },
+              {
+                "min_level": 4,
+                "max_level": 4,
+                "species": "SPECIES_SHELMET"
+              },
+              {
+                "min_level": 3,
+                "max_level": 3,
+                "species": "SPECIES_TOEDSCRUEL"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_WOOPER_PALDEA"
               }
             ]
           },
