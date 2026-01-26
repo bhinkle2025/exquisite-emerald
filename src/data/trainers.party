@@ -4791,7 +4791,7 @@ Ability: Synchronize
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Recover
 - Reflect
-- Ally Switch
+- Dazzling Gleam
 - Psychic
 
 Ponyta Galar @ Eviolite
@@ -5619,14 +5619,13 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Psychic
 - Flamethrower
 
-Grumpig @ Leftovers
+Alakazam @ Alakazite
 Level: 42
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-Nature: Bold
-- Rest
+- Focus Blast
 - Calm Mind
 - Psychic
-- Charge Beam
+- Shadow Ball
 
 Gardevoir @ Gardevoirite
 Level: 42
@@ -10093,7 +10092,7 @@ Banette @ Banettite
 Level: 44
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Shadow Claw
-- Retaliate
+- Slash
 - Sucker Punch
 - Shadow Sneak
 

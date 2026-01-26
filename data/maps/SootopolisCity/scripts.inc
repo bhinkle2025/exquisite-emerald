@@ -122,18 +122,18 @@ SootopolisCity_EventScript_SetOutsideGymObjPos::
 	return
 
 SootopolisCity_EventScript_SetWallaceMiddle::
-	setobjectxyperm LOCALID_SOOTOPOLIS_WALLACE, 31, 33
-	setobjectmovementtype LOCALID_SOOTOPOLIS_WALLACE, MOVEMENT_TYPE_FACE_DOWN
+	setobjectxyperm LOCALID_SOOTOPOLIS_STEVEN, 31, 33
+	setobjectmovementtype LOCALID_SOOTOPOLIS_STEVEN, MOVEMENT_TYPE_FACE_DOWN
 	return
 
 SootopolisCity_EventScript_SetWallaceRight::
-	setobjectxyperm LOCALID_SOOTOPOLIS_WALLACE, 32, 33
-	setobjectmovementtype LOCALID_SOOTOPOLIS_WALLACE, MOVEMENT_TYPE_FACE_DOWN
+	setobjectxyperm LOCALID_SOOTOPOLIS_STEVEN, 32, 33
+	setobjectmovementtype LOCALID_SOOTOPOLIS_STEVEN, MOVEMENT_TYPE_FACE_DOWN
 	return
 
 SootopolisCity_EventScript_SetWallaceLeft::
-	setobjectxyperm LOCALID_SOOTOPOLIS_WALLACE, 30, 33
-	setobjectmovementtype LOCALID_SOOTOPOLIS_WALLACE, MOVEMENT_TYPE_FACE_DOWN
+	setobjectxyperm LOCALID_SOOTOPOLIS_STEVEN, 30, 33
+	setobjectmovementtype LOCALID_SOOTOPOLIS_STEVEN, MOVEMENT_TYPE_FACE_DOWN
 	return
 
 SootopolisCity_EventScript_SetExpertBlockCaveEntrance::
@@ -886,6 +886,7 @@ SootopolisCity_EventScript_Steven::
 	goto_if_eq VAR_SOOTOPOLIS_CITY_STATE, 4, SootopolisCity_EventScript_StevenHelpedWallace
 	goto_if_set FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE, SootopolisCity_EventScript_StevenMaxieArchieLeft
 	msgbox SootopolisCity_Text_SoThatsRayquaza, MSGBOX_DEFAULT
+	msgbox SootopolisCity_Text_AquaMagmaDidntMeanHarm, MSGBOX_DEFAULT
 	releaseall
 	end
 
@@ -895,7 +896,18 @@ SootopolisCity_EventScript_StevenHelpWallace::
 	end
 
 SootopolisCity_EventScript_StevenMaxieArchieLeft::
+	lockall
+	faceplayer
 	msgbox SootopolisCity_Text_MaxieArchieLeft, MSGBOX_DEFAULT
+
+	goto_if_set FLAG_STEVEN_MOVED_FROM_SCENE, SootopolisCity_EventScript_StevenMaxieArchieLeft_Done
+
+	call_if_eq VAR_FACING, DIR_NORTH, SootopolisCity_EventScript_WallaceMoveFromGym
+	call_if_eq VAR_FACING, DIR_EAST,  SootopolisCity_EventScript_WallaceMoveFromGym
+	call_if_eq VAR_FACING, DIR_WEST,  SootopolisCity_EventScript_WallaceMoveFromGymWest
+	setflag FLAG_STEVEN_MOVED_FROM_SCENE
+
+SootopolisCity_EventScript_StevenMaxieArchieLeft_Done::
 	releaseall
 	end
 
@@ -1283,8 +1295,7 @@ SootopolisCity_EventScript_Wallace::
 	lock
 	faceplayer
 	goto_if_eq VAR_SOOTOPOLIS_CITY_STATE, 4, SootopolisCity_EventScript_GoToSkyPillar
-	goto_if_set FLAG_RECEIVED_HM_WATERFALL, SootopolisCity_EventScript_GoToGym
-	goto_if_set FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE, SootopolisCity_EventScript_GiveWaterfall
+	goto_if_set FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE, SootopolisCity_EventScript_GoToGym
 	msgbox SootopolisCity_Text_AquaMagmaDidntMeanHarm, MSGBOX_DEFAULT
 	release
 	end
@@ -1302,16 +1313,16 @@ SootopolisCity_EventScript_GiveWaterfall::
 	end
 
 SootopolisCity_EventScript_WallaceMoveFromGym::
-	applymovement LOCALID_SOOTOPOLIS_WALLACE, SootopolisCity_Movement_WallaceMoveFromGym
+	applymovement LOCALID_SOOTOPOLIS_STEVEN, SootopolisCity_Movement_WallaceMoveFromGym
 	waitmovement 0
-	copyobjectxytoperm LOCALID_SOOTOPOLIS_WALLACE
+	copyobjectxytoperm LOCALID_SOOTOPOLIS_STEVEN
 	setvar VAR_SOOTOPOLIS_WALLACE_STATE, 1
 	return
 
 SootopolisCity_EventScript_WallaceMoveFromGymWest::
-	applymovement LOCALID_SOOTOPOLIS_WALLACE, SootopolisCity_Movement_WallaceMoveFromGymWest
+	applymovement LOCALID_SOOTOPOLIS_STEVEN, SootopolisCity_Movement_WallaceMoveFromGymWest
 	waitmovement 0
-	copyobjectxytoperm LOCALID_SOOTOPOLIS_WALLACE
+	copyobjectxytoperm LOCALID_SOOTOPOLIS_STEVEN
 	setvar VAR_SOOTOPOLIS_WALLACE_STATE, 2
 	return
 
@@ -1322,6 +1333,9 @@ SootopolisCity_EventScript_GoToSkyPillar::
 
 SootopolisCity_EventScript_GoToGym::
 	msgbox SootopolisCity_Text_DazzledByMentor, MSGBOX_DEFAULT
+	call_if_eq VAR_FACING, DIR_NORTH, SootopolisCity_EventScript_WallaceMoveFromGym
+	call_if_eq VAR_FACING, DIR_EAST, SootopolisCity_EventScript_WallaceMoveFromGym
+	call_if_eq VAR_FACING, DIR_WEST, SootopolisCity_EventScript_WallaceMoveFromGymWest
 	release
 	end
 
@@ -1346,6 +1360,14 @@ SootopolisCity_EventScript_Maxie::
 SootopolisCity_EventScript_MaxieRayquaza::
 	msgbox SootopolisCity_Text_AfterAllOurScheming, MSGBOX_DEFAULT
 	setflag FLAG_MET_MAXIE_SOOTOPOLIS
+
+	goto_if_set FLAG_RECEIVED_CAMERUPTITE, SootopolisCity_EventScript_MaxieRayquaza_NoGift
+
+	msgbox SootopolisCity_Text_MaxieGivesCameruptite, MSGBOX_DEFAULT
+	giveitem ITEM_CAMERUPTITE, 1
+	setflag FLAG_RECEIVED_CAMERUPTITE
+
+SootopolisCity_EventScript_MaxieRayquaza_NoGift::
 	goto_if_set FLAG_MET_ARCHIE_SOOTOPOLIS, SootopolisCity_EventScript_MaxieArchieLeave
 	releaseall
 	end
@@ -1361,6 +1383,14 @@ SootopolisCity_EventScript_Archie::
 SootopolisCity_EventScript_ArchieRayquaza::
 	msgbox SootopolisCity_Text_TryingMeaninglessToPokemon, MSGBOX_DEFAULT
 	setflag FLAG_MET_ARCHIE_SOOTOPOLIS
+
+	goto_if_set FLAG_RECEIVED_SHARPEDONITE, SootopolisCity_EventScript_ArchieRayquaza_NoGift
+
+	msgbox SootopolisCity_Text_ArchieGivesSharpedonite, MSGBOX_DEFAULT
+	giveitem ITEM_SHARPEDONITE, 1
+	setflag FLAG_RECEIVED_SHARPEDONITE
+
+SootopolisCity_EventScript_ArchieRayquaza_NoGift::
 	goto_if_set FLAG_MET_MAXIE_SOOTOPOLIS, SootopolisCity_EventScript_MaxieArchieLeave
 	releaseall
 	end
@@ -1675,7 +1705,7 @@ SootopolisCity_Text_HaventYouScaledSkyPillar:
 	.string "the top of the SKY PILLAR…$"
 
 SootopolisCity_Text_AquaMagmaDidntMeanHarm:
-	.string "WALLACE: {PLAYER}{KUN}…\p"
+	.string "STEVEN: {PLAYER}{KUN}…\p"
 	.string "The leaders of TEAM MAGMA and AQUA,\n"
 	.string "I don't think they meant harm.\p"
 	.string "It wouldn't hurt to hear what they\n"
@@ -1704,6 +1734,21 @@ SootopolisCity_Text_ExplainWaterfallGoToGym:
 	.string "that door.$"
 
 SootopolisCity_Text_DazzledByMentor:
-	.string "WALLACE: I'm sure that you will be\n"
-	.string "dazzled by my mentor's breathtakingly\l"
-	.string "elegant battle style.$"
+	.string "STEVEN: WALLACE's battles are\n"
+	.string "breathtaking in their elegance.\p"
+	.string "I think you'll enjoy facing him.$"
+
+SootopolisCity_Text_MaxieGivesCameruptite:
+	.string "MAXIE: My ideals blinded me.\p"
+	.string "In pursuing them, I placed this\n"
+	.string "city in danger.\p"
+	.string "You chose restraint where I did not.\p"
+	.string "Take this... both as thanks and as\n"
+	.string "atonement.$"
+
+SootopolisCity_Text_ArchieGivesSharpedonite:
+	.string "ARCHIE: I got carried away.\p"
+	.string "I put this city in danger, and you\n"
+	.string "cleaned up my mess.\p"
+	.string "Take this as my thanks...\n"
+	.string "and my apology.$"

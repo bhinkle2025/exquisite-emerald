@@ -65,9 +65,9 @@
 #define FLAG_RECEIVED_AUDINITE            0x33 // Audinite
 #define FLAG_RECEIVED_TRUBBISH            0x34 // Trubbish
 #define FLAG_RECEIVED_GALLADITE           0x35 // Galladite
-#define FLAG_UNUSED_0x036    0x36 // Unused Flag
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
-#define FLAG_UNUSED_0x038    0x38 // Unused Flag
+#define FLAG_RECEIVED_CAMERUPTITE         0x36 // Cameruptite
+#define FLAG_RECEIVED_SHARPEDONITE        0x37 // Sharpedonite
+#define FLAG_STEVEN_MOVED_FROM_SCENE      0x38 // Steven Move Sootopolis
 #define FLAG_UNUSED_0x039    0x39 // Unused Flag
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
 #define FLAG_UNUSED_0x03B    0x3B // Unused Flag
